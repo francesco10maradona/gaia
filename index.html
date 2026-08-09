@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#170d32">
+<meta name="theme-color" content="#160b2d">
 
 <title>Per Gaia ❤️</title>
 
@@ -13,17 +13,18 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
-    margin: 0;
+html,
+body {
     width: 100%;
     height: 100%;
+    margin: 0;
     overflow: hidden;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #160c2d;
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
+    background: #160b2d;
 }
 
 button {
@@ -37,6 +38,202 @@ button {
     overflow: hidden;
 }
 
+/* =========================
+   SFONDO
+========================= */
+
+.background {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 5%,
+            rgba(255, 130, 190, .35),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 15% 75%,
+            rgba(100, 70, 190, .25),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #12082a 0%,
+            #26113f 40%,
+            #70365f 75%,
+            #e9899c 100%
+        );
+}
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1.5px
+        ),
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.5) 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        70px 70px,
+        120px 120px;
+
+    animation: stars 30s linear infinite;
+
+    opacity: .8;
+}
+
+@keyframes stars {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(80px);
+    }
+}
+
+.moon {
+    position: absolute;
+
+    top: 7%;
+    right: 8%;
+
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    background: #fff3d2;
+
+    box-shadow:
+        0 0 30px rgba(255,240,190,.8);
+}
+
+/* =========================
+   GATTINI
+========================= */
+
+.cats {
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 5;
+}
+
+.cat {
+    position: absolute;
+
+    font-size: 38px;
+
+    filter:
+        drop-shadow(
+            0 5px 5px rgba(0,0,0,.25)
+        );
+}
+
+.cat.a {
+    left: -60px;
+    top: 18%;
+
+    animation:
+        walkRight
+        14s
+        linear
+        infinite;
+}
+
+.cat.b {
+    right: -60px;
+    top: 38%;
+
+    animation:
+        walkLeft
+        17s
+        linear
+        infinite;
+}
+
+.cat.c {
+    left: 8%;
+    bottom: 15%;
+
+    animation:
+        float
+        4s
+        ease-in-out
+        infinite;
+}
+
+.cat.d {
+    right: 8%;
+    bottom: 22%;
+
+    animation:
+        float
+        5s
+        ease-in-out
+        infinite;
+}
+
+@keyframes walkRight {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform:
+            translateX(
+                calc(100vw + 150px)
+            );
+    }
+}
+
+@keyframes walkLeft {
+
+    from {
+        transform:
+            translateX(0)
+            scaleX(-1);
+    }
+
+    to {
+        transform:
+            translateX(
+                calc(-100vw - 150px)
+            )
+            scaleX(-1);
+    }
+}
+
+@keyframes float {
+
+    0%,100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-12px);
+    }
+}
+
+/* =========================
+   SCHERMATE
+========================= */
+
 .screen {
     position: absolute;
     inset: 0;
@@ -49,265 +246,14 @@ button {
 
     opacity: 0;
     visibility: hidden;
-    transform: scale(1.04);
 
     transition:
-        opacity .8s ease,
-        transform .8s cubic-bezier(.22,1,.36,1);
+        opacity .7s ease;
 }
 
 .screen.active {
     opacity: 1;
     visibility: visible;
-    transform: scale(1);
-}
-
-/* =========================
-   SFONDO
-========================= */
-
-.sky {
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at 50% 10%,
-            rgba(255,145,201,.38),
-            transparent 34%
-        ),
-        radial-gradient(
-            circle at 15% 70%,
-            rgba(116,70,180,.22),
-            transparent 35%
-        ),
-        linear-gradient(
-            180deg,
-            #130a2b 0%,
-            #24113d 38%,
-            #552657 70%,
-            #d96e99 100%
-        );
-}
-
-.stars {
-    position: absolute;
-    inset: 0;
-
-    opacity: .85;
-
-    background-image:
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.95) 1px,
-            transparent 1.5px
-        ),
-        radial-gradient(
-            circle,
-            rgba(255,255,255,.6) 1px,
-            transparent 1.5px
-        );
-
-    background-size:
-        75px 75px,
-        125px 125px;
-
-    background-position:
-        10px 20px,
-        45px 60px;
-
-    animation: starsMove 30s linear infinite;
-}
-
-@keyframes starsMove {
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(90px);
-    }
-}
-
-.moon {
-    position: absolute;
-
-    top: 7%;
-    right: 8%;
-
-    width: 68px;
-    height: 68px;
-
-    border-radius: 50%;
-
-    background: #fff2d0;
-
-    box-shadow:
-        0 0 25px rgba(255,238,188,.75),
-        0 0 75px rgba(255,200,220,.22);
-}
-
-.moon::after {
-    content: "";
-
-    position: absolute;
-
-    width: 63px;
-    height: 63px;
-
-    left: 18px;
-    top: -5px;
-
-    border-radius: 50%;
-
-    background: #1b0d35;
-}
-
-/* =========================
-   GATTINI
-========================= */
-
-.cat-layer {
-    position: absolute;
-    inset: 0;
-
-    z-index: 12;
-
-    pointer-events: none;
-    overflow: hidden;
-}
-
-.cat {
-    position: absolute;
-
-    font-size: 38px;
-
-    filter:
-        drop-shadow(
-            0 5px 5px rgba(0,0,0,.25)
-        );
-
-    opacity: .96;
-}
-
-.cat1 {
-    left: -60px;
-    top: 18%;
-
-    animation:
-        catWalkRight
-        14s
-        linear
-        infinite;
-}
-
-.cat2 {
-    right: -60px;
-    top: 33%;
-
-    animation:
-        catWalkLeft
-        17s
-        linear
-        infinite;
-}
-
-.cat3 {
-    left: 7%;
-    top: 67%;
-
-    animation:
-        catFloat
-        4s
-        ease-in-out
-        infinite;
-}
-
-.cat4 {
-    right: 8%;
-    top: 12%;
-
-    animation:
-        catFloat
-        5s
-        ease-in-out
-        infinite;
-}
-
-.cat5 {
-    left: 18%;
-    bottom: 10%;
-
-    animation:
-        catFloat
-        4.5s
-        ease-in-out
-        infinite;
-}
-
-.cat6 {
-    right: 18%;
-    bottom: 17%;
-
-    animation:
-        catFloat
-        5.5s
-        ease-in-out
-        infinite;
-}
-
-.cat7 {
-    left: 44%;
-    top: 8%;
-
-    animation:
-        catFloat
-        6s
-        ease-in-out
-        infinite;
-}
-
-@keyframes catWalkRight {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform:
-            translateX(
-                calc(100vw + 140px)
-            );
-    }
-}
-
-@keyframes catWalkLeft {
-    from {
-        transform:
-            translateX(0)
-            scaleX(-1);
-    }
-
-    to {
-        transform:
-            translateX(
-                calc(-100vw - 140px)
-            )
-            scaleX(-1);
-    }
-}
-
-@keyframes catFloat {
-    0%, 100% {
-        transform:
-            translateY(0)
-            rotate(-4deg);
-    }
-
-    50% {
-        transform:
-            translateY(-13px)
-            rotate(4deg);
-    }
 }
 
 /* =========================
@@ -316,31 +262,27 @@ button {
 
 .intro {
     position: relative;
-    z-index: 30;
 
-    width: min(100%, 430px);
+    z-index: 20;
+
+    width: min(100%, 420px);
 
     text-align: center;
 }
 
-.crown-intro {
-    font-size: 48px;
+.crown {
+    font-size: 50px;
 
     animation:
-        crownFloat
+        crown
         3s
         ease-in-out
         infinite;
-
-    filter:
-        drop-shadow(
-            0 5px 15px
-            rgba(255,180,220,.4)
-        );
 }
 
-@keyframes crownFloat {
-    0%, 100% {
+@keyframes crown {
+
+    0%,100% {
         transform:
             translateY(0)
             rotate(-3deg);
@@ -354,41 +296,37 @@ button {
 }
 
 .intro h1 {
-    margin: 10px 0 0;
+    margin: 5px 0 0;
 
     font-family: Georgia, serif;
 
     font-size:
         clamp(
             58px,
-            17vw,
+            18vw,
             82px
         );
 
     line-height: .9;
 
     letter-spacing: -4px;
-
-    text-shadow:
-        0 5px 25px
-        rgba(0,0,0,.25);
 }
 
 .intro h1 span {
-    color: #ff83b5;
+    color: #ff82b4;
 }
 
-.question-card {
+.card {
     width: min(100%, 370px);
 
     margin: 30px auto 0;
 
-    padding: 27px 20px;
+    padding: 28px 20px;
 
-    border-radius: 32px;
+    border-radius: 30px;
 
     background:
-        rgba(255,255,255,.09);
+        rgba(255,255,255,.1);
 
     border:
         1px solid
@@ -402,37 +340,29 @@ button {
 
     box-shadow:
         0 25px 70px
-        rgba(0,0,0,.25),
-
-        inset
-        0 1px
-        rgba(255,255,255,.15);
+        rgba(0,0,0,.3);
 }
 
 .question {
     font-family: Georgia, serif;
+
     font-size: 31px;
 }
 
-.question-sub {
+.subtitle {
     margin-top: 9px;
 
     color:
-        rgba(255,255,255,.68);
+        rgba(255,255,255,.7);
 
     font-size: 14px;
-    line-height: 1.4;
 }
-
-/* =========================
-   BUTTONS
-========================= */
 
 .buttons {
     display: flex;
 
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
     gap: 14px;
 
@@ -448,22 +378,15 @@ button {
     border: 0;
     border-radius: 999px;
 
-    color: white;
-
     font-size: 17px;
     font-weight: 800;
+
+    color: white;
 
     cursor: pointer;
 
     user-select: none;
     -webkit-user-select: none;
-
-    transition:
-        transform .18s ease;
-}
-
-.btn:active {
-    transform: scale(.92);
 }
 
 .yes {
@@ -471,99 +394,100 @@ button {
         linear-gradient(
             135deg,
             #ff397d,
-            #ff79ad
+            #ff78ac
         );
 
     box-shadow:
-        0 8px 28px
-        rgba(255,45,115,.4);
+        0 8px 30px
+        rgba(255,45,115,.45);
 
     animation:
-        yesPulse
+        pulse
         2s
         ease-in-out
         infinite;
 }
 
-@keyframes yesPulse {
-    0%, 100% {
-        box-shadow:
-            0 8px 28px
-            rgba(255,45,115,.35);
+@keyframes pulse {
+
+    0%,100% {
+        transform: scale(1);
     }
 
     50% {
-        box-shadow:
-            0 8px 38px
-            rgba(255,45,115,.7);
+        transform: scale(1.04);
     }
 }
+
+/*
+    IMPORTANTE:
+    Il NO parte normalmente dentro
+    del contenitore.
+
+    Quando viene sfiorato/cliccato,
+    passa a position: fixed e può
+    muoversi ovunque nello schermo.
+*/
 
 .no {
     position: relative;
 
-    z-index: 100;
+    z-index: 1000;
 
     background:
-        rgba(255,255,255,.09);
+        rgba(255,255,255,.1);
 
     border:
         1px solid
-        rgba(255,255,255,.2);
+        rgba(255,255,255,.25);
 
-    color:
-        rgba(255,255,255,.88);
+    color: white;
 
     touch-action: none;
 
-    white-space: nowrap;
-
     transition:
-        left .16s ease,
-        top .16s ease,
-        transform .16s ease;
+        left .18s ease,
+        top .18s ease,
+        transform .18s ease;
 }
 
 /* =========================
    FINALE
 ========================= */
 
-.final {
+.final-bg {
     position: absolute;
     inset: 0;
-
-    overflow: hidden;
 
     background:
         linear-gradient(
             180deg,
-            #1c0d3d 0%,
-            #633565 42%,
-            #e9899b 67%,
-            #f6c696 100%
+            #1c0c3c 0%,
+            #623460 43%,
+            #e98c9e 68%,
+            #f5c38f 100%
         );
 }
 
 .sun {
     position: absolute;
 
-    top: 13%;
+    top: 12%;
     left: 50%;
 
     transform:
         translateX(-50%);
 
-    width: 155px;
-    height: 155px;
+    width: 145px;
+    height: 145px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            #fffbd9 0%,
-            #ffd18c 45%,
-            rgba(255,180,130,.15) 70%,
+            #fffbdc 0%,
+            #ffd28d 50%,
             transparent 72%
         );
 }
@@ -571,121 +495,59 @@ button {
 .ocean {
     position: absolute;
 
-    bottom: 0;
     left: 0;
+    bottom: 0;
 
     width: 100%;
-    height: 39%;
+    height: 40%;
 
     background:
         linear-gradient(
             180deg,
-            rgba(48,163,174,.8),
-            #126e83
+            #36a4ae,
+            #126c80
         );
 
     clip-path:
         polygon(
-            0 20%,
-            12% 14%,
-            25% 19%,
-            40% 11%,
-            55% 18%,
-            70% 10%,
-            84% 17%,
-            100% 12%,
+            0 17%,
+            12% 10%,
+            25% 17%,
+            40% 10%,
+            55% 17%,
+            70% 9%,
+            85% 17%,
+            100% 10%,
             100% 100%,
             0 100%
         );
-}
-
-.palm {
-    position: absolute;
-
-    bottom: 18%;
-
-    width: 150px;
-    height: 270px;
-
-    z-index: 4;
-}
-
-.palm.left {
-    left: -30px;
-
-    transform:
-        rotate(-7deg);
-}
-
-.palm.right {
-    right: -30px;
-
-    transform:
-        scaleX(-1)
-        rotate(-7deg);
-}
-
-.trunk {
-    position: absolute;
-
-    bottom: 0;
-    left: 70px;
-
-    width: 22px;
-    height: 220px;
-
-    border-radius: 50%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #704228,
-            #a66b38,
-            #61341f
-        );
-
-    transform:
-        rotate(7deg);
-}
-
-.leaves {
-    position: absolute;
-
-    top: 0;
-    left: 40px;
-
-    font-size: 75px;
-
-    line-height: .55;
 }
 
 .final-title {
     position: absolute;
 
     top: 5%;
+    left: 0;
 
     width: 100%;
 
-    z-index: 30;
+    z-index: 50;
 
     text-align: center;
 }
 
 .final-title h2 {
     margin: 0;
-
     padding: 0 15px;
 
     font-family: Georgia, serif;
 
     font-size:
         clamp(
-            28px,
+            27px,
             8vw,
             44px
         );
-
-    line-height: 1.05;
 
     text-shadow:
         0 3px 15px
@@ -693,11 +555,39 @@ button {
 }
 
 .final-title p {
-    margin: 9px 0 0;
+    margin-top: 8px;
 
-    color: #ffe1ea;
+    color: #ffe0eb;
 
     font-size: 14px;
+}
+
+/* =========================
+   PALME
+========================= */
+
+.palm {
+    position: absolute;
+
+    bottom: 19%;
+
+    z-index: 6;
+
+    font-size: 130px;
+}
+
+.palm.left {
+    left: -28px;
+
+    transform: rotate(-10deg);
+}
+
+.palm.right {
+    right: -28px;
+
+    transform:
+        scaleX(-1)
+        rotate(-10deg);
 }
 
 /* =========================
@@ -711,89 +601,153 @@ button {
     top: 27%;
 
     width: 280px;
-    height: 310px;
+    height: 315px;
 
     transform:
         translateX(-50%);
 
-    z-index: 25;
+    z-index: 30;
 }
 
-.person {
+/*
+   Principe
+*/
+
+.prince,
+.gaia {
     position: absolute;
 
     bottom: 0;
 
     width: 120px;
-    height: 280px;
+    height: 285px;
 }
 
 .prince {
-    left: 3px;
+    left: 0;
 }
 
-.princess {
-    right: 3px;
+.gaia {
+    right: 0;
 }
 
-/* =========================
-   PRINCIPE
-========================= */
-
-.prince .person-head {
+.head {
     position: absolute;
 
     top: 0;
-    left: 27px;
+    left: 25px;
 
-    width: 67px;
-    height: 75px;
+    width: 70px;
+    height: 78px;
 
     border-radius:
-        48%
-        48%
-        44%
-        44%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f0b18d,
-            #df916e
-        );
+        50% 50% 45% 45%;
 
     z-index: 5;
 }
 
-.prince .person-head::before {
+.prince .head {
+    background:
+        linear-gradient(
+            135deg,
+            #f0b18d,
+            #db8f6c
+        );
+}
+
+.gaia .head {
+    background:
+        linear-gradient(
+            135deg,
+            #f6c2a1,
+            #e59b79
+        );
+}
+
+/*
+   Capelli principe
+*/
+
+.prince .head::before {
     content: "";
 
     position: absolute;
 
-    top: -10px;
+    top: -12px;
     left: -4px;
 
-    width: 76px;
+    width: 78px;
     height: 42px;
 
     border-radius:
-        55%
-        55%
-        30%
-        30%;
+        55% 55% 30% 30%;
 
     background:
         linear-gradient(
             135deg,
-            #2d1a18,
-            #55301f,
-            #241513
+            #251715,
+            #58301f
         );
 
     z-index: -1;
 }
 
-.prince .eye {
+/*
+   Capelli Gaia
+*/
+
+.gaia .head::before {
+    content: "";
+
+    position: absolute;
+
+    top: -20px;
+    left: -20px;
+
+    width: 110px;
+    height: 118px;
+
+    border-radius:
+        50%;
+
+    background:
+        linear-gradient(
+            100deg,
+            #5a321f,
+            #81502d,
+            #633b22
+        );
+
+    z-index: -1;
+}
+
+.gaia .head::after {
+    content: "";
+
+    position: absolute;
+
+    left: -22px;
+    top: 32px;
+
+    width: 114px;
+    height: 90px;
+
+    border-left:
+        14px solid #704522;
+
+    border-right:
+        14px solid #704522;
+
+    border-radius: 45%;
+
+    z-index: -1;
+}
+
+/*
+   Occhi
+*/
+
+.eye {
     position: absolute;
 
     top: 35px;
@@ -803,555 +757,330 @@ button {
 
     border-radius: 50%;
 
-    background: #30202a;
+    background: #34202a;
 }
 
-.prince .eye.one {
+.eye.left {
     left: 17px;
 }
 
-.prince .eye.two {
+.eye.right {
     right: 17px;
 }
 
-.prince .smile {
+.smile {
     position: absolute;
 
-    top: 52px;
+    top: 53px;
     left: 27px;
 
-    width: 14px;
-    height: 6px;
+    width: 16px;
+    height: 7px;
 
     border-bottom:
-        2px solid #773b45;
+        2px solid #914b5e;
 
     border-radius: 50%;
 }
 
-.prince .person-body {
+/*
+   Corona Gaia
+*/
+
+.crown-small {
     position: absolute;
 
-    top: 72px;
-    left: 16px;
+    top: -35px;
+    left: 17px;
 
-    width: 88px;
-    height: 118px;
+    font-size: 28px;
+
+    z-index: 50;
+}
+
+/*
+   Corpo principe
+*/
+
+.prince .body {
+    position: absolute;
+
+    top: 73px;
+    left: 15px;
+
+    width: 90px;
+    height: 120px;
 
     border-radius:
-        34px
-        34px
-        13px
-        13px;
+        35px 35px 12px 12px;
 
     background:
         linear-gradient(
             90deg,
-            #183878,
-            #4f83d5,
-            #18336e
+            #183875,
+            #5586d5,
+            #19346d
         );
 }
 
-.prince .person-body::before {
+.prince .body::before {
     content: "";
 
     position: absolute;
 
+    left: 37px;
     top: 0;
-    left: 36px;
 
     width: 16px;
-    height: 113px;
+    height: 116px;
 
-    background: #f2cf79;
+    background: #f0ce78;
 }
 
-.prince .arm {
+/*
+   Corpo Gaia
+*/
+
+.gaia .body {
     position: absolute;
 
-    top: 88px;
+    top: 75px;
+    left: 8px;
 
-    width: 17px;
-    height: 99px;
+    width: 102px;
+    height: 145px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #995078,
+            #e7a5c4,
+            #995078
+        );
+
+    clip-path:
+        polygon(
+            33% 0,
+            67% 0,
+            100% 100%,
+            0 100%
+        );
+}
+
+/*
+   Braccia
+*/
+
+.arm {
+    position: absolute;
+
+    width: 18px;
+    height: 100px;
 
     border-radius: 20px;
 
-    background: #e4a07c;
+    background: #e5a07c;
 
-    z-index: 6;
+    z-index: 10;
 }
 
-.prince .arm.left {
-    left: 3px;
+.prince .arm {
+    top: 88px;
+    right: 1px;
+
+    transform:
+        rotate(-22deg);
+}
+
+.gaia .arm {
+    top: 90px;
+    left: 0;
 
     transform:
         rotate(22deg);
 }
 
-.prince .hand {
-    position: absolute;
+/*
+   Mani
+*/
 
-    right: 0;
-    top: 164px;
+.hand {
+    position: absolute;
 
     width: 23px;
     height: 23px;
 
     border-radius: 50%;
 
-    background: #e4a07c;
+    background: #e5a07c;
 
-    z-index: 15;
+    z-index: 20;
+}
+
+.prince .hand {
+    right: -5px;
+    top: 166px;
+}
+
+.gaia .hand {
+    left: -5px;
+    top: 168px;
+}
+
+/*
+   Gambe
+*/
+
+.leg {
+    position: absolute;
+
+    top: 190px;
+
+    width: 25px;
+    height: 95px;
+
+    border-radius: 20px;
 }
 
 .prince .leg {
-    position: absolute;
-
-    top: 184px;
-
-    width: 24px;
-    height: 96px;
-
-    border-radius: 20px;
-
-    background: #25315b;
+    background: #26325b;
 }
 
-.prince .leg.one {
+.gaia .leg {
+    background: #824d73;
+}
+
+.prince .leg.left,
+.gaia .leg.left {
     left: 30px;
 }
 
-.prince .leg.two {
+.prince .leg.right,
+.gaia .leg.right {
     right: 30px;
 }
 
-/* =========================
-   PRINCIPESSA
-========================= */
-
-.princess .person-head {
-    position: absolute;
-
-    top: 0;
-    left: 25px;
-
-    width: 70px;
-    height: 79px;
-
-    border-radius:
-        48%
-        48%
-        45%
-        45%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #f7c1a1,
-            #e8a07e
-        );
-
-    z-index: 8;
-}
-
-.princess .person-head::before {
-    content: "";
-
-    position: absolute;
-
-    top: -19px;
-    left: -18px;
-
-    width: 106px;
-    height: 115px;
-
-    border-radius:
-        52%
-        52%
-        42%
-        42%;
-
-    background:
-        linear-gradient(
-            100deg,
-            #5b351f,
-            #80502d 45%,
-            #663c21
-        );
-
-    z-index: -1;
-}
-
-.princess .person-head::after {
-    content: "";
-
-    position: absolute;
-
-    left: -21px;
-    top: 32px;
-
-    width: 112px;
-    height: 88px;
-
-    border-radius: 45%;
-
-    border-left:
-        14px solid #704522;
-
-    border-right:
-        14px solid #704522;
-
-    z-index: -1;
-}
-
-.princess .eye {
-    position: absolute;
-
-    top: 34px;
-
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-
-    background: #38202a;
-
-    box-shadow:
-        0 1px 0
-        rgba(255,255,255,.8);
-}
-
-.princess .eye.one {
-    left: 17px;
-}
-
-.princess .eye.two {
-    right: 17px;
-}
-
-.princess .eye::after {
-    content: "";
-
-    position: absolute;
-
-    top: -4px;
-
-    width: 10px;
-    height: 4px;
-
-    border-top:
-        2px solid #3a2023;
-}
-
-.princess .eye.one::after {
-    left: -2px;
-
-    transform:
-        rotate(-15deg);
-}
-
-.princess .eye.two::after {
-    right: -2px;
-
-    transform:
-        rotate(15deg);
-}
-
-.princess .smile {
-    position: absolute;
-
-    top: 52px;
-    left: 27px;
-
-    width: 16px;
-    height: 7px;
-
-    border-bottom:
-        2px solid #a94f68;
-
-    border-radius:
-        0 0 50% 50%;
-}
-
-.princess .mini-crown {
-    position: absolute;
-
-    top: -31px;
-    left: 13px;
-
-    font-size: 27px;
-
-    z-index: 30;
-}
-
-.princess .person-body {
-    position: absolute;
-
-    top: 74px;
-    left: 9px;
-
-    width: 100px;
-    height: 142px;
-
-    border-radius:
-        43px
-        43px
-        12px
-        12px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #a45b87,
-            #e8a5c4 48%,
-            #9b527d
-        );
-
-    clip-path:
-        polygon(
-            34% 0,
-            66% 0,
-            100% 100%,
-            0 100%
-        );
-
-    box-shadow:
-        0 8px 15px
-        rgba(80,25,70,.18);
-}
-
-.princess .person-body::before {
-    content: "";
-
-    position: absolute;
-
-    top: -5px;
-    left: 38px;
-
-    width: 18px;
-    height: 16px;
-
-    background: #e8a07d;
-
-    border-radius: 5px;
-}
-
-.princess .person-body::after {
-    content: "";
-
-    position: absolute;
-
-    left: 45px;
-    top: 0;
-
-    width: 8px;
-    height: 134px;
-
-    background:
-        rgba(255,255,255,.27);
-
-    transform:
-        skewX(-5deg);
-}
-
-.princess .arm {
-    position: absolute;
-
-    top: 88px;
-    right: 0;
-
-    width: 17px;
-    height: 101px;
-
-    border-radius: 20px;
-
-    background: #e6a07d;
-
-    z-index: 8;
-
-    transform:
-        rotate(-24deg);
-}
-
-.princess .hand {
-    position: absolute;
-
-    left: -1px;
-    top: 164px;
-
-    width: 23px;
-    height: 23px;
-
-    border-radius: 50%;
-
-    background: #e7a07d;
-
-    z-index: 18;
-}
-
-.princess .flower {
-    position: absolute;
-
-    top: 1px;
-    left: 79px;
-
-    font-size: 22px;
-
-    z-index: 35;
-
-    transform:
-        rotate(-15deg);
-}
-
-.princess .leg {
-    position: absolute;
-
-    top: 189px;
-
-    width: 24px;
-    height: 91px;
-
-    border-radius: 20px;
-
-    background: #8d4f79;
-}
-
-.princess .leg.one {
-    left: 31px;
-}
-
-.princess .leg.two {
-    right: 31px;
-}
+/*
+   Mani che si tengono
+*/
 
 .holding {
     position: absolute;
 
-    top: 171px;
     left: 120px;
+    top: 173px;
 
-    width: 36px;
-    height: 7px;
+    width: 42px;
+    height: 10px;
 
     border-radius: 10px;
 
-    background: #e7a07d;
+    background: #e5a07c;
 
-    z-index: 16;
+    z-index: 25;
+}
+
+/*
+   Fiore
+*/
+
+.flower {
+    position: absolute;
+
+    top: 3px;
+    right: -2px;
+
+    z-index: 60;
+
+    font-size: 23px;
 }
 
 /* =========================
-   PRINCIPESSE INTORNO
+   PRINCIPESSE
 ========================= */
 
-.fairies {
+.princesses {
     position: absolute;
+    inset: 20% 0 15%;
 
-    inset: 20% 0 14%;
-
-    z-index: 13;
+    z-index: 20;
 
     pointer-events: none;
 }
 
-.fairy {
+.princess {
     position: absolute;
 
-    font-size: 38px;
-
-    filter:
-        drop-shadow(
-            0 5px 7px
-            rgba(0,0,0,.22)
-        );
+    font-size: 40px;
 
     animation:
-        fairyFloat
+        float
         3.5s
         ease-in-out
         infinite;
 }
 
-.fairy:nth-child(1) {
+.princess.p1 {
     left: 4%;
-    top: 15%;
+    top: 13%;
 }
 
-.fairy:nth-child(2) {
+.princess.p2 {
     left: 25%;
-    top: 4%;
-    animation-delay: .6s;
-}
+    top: 3%;
 
-.fairy:nth-child(3) {
-    right: 25%;
-    top: 4%;
-    animation-delay: 1s;
-}
-
-.fairy:nth-child(4) {
-    right: 4%;
-    top: 15%;
-    animation-delay: 1.5s;
-}
-
-.fairy:nth-child(5) {
-    left: 2%;
-    top: 48%;
-    animation-delay: .8s;
-}
-
-.fairy:nth-child(6) {
-    right: 2%;
-    top: 48%;
-    animation-delay: .3s;
-}
-
-.fairy:nth-child(7) {
-    left: 12%;
-    bottom: 2%;
-    animation-delay: 1.2s;
-}
-
-.fairy:nth-child(8) {
-    right: 12%;
-    bottom: 2%;
     animation-delay: .5s;
 }
 
-@keyframes fairyFloat {
-    0%, 100% {
-        transform: translateY(0);
-    }
+.princess.p3 {
+    right: 25%;
+    top: 3%;
 
-    50% {
-        transform: translateY(-10px);
-    }
+    animation-delay: 1s;
+}
+
+.princess.p4 {
+    right: 4%;
+    top: 13%;
+
+    animation-delay: 1.5s;
+}
+
+.princess.p5 {
+    left: 2%;
+    top: 50%;
+
+    animation-delay: .7s;
+}
+
+.princess.p6 {
+    right: 2%;
+    top: 50%;
+
+    animation-delay: 1.2s;
 }
 
 /* =========================
-   MESSAGGIO
+   MESSAGGIO FINALE
 ========================= */
 
 .message {
     position: absolute;
 
     left: 50%;
-    bottom: 4%;
+    bottom: 3%;
 
     transform:
         translateX(-50%);
 
-    width: min(88%, 390px);
+    width: min(88%, 400px);
 
-    padding:
-        17px 20px;
+    padding: 16px 18px;
 
     border-radius: 25px;
 
     background:
-        rgba(35,20,55,.48);
+        rgba(35,20,55,.5);
 
     border:
         1px solid
@@ -1363,13 +1092,13 @@ button {
     -webkit-backdrop-filter:
         blur(15px);
 
-    text-align: center;
+    z-index: 60;
 
-    z-index: 40;
+    text-align: center;
 
     box-shadow:
         0 15px 40px
-        rgba(0,0,0,.2);
+        rgba(0,0,0,.25);
 }
 
 .message strong {
@@ -1377,7 +1106,7 @@ button {
 
     font-family: Georgia, serif;
 
-    font-size: 24px;
+    font-size: 23px;
 }
 
 .message span {
@@ -1385,9 +1114,9 @@ button {
 
     margin-top: 6px;
 
-    color: #ffd2e1;
+    color: #ffd3e2;
 
-    font-size: 18px;
+    font-size: 17px;
 }
 
 /* =========================
@@ -1400,20 +1129,21 @@ button {
     left: 50%;
     top: 50%;
 
-    z-index: 200;
+    z-index: 500;
 
     pointer-events: none;
 
     font-size: 25px;
 
     animation:
-        heartExplosion
+        explode
         1.8s
         ease-out
         forwards;
 }
 
-@keyframes heartExplosion {
+@keyframes explode {
+
     0% {
         opacity: 0;
 
@@ -1439,6 +1169,10 @@ button {
     }
 }
 
+/* =========================
+   FLASH
+========================= */
+
 .flash {
     position: fixed;
 
@@ -1450,10 +1184,10 @@ button {
 
     pointer-events: none;
 
-    z-index: 500;
+    z-index: 1000;
 }
 
-.flash.go {
+.flash.active {
     animation:
         flash
         .8s
@@ -1461,6 +1195,7 @@ button {
 }
 
 @keyframes flash {
+
     0% {
         opacity: 0;
     }
@@ -1480,13 +1215,9 @@ button {
 
 @media (max-height: 700px) {
 
-    .intro h1 {
-        font-size: 56px;
-    }
-
-    .question-card {
+    .card {
         margin-top: 18px;
-        padding: 21px;
+        padding: 22px;
     }
 
     .couple {
@@ -1499,32 +1230,24 @@ button {
 
     .message {
         bottom: 2%;
-        padding: 13px 16px;
-    }
-
-    .message strong {
-        font-size: 21px;
+        padding: 13px;
     }
 }
 
 @media (max-width: 360px) {
 
     .btn {
-        min-width: 110px;
-    }
-
-    .cat {
-        font-size: 30px;
-    }
-
-    .fairy {
-        font-size: 31px;
+        min-width: 108px;
     }
 
     .couple {
         transform:
             translateX(-50%)
             scale(.78);
+    }
+
+    .princess {
+        font-size: 32px;
     }
 }
 
@@ -1535,25 +1258,25 @@ button {
 
 <div class="app">
 
-    <div class="sky"></div>
+    <div class="background"></div>
     <div class="stars"></div>
     <div class="moon"></div>
 
     <!-- GATTINI -->
 
-    <div class="cat-layer">
+    <div class="cats">
 
-        <div class="cat cat1">🐱</div>
-        <div class="cat cat2">🐈</div>
-        <div class="cat cat3">😺</div>
-        <div class="cat cat4">🐈‍⬛</div>
-        <div class="cat cat5">😻</div>
-        <div class="cat cat6">🐱</div>
-        <div class="cat cat7">🐈</div>
+        <div class="cat a">🐱</div>
+        <div class="cat b">🐈</div>
+        <div class="cat c">😺</div>
+        <div class="cat d">🐈‍⬛</div>
 
     </div>
 
-    <!-- SCHERMATA INIZIALE -->
+
+    <!-- =====================
+         SCHERMATA INIZIALE
+    ====================== -->
 
     <section
         class="screen active"
@@ -1562,7 +1285,7 @@ button {
 
         <div class="intro">
 
-            <div class="crown-intro">
+            <div class="crown">
                 👑
             </div>
 
@@ -1570,13 +1293,13 @@ button {
                 Gaia <span>❤️</span>
             </h1>
 
-            <div class="question-card">
+            <div class="card">
 
                 <div class="question">
                     Facciamo pace?
                 </div>
 
-                <div class="question-sub">
+                <div class="subtitle">
                     Ho preparato una piccola sorpresa
                     solo per te...
                 </div>
@@ -1607,211 +1330,227 @@ button {
 
     </section>
 
-    <!-- FINALE -->
+
+    <!-- =====================
+         SCHERMATA FINALE
+    ====================== -->
 
     <section
         class="screen"
         id="final"
     >
 
-        <div class="final">
+        <div class="final-bg"></div>
 
-            <div class="sun"></div>
+        <div class="sun"></div>
 
-            <div class="ocean"></div>
+        <div class="ocean"></div>
 
-            <div class="palm left">
+        <div class="palm left">
+            🌴
+        </div>
 
-                <div class="trunk"></div>
+        <div class="palm right">
+            🌴
+        </div>
 
-                <div class="leaves">
-                    🌴
-                </div>
 
+        <div class="final-title">
+
+            <h2>
+                La nostra piccola fiaba ❤️
+            </h2>
+
+            <p>
+                anche dall'altra parte del mondo
+            </p>
+
+        </div>
+
+
+        <!-- PRINCIPESSE -->
+
+        <div class="princesses">
+
+            <div class="princess p1">
+                👸🏻
             </div>
 
-            <div class="palm right">
-
-                <div class="trunk"></div>
-
-                <div class="leaves">
-                    🌴
-                </div>
-
+            <div class="princess p2">
+                👸🏼
             </div>
 
-            <div class="final-title">
-
-                <h2>
-                    La nostra piccola fiaba ❤️
-                </h2>
-
-                <p>
-                    anche dall'altra parte del mondo
-                </p>
-
+            <div class="princess p3">
+                👸🏻
             </div>
 
-            <!-- PRINCIPESSE -->
-
-            <div class="fairies">
-
-                <div class="fairy">👸🏻</div>
-                <div class="fairy">👸🏼</div>
-                <div class="fairy">👸🏻</div>
-                <div class="fairy">👸🏽</div>
-                <div class="fairy">👸🏼</div>
-                <div class="fairy">👸🏻</div>
-                <div class="fairy">👸🏽</div>
-                <div class="fairy">👸🏼</div>
-
+            <div class="princess p4">
+                👸🏽
             </div>
 
-            <!-- COPPIA -->
-
-            <div class="couple">
-
-                <!-- PRINCIPE -->
-
-                <div class="person prince">
-
-                    <div class="person-head">
-
-                        <div class="eye one"></div>
-                        <div class="eye two"></div>
-                        <div class="smile"></div>
-
-                    </div>
-
-                    <div class="person-body"></div>
-
-                    <div class="arm left"></div>
-
-                    <div class="hand"></div>
-
-                    <div class="leg one"></div>
-                    <div class="leg two"></div>
-
-                </div>
-
-                <!-- GAIA -->
-
-                <div class="person princess">
-
-                    <div class="person-head">
-
-                        <div class="mini-crown">
-                            👑
-                        </div>
-
-                        <div class="eye one"></div>
-                        <div class="eye two"></div>
-                        <div class="smile"></div>
-
-                    </div>
-
-                    <div class="person-body"></div>
-
-                    <div class="arm"></div>
-
-                    <div class="hand"></div>
-
-                    <div class="flower">
-                        🌺
-                    </div>
-
-                    <div class="leg one"></div>
-                    <div class="leg two"></div>
-
-                </div>
-
-                <div class="holding"></div>
-
+            <div class="princess p5">
+                👸🏼
             </div>
 
-            <!-- GATTINI FINALI -->
-
-            <div class="cat-layer">
-
-                <div
-                    class="cat"
-                    style="
-                        left:8%;
-                        bottom:27%;
-                        animation:
-                            catFloat
-                            5s
-                            ease-in-out
-                            infinite;
-                    "
-                >
-                    🐱
-                </div>
-
-                <div
-                    class="cat"
-                    style="
-                        right:8%;
-                        bottom:31%;
-                        animation:
-                            catFloat
-                            6s
-                            ease-in-out
-                            infinite;
-                    "
-                >
-                    🐈
-                </div>
-
-                <div
-                    class="cat"
-                    style="
-                        left:32%;
-                        bottom:20%;
-                        font-size:30px;
-                        animation:
-                            catFloat
-                            4s
-                            ease-in-out
-                            infinite;
-                    "
-                >
-                    😺
-                </div>
-
-                <div
-                    class="cat"
-                    style="
-                        right:30%;
-                        bottom:19%;
-                        font-size:31px;
-                        animation:
-                            catFloat
-                            5s
-                            ease-in-out
-                            infinite;
-                    "
-                >
-                    🐈‍⬛
-                </div>
-
-            </div>
-
-            <div class="message">
-
-                <strong>
-                    Gaia, sei la mia vita.
-                </strong>
-
-                <span>
-                    Ti amo ❤️
-                </span>
-
+            <div class="princess p6">
+                👸🏻
             </div>
 
         </div>
 
+
+        <!-- COPPIA CENTRALE -->
+
+        <div class="couple">
+
+            <!-- PRINCIPE -->
+
+            <div class="prince">
+
+                <div class="head">
+
+                    <div class="eye left"></div>
+                    <div class="eye right"></div>
+
+                    <div class="smile"></div>
+
+                </div>
+
+                <div class="body"></div>
+
+                <div class="arm"></div>
+
+                <div class="hand"></div>
+
+                <div class="leg left"></div>
+                <div class="leg right"></div>
+
+            </div>
+
+
+            <!-- GAIA -->
+
+            <div class="gaia">
+
+                <div class="head">
+
+                    <div class="crown-small">
+                        👑
+                    </div>
+
+                    <div class="eye left"></div>
+                    <div class="eye right"></div>
+
+                    <div class="smile"></div>
+
+                </div>
+
+                <div class="body"></div>
+
+                <div class="arm"></div>
+
+                <div class="hand"></div>
+
+                <div class="flower">
+                    🌺
+                </div>
+
+                <div class="leg left"></div>
+                <div class="leg right"></div>
+
+            </div>
+
+
+            <!-- MANI CHE SI TENGONO -->
+
+            <div class="holding"></div>
+
+        </div>
+
+
+        <!-- GATTINI FINALI -->
+
+        <div class="cats">
+
+            <div
+                class="cat"
+                style="
+                    left:8%;
+                    bottom:27%;
+                    animation:
+                        float
+                        4s
+                        ease-in-out
+                        infinite;
+                "
+            >
+                🐱
+            </div>
+
+            <div
+                class="cat"
+                style="
+                    right:8%;
+                    bottom:30%;
+                    animation:
+                        float
+                        5s
+                        ease-in-out
+                        infinite;
+                "
+            >
+                🐈
+            </div>
+
+            <div
+                class="cat"
+                style="
+                    left:31%;
+                    bottom:20%;
+                    font-size:30px;
+                    animation:
+                        float
+                        4.5s
+                        ease-in-out
+                        infinite;
+                "
+            >
+                😻
+            </div>
+
+            <div
+                class="cat"
+                style="
+                    right:31%;
+                    bottom:19%;
+                    font-size:30px;
+                    animation:
+                        float
+                        5.5s
+                        ease-in-out
+                        infinite;
+                "
+            >
+                🐈‍⬛
+            </div>
+
+        </div>
+
+
+        <div class="message">
+
+            <strong>
+                Gaia, sei la mia vita.
+            </strong>
+
+            <span>
+                Ti amo ❤️
+            </span>
+
+        </div>
+
     </section>
+
 
     <div
         class="flash"
@@ -1820,30 +1559,32 @@ button {
 
 </div>
 
+
 <script>
 
-/* =========================================================
-   COLLEGAMENTO GOOGLE APPS SCRIPT
-========================================================= */
+/* =====================================================
+   GOOGLE APPS SCRIPT
+===================================================== */
 
 const TRACKING_URL =
-    "https://script.google.com/macros/s/AKfycbwyEZmVVyPM4Hyf--70oShW_L7Svwf8SiyHGxWh34FaFf0Tx8rORyEj7fwpR-Stc3uw/exec";
+"https://script.google.com/macros/s/AKfycbwyEZmVVyPM4Hyf--70oShW_L7Svwf8SiyHGxWh34FaFf0Tx8rORyEj7fwpR-Stc3uw/exec";
 
 
-/* =========================================================
-   IDENTIFICATIVO VISITA
-========================================================= */
+/* =====================================================
+   ID DELLA VISITA
+===================================================== */
 
 const visitId =
     Date.now().toString(36) +
+    "-" +
     Math.random()
         .toString(36)
         .substring(2);
 
 
-/* =========================================================
-   INVIO EVENTI
-========================================================= */
+/* =====================================================
+   INVIO AL FOGLIO
+===================================================== */
 
 function trackEvent(eventName) {
 
@@ -1853,20 +1594,24 @@ function trackEvent(eventName) {
 
         visitId: visitId,
 
-        timestamp:
-            new Date().toISOString(),
-
         page:
             window.location.href
 
     };
 
 
+    /*
+       Primo metodo:
+       sendBeacon.
+    */
+
     try {
 
         const blob =
             new Blob(
-                [JSON.stringify(data)],
+                [
+                    JSON.stringify(data)
+                ],
                 {
                     type:
                         "text/plain;charset=UTF-8"
@@ -1879,6 +1624,10 @@ function trackEvent(eventName) {
         );
 
     } catch (error) {
+
+        /*
+           Metodo alternativo.
+        */
 
         fetch(
             TRACKING_URL,
@@ -1898,7 +1647,7 @@ function trackEvent(eventName) {
                 keepalive: true
             }
         ).catch(
-            () => {}
+            function() {}
         );
 
     }
@@ -1906,9 +1655,9 @@ function trackEvent(eventName) {
 }
 
 
-/* =========================================================
+/* =====================================================
    ELEMENTI
-========================================================= */
+===================================================== */
 
 const yes =
     document.getElementById("yes");
@@ -1926,14 +1675,14 @@ const flash =
     document.getElementById("flash");
 
 
-let noAttempts = 0;
+let noCount = 0;
 
 
-/* =========================================================
-   NO
-========================================================= */
+/* =====================================================
+   FUNZIONE CHE FA SCAPPARE IL NO
+===================================================== */
 
-function escapeNo(event) {
+function moveNo(event) {
 
     if (event) {
 
@@ -1944,40 +1693,64 @@ function escapeNo(event) {
 
 
     /*
-       REGISTRA OGNI TENTATIVO
+       REGISTRA IL NO
     */
 
-    noAttempts++;
+    noCount++;
 
     trackEvent("NO");
 
 
-    const buttonWidth =
-        no.offsetWidth || 125;
+    /*
+       Da questo momento il pulsante
+       diventa libero nello schermo.
+    */
 
-    const buttonHeight =
-        no.offsetHeight || 58;
+    no.style.position =
+        "fixed";
+
+
+    /*
+       Dimensioni reali del pulsante.
+    */
+
+    const rect =
+        no.getBoundingClientRect();
+
+
+    const width =
+        rect.width;
+
+    const height =
+        rect.height;
+
+
+    /*
+       Margine dal bordo.
+    */
 
     const margin = 12;
 
 
+    /*
+       Area disponibile.
+    */
+
     const maxX =
-        Math.max(
-            margin,
-            window.innerWidth -
-            buttonWidth -
-            margin
-        );
+        window.innerWidth -
+        width -
+        margin;
 
 
     const maxY =
-        Math.max(
-            margin,
-            window.innerHeight -
-            buttonHeight -
-            margin
-        );
+        window.innerHeight -
+        height -
+        margin;
 
+
+    /*
+       Posizione casuale.
+    */
 
     const x =
         margin +
@@ -1997,9 +1770,6 @@ function escapeNo(event) {
         );
 
 
-    no.style.position =
-        "fixed";
-
     no.style.left =
         x + "px";
 
@@ -2007,8 +1777,14 @@ function escapeNo(event) {
         y + "px";
 
 
+    /*
+       Piccola rotazione casuale.
+    */
+
     const rotation =
-        Math.random() * 24 - 12;
+        Math.random() *
+        30 -
+        15;
 
 
     no.style.transform =
@@ -2017,86 +1793,77 @@ function escapeNo(event) {
         "deg)";
 
 
+    /*
+       Messaggi casuali.
+    */
+
     const messages = [
 
         "NO 😈",
         "Sicura? 🥺",
         "Dai Gaia ❤️",
+        "Riprova 😂",
+        "Non mi prendi 😈",
         "Quasi! 😂",
-        "Riprova 😈",
-        "Non mi prendi 😂",
-        "AHAHAHA ❤️",
         "Daiii 🥹",
-        "No no 😈",
-        "Continua a provare 😂",
-        "Non scappo... forse 👀",
+        "NOOO ❤️",
+        "AHAHAHA 😂",
+        "Ancora?!",
+        "Mai 😈",
+        "Prendimi!",
+        "Ops 👀",
         "Ti amo comunque ❤️",
-        "Ancora?! 😂",
-        "Mai! 😈",
-        "Prendimi se ci riesci 🏃‍♂️",
-        "Gaiaaaa ❤️",
-        "🥹❤️",
-        "NOOO 😂",
         "Sei vicina!",
-        "Ops... 😈"
+        "🥹❤️"
 
     ];
 
 
     no.textContent =
         messages[
-            noAttempts %
+            noCount %
             messages.length
         ];
 
 }
 
 
-/* =========================================================
+/* =====================================================
    MOUSE
-========================================================= */
+===================================================== */
 
 no.addEventListener(
     "mouseenter",
-    escapeNo
+    moveNo
 );
 
 
-/* =========================================================
+/* =====================================================
    TOUCH
-========================================================= */
+===================================================== */
 
 no.addEventListener(
     "touchstart",
-    escapeNo,
+    moveNo,
     {
         passive: false
     }
 );
 
 
-/* =========================================================
+/* =====================================================
    CLICK
-========================================================= */
+===================================================== */
 
 no.addEventListener(
     "click",
-    function(event) {
-
-        event.preventDefault();
-        event.stopPropagation();
-
-        escapeNo(event);
-
-        return false;
-
-    }
+    moveNo
 );
 
 
-/* =========================================================
-   CUORI
-========================================================= */
+/* =====================================================
+   CUORE
+===================================================== */
 
 function createHeart() {
 
@@ -2108,8 +1875,7 @@ function createHeart() {
         "heart";
 
 
-    const symbols = [
-
+    const hearts = [
         "❤️",
         "💕",
         "💗",
@@ -2117,15 +1883,14 @@ function createHeart() {
         "💘",
         "💞",
         "✨"
-
     ];
 
 
     heart.textContent =
-        symbols[
+        hearts[
             Math.floor(
                 Math.random() *
-                symbols.length
+                hearts.length
             )
         ];
 
@@ -2133,7 +1898,8 @@ function createHeart() {
     heart.style.setProperty(
         "--x",
         (
-            Math.random() * 600 -
+            Math.random() *
+            600 -
             300
         ) + "px"
     );
@@ -2142,7 +1908,8 @@ function createHeart() {
     heart.style.setProperty(
         "--y",
         (
-            -Math.random() * 700 -
+            -Math.random() *
+            700 -
             100
         ) + "px"
     );
@@ -2151,7 +1918,8 @@ function createHeart() {
     heart.style.setProperty(
         "--r",
         (
-            Math.random() * 120 -
+            Math.random() *
+            120 -
             60
         ) + "deg"
     );
@@ -2172,9 +1940,9 @@ function createHeart() {
 }
 
 
-/* =========================================================
+/* =====================================================
    SI
-========================================================= */
+===================================================== */
 
 yes.addEventListener(
     "click",
@@ -2191,25 +1959,29 @@ yes.addEventListener(
 
 
         /*
-           ESPLOSIONE DI CUORI
+           Esplosione di cuori.
         */
 
         for (
             let i = 0;
-            i < 75;
+            i < 80;
             i++
         ) {
 
             setTimeout(
                 createHeart,
-                i * 18
+                i * 15
             );
 
         }
 
 
+        /*
+           Flash.
+        */
+
         flash.classList.add(
-            "go"
+            "active"
         );
 
 
@@ -2217,13 +1989,17 @@ yes.addEventListener(
             function() {
 
                 flash.classList.remove(
-                    "go"
+                    "active"
                 );
 
             },
             800
         );
 
+
+        /*
+           Cambio schermata.
+        */
 
         start.classList.remove(
             "active"
@@ -2238,16 +2014,16 @@ yes.addEventListener(
                 );
 
             },
-            650
+            600
         );
 
     }
 );
 
 
-/* =========================================================
+/* =====================================================
    CUORI AUTOMATICI
-========================================================= */
+===================================================== */
 
 setInterval(
     function() {
@@ -2258,92 +2034,89 @@ setInterval(
             )
         ) {
 
-            if (
-                Math.random() > .35
-            ) {
-
-                createHeart();
-
-            }
+            createHeart();
 
         }
 
     },
-    1300
+    1400
 );
 
 
-/* =========================================================
-   RESIZE
-========================================================= */
+/* =====================================================
+   SISTEMAZIONE DEL NO QUANDO
+   CAMBIA LA DIMENSIONE DELLO SCHERMO
+===================================================== */
 
 window.addEventListener(
     "resize",
     function() {
 
         if (
-            no.style.position === "fixed"
+            no.style.position !==
+            "fixed"
+        ) {
+            return;
+        }
+
+
+        const rect =
+            no.getBoundingClientRect();
+
+
+        const margin = 12;
+
+
+        let x =
+            rect.left;
+
+        let y =
+            rect.top;
+
+
+        if (
+            x + rect.width >
+            window.innerWidth -
+            margin
         ) {
 
-            const rect =
-                no.getBoundingClientRect();
-
-
-            const margin = 12;
-
-
-            let x =
-                rect.left;
-
-            let y =
-                rect.top;
-
-
-            if (
-                x + rect.width >
+            x =
                 window.innerWidth -
-                margin
-            ) {
-
-                x =
-                    window.innerWidth -
-                    rect.width -
-                    margin;
-
-            }
-
-
-            if (
-                y + rect.height >
-                window.innerHeight -
-                margin
-            ) {
-
-                y =
-                    window.innerHeight -
-                    rect.height -
-                    margin;
-
-            }
-
-
-            if (x < margin) {
-                x = margin;
-            }
-
-
-            if (y < margin) {
-                y = margin;
-            }
-
-
-            no.style.left =
-                x + "px";
-
-            no.style.top =
-                y + "px";
+                rect.width -
+                margin;
 
         }
+
+
+        if (
+            y + rect.height >
+            window.innerHeight -
+            margin
+        ) {
+
+            y =
+                window.innerHeight -
+                rect.height -
+                margin;
+
+        }
+
+
+        if (x < margin) {
+            x = margin;
+        }
+
+
+        if (y < margin) {
+            y = margin;
+        }
+
+
+        no.style.left =
+            x + "px";
+
+        no.style.top =
+            y + "px";
 
     }
 );
@@ -2352,3 +2125,4 @@ window.addEventListener(
 
 </body>
 </html>
+
