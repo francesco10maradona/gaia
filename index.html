@@ -1,13 +1,24 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#160b2d">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<meta name="theme-color" content="#170b2d">
 
 <title>Per Gaia ❤️</title>
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
@@ -22,60 +33,80 @@ body {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     color: white;
-    background: #160b2d;
+
+    background:
+        #170b2d;
 }
 
 button {
     font: inherit;
 }
 
+
+/* =========================================================
+   APP
+========================================================= */
+
 .app {
     position: relative;
+
     width: 100%;
     height: 100dvh;
+
     overflow: hidden;
 }
 
-/* =========================
+
+/* =========================================================
    SFONDO
-========================= */
+========================================================= */
 
 .background {
     position: absolute;
+
     inset: 0;
 
     background:
         radial-gradient(
             circle at 50% 5%,
-            rgba(255, 130, 190, .35),
-            transparent 35%
+            rgba(255, 130, 190, .38),
+            transparent 34%
         ),
+
         radial-gradient(
             circle at 15% 75%,
-            rgba(100, 70, 190, .25),
+            rgba(100, 70, 190, .28),
             transparent 35%
         ),
+
         linear-gradient(
             180deg,
             #12082a 0%,
-            #26113f 40%,
-            #70365f 75%,
-            #e9899c 100%
+            #27113f 42%,
+            #71385f 76%,
+            #e8899c 100%
         );
 }
 
 .stars {
     position: absolute;
+
     inset: 0;
 
     background-image:
+
         radial-gradient(
             circle,
             rgba(255,255,255,.9) 1px,
             transparent 1.5px
         ),
+
         radial-gradient(
             circle,
             rgba(255,255,255,.5) 1px,
@@ -86,18 +117,25 @@ button {
         70px 70px,
         120px 120px;
 
-    animation: stars 30s linear infinite;
+    animation:
+        starsMove
+        30s
+        linear
+        infinite;
 
     opacity: .8;
 }
 
-@keyframes stars {
+@keyframes starsMove {
+
     from {
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 
     to {
-        transform: translateY(80px);
+        transform:
+            translateY(80px);
     }
 }
 
@@ -112,18 +150,22 @@ button {
 
     border-radius: 50%;
 
-    background: #fff3d2;
+    background:
+        #fff3d2;
 
     box-shadow:
-        0 0 30px rgba(255,240,190,.8);
+        0 0 35px
+        rgba(255,240,190,.8);
 }
 
-/* =========================
+
+/* =========================================================
    GATTINI
-========================= */
+========================================================= */
 
 .cats {
     position: absolute;
+
     inset: 0;
 
     pointer-events: none;
@@ -138,12 +180,14 @@ button {
 
     filter:
         drop-shadow(
-            0 5px 5px rgba(0,0,0,.25)
+            0 5px 5px
+            rgba(0,0,0,.25)
         );
 }
 
 .cat.a {
-    left: -60px;
+
+    left: -70px;
     top: 18%;
 
     animation:
@@ -154,7 +198,8 @@ button {
 }
 
 .cat.b {
-    right: -60px;
+
+    right: -70px;
     top: 38%;
 
     animation:
@@ -165,6 +210,7 @@ button {
 }
 
 .cat.c {
+
     left: 8%;
     bottom: 15%;
 
@@ -176,6 +222,7 @@ button {
 }
 
 .cat.d {
+
     right: 8%;
     bottom: 22%;
 
@@ -189,7 +236,8 @@ button {
 @keyframes walkRight {
 
     from {
-        transform: translateX(0);
+        transform:
+            translateX(0);
     }
 
     to {
@@ -219,7 +267,8 @@ button {
 
 @keyframes float {
 
-    0%,100% {
+    0%,
+    100% {
         transform:
             translateY(0);
     }
@@ -230,21 +279,26 @@ button {
     }
 }
 
-/* =========================
+
+/* =========================================================
    SCHERMATE
-========================= */
+========================================================= */
 
 .screen {
+
     position: absolute;
+
     inset: 0;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
     padding: 20px;
 
     opacity: 0;
+
     visibility: hidden;
 
     transition:
@@ -252,43 +306,52 @@ button {
 }
 
 .screen.active {
+
     opacity: 1;
+
     visibility: visible;
 }
 
-/* =========================
+
+/* =========================================================
    INTRO
-========================= */
+========================================================= */
 
 .intro {
+
     position: relative;
 
     z-index: 20;
 
-    width: min(100%, 420px);
+    width:
+        min(100%, 420px);
 
     text-align: center;
 }
 
 .crown {
+
     font-size: 50px;
 
     animation:
-        crown
+        crownFloat
         3s
         ease-in-out
         infinite;
 }
 
-@keyframes crown {
+@keyframes crownFloat {
 
-    0%,100% {
+    0%,
+    100% {
+
         transform:
             translateY(0)
             rotate(-3deg);
     }
 
     50% {
+
         transform:
             translateY(-10px)
             rotate(3deg);
@@ -296,9 +359,13 @@ button {
 }
 
 .intro h1 {
-    margin: 5px 0 0;
 
-    font-family: Georgia, serif;
+    margin:
+        5px 0 0;
+
+    font-family:
+        Georgia,
+        serif;
 
     font-size:
         clamp(
@@ -307,23 +374,32 @@ button {
             82px
         );
 
-    line-height: .9;
+    line-height:
+        .9;
 
-    letter-spacing: -4px;
+    letter-spacing:
+        -4px;
 }
 
 .intro h1 span {
-    color: #ff82b4;
+
+    color:
+        #ff82b4;
 }
 
 .card {
-    width: min(100%, 370px);
 
-    margin: 30px auto 0;
+    width:
+        min(100%, 370px);
 
-    padding: 28px 20px;
+    margin:
+        30px auto 0;
 
-    border-radius: 30px;
+    padding:
+        28px 20px;
+
+    border-radius:
+        30px;
 
     background:
         rgba(255,255,255,.1);
@@ -344,52 +420,83 @@ button {
 }
 
 .question {
-    font-family: Georgia, serif;
 
-    font-size: 31px;
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        31px;
 }
 
 .subtitle {
-    margin-top: 9px;
+
+    margin-top:
+        9px;
 
     color:
         rgba(255,255,255,.7);
 
-    font-size: 14px;
+    font-size:
+        14px;
 }
 
 .buttons {
-    display: flex;
 
-    justify-content: center;
-    align-items: center;
+    display:
+        flex;
 
-    gap: 14px;
+    justify-content:
+        center;
 
-    margin-top: 25px;
+    align-items:
+        center;
+
+    gap:
+        14px;
+
+    margin-top:
+        25px;
 }
 
 .btn {
-    min-width: 125px;
-    min-height: 58px;
 
-    padding: 14px 22px;
+    min-width:
+        125px;
 
-    border: 0;
-    border-radius: 999px;
+    min-height:
+        58px;
 
-    font-size: 17px;
-    font-weight: 800;
+    padding:
+        14px 22px;
 
-    color: white;
+    border:
+        0;
 
-    cursor: pointer;
+    border-radius:
+        999px;
 
-    user-select: none;
-    -webkit-user-select: none;
+    font-size:
+        17px;
+
+    font-weight:
+        800;
+
+    color:
+        white;
+
+    cursor:
+        pointer;
+
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
 }
 
 .yes {
+
     background:
         linear-gradient(
             135deg,
@@ -410,29 +517,30 @@ button {
 
 @keyframes pulse {
 
-    0%,100% {
-        transform: scale(1);
+    0%,
+    100% {
+        transform:
+            scale(1);
     }
 
     50% {
-        transform: scale(1.04);
+        transform:
+            scale(1.04);
     }
 }
 
-/*
-    IMPORTANTE:
-    Il NO parte normalmente dentro
-    del contenitore.
 
-    Quando viene sfiorato/cliccato,
-    passa a position: fixed e può
-    muoversi ovunque nello schermo.
-*/
+/* =========================================================
+   NO
+========================================================= */
 
 .no {
-    position: relative;
 
-    z-index: 1000;
+    position:
+        relative;
+
+    z-index:
+        1000;
 
     background:
         rgba(255,255,255,.1);
@@ -441,9 +549,11 @@ button {
         1px solid
         rgba(255,255,255,.25);
 
-    color: white;
+    color:
+        white;
 
-    touch-action: none;
+    touch-action:
+        none;
 
     transition:
         left .18s ease,
@@ -451,13 +561,18 @@ button {
         transform .18s ease;
 }
 
-/* =========================
-   FINALE
-========================= */
+
+/* =========================================================
+   FINAL
+========================================================= */
 
 .final-bg {
-    position: absolute;
-    inset: 0;
+
+    position:
+        absolute;
+
+    inset:
+        0;
 
     background:
         linear-gradient(
@@ -470,18 +585,27 @@ button {
 }
 
 .sun {
-    position: absolute;
 
-    top: 12%;
-    left: 50%;
+    position:
+        absolute;
+
+    top:
+        12%;
+
+    left:
+        50%;
 
     transform:
         translateX(-50%);
 
-    width: 145px;
-    height: 145px;
+    width:
+        145px;
 
-    border-radius: 50%;
+    height:
+        145px;
+
+    border-radius:
+        50%;
 
     background:
         radial-gradient(
@@ -493,13 +617,21 @@ button {
 }
 
 .ocean {
-    position: absolute;
 
-    left: 0;
-    bottom: 0;
+    position:
+        absolute;
 
-    width: 100%;
-    height: 40%;
+    left:
+        0;
+
+    bottom:
+        0;
+
+    width:
+        100%;
+
+    height:
+        40%;
 
     background:
         linear-gradient(
@@ -524,23 +656,37 @@ button {
 }
 
 .final-title {
-    position: absolute;
 
-    top: 5%;
-    left: 0;
+    position:
+        absolute;
 
-    width: 100%;
+    top:
+        5%;
 
-    z-index: 50;
+    left:
+        0;
 
-    text-align: center;
+    width:
+        100%;
+
+    z-index:
+        50;
+
+    text-align:
+        center;
 }
 
 .final-title h2 {
-    margin: 0;
-    padding: 0 15px;
 
-    font-family: Georgia, serif;
+    margin:
+        0;
+
+    padding:
+        0 15px;
+
+    font-family:
+        Georgia,
+        serif;
 
     font-size:
         clamp(
@@ -555,129 +701,167 @@ button {
 }
 
 .final-title p {
-    margin-top: 8px;
 
-    color: #ffe0eb;
+    margin-top:
+        8px;
 
-    font-size: 14px;
+    color:
+        #ffe0eb;
+
+    font-size:
+        14px;
 }
 
-/* =========================
+
+/* =========================================================
    PALME
-========================= */
+========================================================= */
 
 .palm {
-    position: absolute;
 
-    bottom: 19%;
+    position:
+        absolute;
 
-    z-index: 6;
+    bottom:
+        19%;
 
-    font-size: 130px;
+    z-index:
+        6;
+
+    font-size:
+        130px;
 }
 
 .palm.left {
-    left: -28px;
 
-    transform: rotate(-10deg);
+    left:
+        -28px;
+
+    transform:
+        rotate(-10deg);
 }
 
 .palm.right {
-    right: -28px;
+
+    right:
+        -28px;
 
     transform:
         scaleX(-1)
         rotate(-10deg);
 }
 
-/* =========================
+
+/* =========================================================
    COPPIA
-========================= */
+========================================================= */
 
 .couple {
-    position: absolute;
 
-    left: 50%;
-    top: 27%;
+    position:
+        absolute;
 
-    width: 280px;
-    height: 315px;
+    left:
+        50%;
+
+    top:
+        27%;
+
+    width:
+        300px;
+
+    height:
+        330px;
 
     transform:
         translateX(-50%);
 
-    z-index: 30;
+    z-index:
+        30;
 }
 
-/*
-   Principe
-*/
+
+/* =========================================================
+   PERSONAGGI
+========================================================= */
 
 .prince,
 .gaia {
-    position: absolute;
 
-    bottom: 0;
+    position:
+        absolute;
 
-    width: 120px;
-    height: 285px;
+    bottom:
+        0;
+
+    width:
+        130px;
+
+    height:
+        300px;
 }
+
+
+/* ---------------------------------------------------------
+   PRINCIPE
+--------------------------------------------------------- */
 
 .prince {
-    left: 0;
+
+    left:
+        0;
 }
 
-.gaia {
-    right: 0;
-}
+.prince .head {
 
-.head {
-    position: absolute;
+    position:
+        absolute;
 
-    top: 0;
-    left: 25px;
+    top:
+        0;
 
-    width: 70px;
-    height: 78px;
+    left:
+        30px;
+
+    width:
+        70px;
+
+    height:
+        78px;
 
     border-radius:
         50% 50% 45% 45%;
 
-    z-index: 5;
-}
-
-.prince .head {
     background:
         linear-gradient(
             135deg,
             #f0b18d,
             #db8f6c
         );
-}
 
-.gaia .head {
-    background:
-        linear-gradient(
-            135deg,
-            #f6c2a1,
-            #e59b79
-        );
+    z-index:
+        5;
 }
-
-/*
-   Capelli principe
-*/
 
 .prince .head::before {
-    content: "";
 
-    position: absolute;
+    content:
+        "";
 
-    top: -12px;
-    left: -4px;
+    position:
+        absolute;
 
-    width: 78px;
-    height: 42px;
+    top:
+        -13px;
+
+    left:
+        -4px;
+
+    width:
+        78px;
+
+    height:
+        45px;
 
     border-radius:
         55% 55% 30% 30%;
@@ -689,127 +873,94 @@ button {
             #58301f
         );
 
-    z-index: -1;
+    z-index:
+        -1;
 }
 
-/*
-   Capelli Gaia
-*/
 
-.gaia .head::before {
-    content: "";
+/* =========================================================
+   OCCHI
+========================================================= */
 
-    position: absolute;
+.eye {
 
-    top: -20px;
-    left: -20px;
+    position:
+        absolute;
 
-    width: 110px;
-    height: 118px;
+    top:
+        35px;
+
+    width:
+        8px;
+
+    height:
+        8px;
 
     border-radius:
         50%;
 
     background:
-        linear-gradient(
-            100deg,
-            #5a321f,
-            #81502d,
-            #633b22
-        );
-
-    z-index: -1;
-}
-
-.gaia .head::after {
-    content: "";
-
-    position: absolute;
-
-    left: -22px;
-    top: 32px;
-
-    width: 114px;
-    height: 90px;
-
-    border-left:
-        14px solid #704522;
-
-    border-right:
-        14px solid #704522;
-
-    border-radius: 45%;
-
-    z-index: -1;
-}
-
-/*
-   Occhi
-*/
-
-.eye {
-    position: absolute;
-
-    top: 35px;
-
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-
-    background: #34202a;
+        #34202a;
 }
 
 .eye.left {
-    left: 17px;
+
+    left:
+        17px;
 }
 
 .eye.right {
-    right: 17px;
+
+    right:
+        17px;
 }
 
 .smile {
-    position: absolute;
 
-    top: 53px;
-    left: 27px;
+    position:
+        absolute;
 
-    width: 16px;
-    height: 7px;
+    top:
+        53px;
+
+    left:
+        27px;
+
+    width:
+        16px;
+
+    height:
+        7px;
 
     border-bottom:
-        2px solid #914b5e;
+        2px solid
+        #914b5e;
 
-    border-radius: 50%;
+    border-radius:
+        50%;
 }
 
-/*
-   Corona Gaia
-*/
 
-.crown-small {
-    position: absolute;
-
-    top: -35px;
-    left: 17px;
-
-    font-size: 28px;
-
-    z-index: 50;
-}
-
-/*
-   Corpo principe
-*/
+/* =========================================================
+   CORPO PRINCIPE
+========================================================= */
 
 .prince .body {
-    position: absolute;
 
-    top: 73px;
-    left: 15px;
+    position:
+        absolute;
 
-    width: 90px;
-    height: 120px;
+    top:
+        73px;
+
+    left:
+        15px;
+
+    width:
+        100px;
+
+    height:
+        125px;
 
     border-radius:
         35px 35px 12px 12px;
@@ -824,194 +975,686 @@ button {
 }
 
 .prince .body::before {
-    content: "";
 
-    position: absolute;
+    content:
+        "";
 
-    left: 37px;
-    top: 0;
+    position:
+        absolute;
 
-    width: 16px;
-    height: 116px;
+    left:
+        42px;
 
-    background: #f0ce78;
+    top:
+        0;
+
+    width:
+        16px;
+
+    height:
+        120px;
+
+    background:
+        #f0ce78;
 }
 
+.prince .arm {
+
+    position:
+        absolute;
+
+    top:
+        88px;
+
+    right:
+        0;
+
+    width:
+        18px;
+
+    height:
+        100px;
+
+    border-radius:
+        20px;
+
+    background:
+        #e5a07c;
+
+    transform:
+        rotate(-22deg);
+
+    z-index:
+        10;
+}
+
+.prince .hand {
+
+    position:
+        absolute;
+
+    right:
+        -5px;
+
+    top:
+        165px;
+
+    width:
+        23px;
+
+    height:
+        23px;
+
+    border-radius:
+        50%;
+
+    background:
+        #e5a07c;
+
+    z-index:
+        20;
+}
+
+
+/* =========================================================
+   PRINCIPESSA GAIA
+========================================================= */
+
+.gaia {
+
+    right:
+        0;
+}
+
+
 /*
-   Corpo Gaia
+   Corpo elegante
 */
 
 .gaia .body {
-    position: absolute;
 
-    top: 75px;
-    left: 8px;
+    position:
+        absolute;
 
-    width: 102px;
-    height: 145px;
+    top:
+        78px;
+
+    left:
+        5px;
+
+    width:
+        120px;
+
+    height:
+        150px;
 
     background:
         linear-gradient(
             90deg,
-            #995078,
-            #e7a5c4,
-            #995078
+            #713c69 0%,
+            #d88bb2 32%,
+            #f0b9d3 50%,
+            #d88bb2 68%,
+            #713c69 100%
         );
 
     clip-path:
         polygon(
-            33% 0,
-            67% 0,
+            32% 0,
+            68% 0,
             100% 100%,
             0 100%
         );
+
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,.2);
 }
+
 
 /*
-   Braccia
+   Scollatura dell'abito
 */
 
-.arm {
-    position: absolute;
+.gaia .body::before {
 
-    width: 18px;
-    height: 100px;
+    content:
+        "";
 
-    border-radius: 20px;
+    position:
+        absolute;
 
-    background: #e5a07c;
+    top:
+        0;
 
-    z-index: 10;
+    left:
+        38px;
+
+    width:
+        44px;
+
+    height:
+        45px;
+
+    background:
+        #f4d4e3;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 100%
+        );
 }
 
-.prince .arm {
-    top: 88px;
-    right: 1px;
+
+/*
+   Dettaglio Fiji/tropicale
+*/
+
+.gaia .body::after {
+
+    content:
+        "🌺";
+
+    position:
+        absolute;
+
+    bottom:
+        22px;
+
+    left:
+        50%;
 
     transform:
-        rotate(-22deg);
+        translateX(-50%);
+
+    font-size:
+        22px;
 }
 
+
+/* =========================================================
+   VOLTO PRINCIPESSA
+========================================================= */
+
+.gaia .head {
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        30px;
+
+    width:
+        72px;
+
+    height:
+        82px;
+
+    border-radius:
+        50% 50% 46% 46%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8c6a5,
+            #e9a17e
+        );
+
+    z-index:
+        10;
+
+    box-shadow:
+        inset
+        -5px -3px 8px
+        rgba(150,70,50,.12);
+}
+
+
+/*
+   Capelli castano/biondo scuro
+*/
+
+.gaia .head::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        -20px;
+
+    left:
+        -23px;
+
+    width:
+        118px;
+
+    height:
+        125px;
+
+    border-radius:
+        52% 48% 46% 50%;
+
+    background:
+        linear-gradient(
+            100deg,
+            #4b281b,
+            #76502d 35%,
+            #6a421f 60%,
+            #432319
+        );
+
+    z-index:
+        -1;
+}
+
+
+/*
+   Ciocche laterali
+*/
+
+.gaia .head::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        42px;
+
+    left:
+        -29px;
+
+    width:
+        125px;
+
+    height:
+        90px;
+
+    border-left:
+        15px solid #5d361e;
+
+    border-right:
+        15px solid #5d361e;
+
+    border-radius:
+        40%;
+
+    z-index:
+        -1;
+}
+
+
+/*
+   Occhi principessa
+*/
+
+.gaia .eye {
+
+    top:
+        37px;
+
+    width:
+        9px;
+
+    height:
+        7px;
+
+    background:
+        #4b2c36;
+}
+
+.gaia .eye.left {
+
+    left:
+        16px;
+}
+
+.gaia .eye.right {
+
+    right:
+        16px;
+}
+
+
+/*
+   Sopracciglia
+*/
+
+.gaia .eye.left::before,
+.gaia .eye.right::before {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        -7px;
+
+    width:
+        13px;
+
+    height:
+        3px;
+
+    border-radius:
+        50%;
+
+    background:
+        #704326;
+}
+
+.gaia .eye.left::before {
+
+    left:
+        -2px;
+
+    transform:
+        rotate(-8deg);
+}
+
+.gaia .eye.right::before {
+
+    right:
+        -2px;
+
+    transform:
+        rotate(8deg);
+}
+
+
+/*
+   Sorriso
+*/
+
+.gaia .smile {
+
+    top:
+        56px;
+
+    left:
+        29px;
+
+    width:
+        17px;
+
+    height:
+        8px;
+
+    border-bottom:
+        2px solid
+        #a95468;
+
+    border-radius:
+        50%;
+}
+
+
+/* =========================================================
+   CORONA PRINCIPESSA
+========================================================= */
+
+.crown-small {
+
+    position:
+        absolute;
+
+    top:
+        -34px;
+
+    left:
+        18px;
+
+    z-index:
+        60;
+
+    font-size:
+        30px;
+
+    filter:
+        drop-shadow(
+            0 2px 4px
+            rgba(0,0,0,.2)
+        );
+}
+
+
+/* =========================================================
+   COLLIER
+========================================================= */
+
+.gaia .necklace {
+
+    position:
+        absolute;
+
+    top:
+        70px;
+
+    left:
+        52px;
+
+    width:
+        28px;
+
+    height:
+        12px;
+
+    border-bottom:
+        2px solid
+        #f5d078;
+
+    border-radius:
+        50%;
+
+    z-index:
+        20;
+}
+
+
+/* =========================================================
+   BRACCIO GAIA
+========================================================= */
+
 .gaia .arm {
-    top: 90px;
-    left: 0;
+
+    position:
+        absolute;
+
+    top:
+        91px;
+
+    left:
+        0;
+
+    width:
+        18px;
+
+    height:
+        100px;
+
+    border-radius:
+        20px;
+
+    background:
+        #e9a27f;
 
     transform:
         rotate(22deg);
-}
 
-/*
-   Mani
-*/
-
-.hand {
-    position: absolute;
-
-    width: 23px;
-    height: 23px;
-
-    border-radius: 50%;
-
-    background: #e5a07c;
-
-    z-index: 20;
-}
-
-.prince .hand {
-    right: -5px;
-    top: 166px;
+    z-index:
+        10;
 }
 
 .gaia .hand {
-    left: -5px;
-    top: 168px;
+
+    position:
+        absolute;
+
+    left:
+        -6px;
+
+    top:
+        169px;
+
+    width:
+        23px;
+
+    height:
+        23px;
+
+    border-radius:
+        50%;
+
+    background:
+        #e9a27f;
+
+    z-index:
+        20;
 }
 
-/*
-   Gambe
-*/
+
+/* =========================================================
+   MANI CHE SI TENGONO
+========================================================= */
+
+.holding {
+
+    position:
+        absolute;
+
+    left:
+        123px;
+
+    top:
+        174px;
+
+    width:
+        45px;
+
+    height:
+        11px;
+
+    border-radius:
+        10px;
+
+    background:
+        #e5a07c;
+
+    z-index:
+        25;
+}
+
+
+/* =========================================================
+   GAMBE
+========================================================= */
 
 .leg {
-    position: absolute;
 
-    top: 190px;
+    position:
+        absolute;
 
-    width: 25px;
-    height: 95px;
+    top:
+        198px;
 
-    border-radius: 20px;
+    width:
+        25px;
+
+    height:
+        95px;
+
+    border-radius:
+        20px;
 }
 
 .prince .leg {
-    background: #26325b;
+
+    background:
+        #26325b;
 }
 
 .gaia .leg {
-    background: #824d73;
+
+    background:
+        #824d73;
 }
 
 .prince .leg.left,
 .gaia .leg.left {
-    left: 30px;
+
+    left:
+        32px;
 }
 
 .prince .leg.right,
 .gaia .leg.right {
-    right: 30px;
+
+    right:
+        32px;
 }
 
-/*
-   Mani che si tengono
-*/
 
-.holding {
-    position: absolute;
-
-    left: 120px;
-    top: 173px;
-
-    width: 42px;
-    height: 10px;
-
-    border-radius: 10px;
-
-    background: #e5a07c;
-
-    z-index: 25;
-}
-
-/*
-   Fiore
-*/
+/* =========================================================
+   FIORE
+========================================================= */
 
 .flower {
-    position: absolute;
 
-    top: 3px;
-    right: -2px;
+    position:
+        absolute;
 
-    z-index: 60;
+    top:
+        2px;
 
-    font-size: 23px;
+    right:
+        -4px;
+
+    z-index:
+        70;
+
+    font-size:
+        23px;
 }
 
-/* =========================
-   PRINCIPESSE
-========================= */
+
+/* =========================================================
+   PRINCIPESSE INTORNO
+========================================================= */
 
 .princesses {
-    position: absolute;
-    inset: 20% 0 15%;
 
-    z-index: 20;
+    position:
+        absolute;
 
-    pointer-events: none;
+    inset:
+        20% 0 15%;
+
+    z-index:
+        20;
+
+    pointer-events:
+        none;
 }
 
 .princess {
-    position: absolute;
 
-    font-size: 40px;
+    position:
+        absolute;
+
+    font-size:
+        40px;
 
     animation:
         float
@@ -1021,63 +1664,101 @@ button {
 }
 
 .princess.p1 {
-    left: 4%;
-    top: 13%;
+
+    left:
+        4%;
+
+    top:
+        13%;
 }
 
 .princess.p2 {
-    left: 25%;
-    top: 3%;
 
-    animation-delay: .5s;
+    left:
+        25%;
+
+    top:
+        3%;
+
+    animation-delay:
+        .5s;
 }
 
 .princess.p3 {
-    right: 25%;
-    top: 3%;
 
-    animation-delay: 1s;
+    right:
+        25%;
+
+    top:
+        3%;
+
+    animation-delay:
+        1s;
 }
 
 .princess.p4 {
-    right: 4%;
-    top: 13%;
 
-    animation-delay: 1.5s;
+    right:
+        4%;
+
+    top:
+        13%;
+
+    animation-delay:
+        1.5s;
 }
 
 .princess.p5 {
-    left: 2%;
-    top: 50%;
 
-    animation-delay: .7s;
+    left:
+        2%;
+
+    top:
+        50%;
+
+    animation-delay:
+        .7s;
 }
 
 .princess.p6 {
-    right: 2%;
-    top: 50%;
 
-    animation-delay: 1.2s;
+    right:
+        2%;
+
+    top:
+        50%;
+
+    animation-delay:
+        1.2s;
 }
 
-/* =========================
+
+/* =========================================================
    MESSAGGIO FINALE
-========================= */
+========================================================= */
 
 .message {
-    position: absolute;
 
-    left: 50%;
-    bottom: 3%;
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    bottom:
+        3%;
 
     transform:
         translateX(-50%);
 
-    width: min(88%, 400px);
+    width:
+        min(88%, 400px);
 
-    padding: 16px 18px;
+    padding:
+        16px 18px;
 
-    border-radius: 25px;
+    border-radius:
+        25px;
 
     background:
         rgba(35,20,55,.5);
@@ -1092,9 +1773,11 @@ button {
     -webkit-backdrop-filter:
         blur(15px);
 
-    z-index: 60;
+    z-index:
+        60;
 
-    text-align: center;
+    text-align:
+        center;
 
     box-shadow:
         0 15px 40px
@@ -1102,38 +1785,57 @@ button {
 }
 
 .message strong {
-    display: block;
 
-    font-family: Georgia, serif;
+    display:
+        block;
 
-    font-size: 23px;
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        23px;
 }
 
 .message span {
-    display: block;
 
-    margin-top: 6px;
+    display:
+        block;
 
-    color: #ffd3e2;
+    margin-top:
+        6px;
 
-    font-size: 17px;
+    color:
+        #ffd3e2;
+
+    font-size:
+        17px;
 }
 
-/* =========================
+
+/* =========================================================
    CUORI
-========================= */
+========================================================= */
 
 .heart {
-    position: fixed;
 
-    left: 50%;
-    top: 50%;
+    position:
+        fixed;
 
-    z-index: 500;
+    left:
+        50%;
 
-    pointer-events: none;
+    top:
+        50%;
 
-    font-size: 25px;
+    z-index:
+        500;
+
+    pointer-events:
+        none;
+
+    font-size:
+        25px;
 
     animation:
         explode
@@ -1145,19 +1847,28 @@ button {
 @keyframes explode {
 
     0% {
-        opacity: 0;
+
+        opacity:
+            0;
 
         transform:
-            translate(-50%,-50%)
+            translate(
+                -50%,
+                -50%
+            )
             scale(.2);
     }
 
     15% {
-        opacity: 1;
+
+        opacity:
+            1;
     }
 
     100% {
-        opacity: 0;
+
+        opacity:
+            0;
 
         transform:
             translate(
@@ -1169,25 +1880,34 @@ button {
     }
 }
 
-/* =========================
+
+/* =========================================================
    FLASH
-========================= */
+========================================================= */
 
 .flash {
-    position: fixed;
 
-    inset: 0;
+    position:
+        fixed;
 
-    background: white;
+    inset:
+        0;
 
-    opacity: 0;
+    background:
+        white;
 
-    pointer-events: none;
+    opacity:
+        0;
 
-    z-index: 1000;
+    pointer-events:
+        none;
+
+    z-index:
+        1000;
 }
 
 .flash.active {
+
     animation:
         flash
         .8s
@@ -1197,31 +1917,41 @@ button {
 @keyframes flash {
 
     0% {
-        opacity: 0;
+        opacity:
+            0;
     }
 
     25% {
-        opacity: .8;
+        opacity:
+            .8;
     }
 
     100% {
-        opacity: 0;
+        opacity:
+            0;
     }
 }
 
-/* =========================
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-height: 700px) {
 
     .card {
-        margin-top: 18px;
-        padding: 22px;
+
+        margin-top:
+            18px;
+
+        padding:
+            22px;
     }
 
     .couple {
-        top: 25%;
+
+        top:
+            25%;
 
         transform:
             translateX(-50%)
@@ -1229,54 +1959,85 @@ button {
     }
 
     .message {
-        bottom: 2%;
-        padding: 13px;
+
+        bottom:
+            2%;
+
+        padding:
+            13px;
     }
 }
 
 @media (max-width: 360px) {
 
     .btn {
-        min-width: 108px;
+
+        min-width:
+            108px;
     }
 
     .couple {
+
         transform:
             translateX(-50%)
             scale(.78);
     }
 
     .princess {
-        font-size: 32px;
+
+        font-size:
+            32px;
     }
 }
 
 </style>
 </head>
 
+
 <body>
 
 <div class="app">
 
+
+    <!-- =====================================================
+         SFONDO
+    ====================================================== -->
+
     <div class="background"></div>
+
     <div class="stars"></div>
+
     <div class="moon"></div>
 
-    <!-- GATTINI -->
+
+    <!-- =====================================================
+         GATTINI
+    ====================================================== -->
 
     <div class="cats">
 
-        <div class="cat a">🐱</div>
-        <div class="cat b">🐈</div>
-        <div class="cat c">😺</div>
-        <div class="cat d">🐈‍⬛</div>
+        <div class="cat a">
+            🐱
+        </div>
+
+        <div class="cat b">
+            🐈
+        </div>
+
+        <div class="cat c">
+            😺
+        </div>
+
+        <div class="cat d">
+            🐈‍⬛
+        </div>
 
     </div>
 
 
-    <!-- =====================
+    <!-- =====================================================
          SCHERMATA INIZIALE
-    ====================== -->
+    ====================================================== -->
 
     <section
         class="screen active"
@@ -1331,9 +2092,9 @@ button {
     </section>
 
 
-    <!-- =====================
+    <!-- =====================================================
          SCHERMATA FINALE
-    ====================== -->
+    ====================================================== -->
 
     <section
         class="screen"
@@ -1346,6 +2107,9 @@ button {
 
         <div class="ocean"></div>
 
+
+        <!-- PALME -->
+
         <div class="palm left">
             🌴
         </div>
@@ -1354,6 +2118,8 @@ button {
             🌴
         </div>
 
+
+        <!-- TITOLO -->
 
         <div class="final-title">
 
@@ -1368,7 +2134,9 @@ button {
         </div>
 
 
-        <!-- PRINCIPESSE -->
+        <!-- =================================================
+             PRINCIPESSE CHE GUARDANO LA COPPIA
+        ================================================== -->
 
         <div class="princesses">
 
@@ -1399,17 +2167,23 @@ button {
         </div>
 
 
-        <!-- COPPIA CENTRALE -->
+        <!-- =================================================
+             COPPIA CENTRALE
+        ================================================== -->
 
         <div class="couple">
 
-            <!-- PRINCIPE -->
+
+            <!-- =================================================
+                 PRINCIPE
+            ================================================== -->
 
             <div class="prince">
 
                 <div class="head">
 
                     <div class="eye left"></div>
+
                     <div class="eye right"></div>
 
                     <div class="smile"></div>
@@ -1423,12 +2197,15 @@ button {
                 <div class="hand"></div>
 
                 <div class="leg left"></div>
+
                 <div class="leg right"></div>
 
             </div>
 
 
-            <!-- GAIA -->
+            <!-- =================================================
+                 GAIA PRINCIPESSA
+            ================================================== -->
 
             <div class="gaia">
 
@@ -1439,13 +2216,17 @@ button {
                     </div>
 
                     <div class="eye left"></div>
+
                     <div class="eye right"></div>
 
                     <div class="smile"></div>
 
                 </div>
 
+
                 <div class="body"></div>
+
+                <div class="necklace"></div>
 
                 <div class="arm"></div>
 
@@ -1456,19 +2237,22 @@ button {
                 </div>
 
                 <div class="leg left"></div>
+
                 <div class="leg right"></div>
 
             </div>
 
 
-            <!-- MANI CHE SI TENGONO -->
+            <!-- MANI -->
 
             <div class="holding"></div>
 
         </div>
 
 
-        <!-- GATTINI FINALI -->
+        <!-- =================================================
+             GATTINI FINALI
+        ================================================== -->
 
         <div class="cats">
 
@@ -1537,6 +2321,10 @@ button {
         </div>
 
 
+        <!-- =================================================
+             MESSAGGIO
+        ================================================== -->
+
         <div class="message">
 
             <strong>
@@ -1552,6 +2340,8 @@ button {
     </section>
 
 
+    <!-- FLASH -->
+
     <div
         class="flash"
         id="flash"
@@ -1562,37 +2352,47 @@ button {
 
 <script>
 
-/* =====================================================
+
+/* =========================================================
    GOOGLE APPS SCRIPT
-===================================================== */
+========================================================= */
 
 const TRACKING_URL =
 "https://script.google.com/macros/s/AKfycbwyEZmVVyPM4Hyf--70oShW_L7Svwf8SiyHGxWh34FaFf0Tx8rORyEj7fwpR-Stc3uw/exec";
 
 
-/* =====================================================
-   ID DELLA VISITA
-===================================================== */
+/* =========================================================
+   ID VISITA
+========================================================= */
 
 const visitId =
-    Date.now().toString(36) +
-    "-" +
+
+    Date.now().toString(36)
+
+    +
+
+    "-"
+
+    +
+
     Math.random()
         .toString(36)
         .substring(2);
 
 
-/* =====================================================
-   INVIO AL FOGLIO
-===================================================== */
+/* =========================================================
+   REGISTRA EVENTO
+========================================================= */
 
 function trackEvent(eventName) {
 
     const data = {
 
-        event: eventName,
+        event:
+            eventName,
 
-        visitId: visitId,
+        visitId:
+            visitId,
 
         page:
             window.location.href
@@ -1601,118 +2401,114 @@ function trackEvent(eventName) {
 
 
     /*
-       Primo metodo:
-       sendBeacon.
+       Usiamo fetch con no-cors.
     */
 
-    try {
+    fetch(
+        TRACKING_URL,
+        {
 
-        const blob =
-            new Blob(
-                [
-                    JSON.stringify(data)
-                ],
+            method:
+                "POST",
+
+            mode:
+                "no-cors",
+
+            headers:
                 {
-                    type:
-                        "text/plain;charset=UTF-8"
-                }
-            );
-
-        navigator.sendBeacon(
-            TRACKING_URL,
-            blob
-        );
-
-    } catch (error) {
-
-        /*
-           Metodo alternativo.
-        */
-
-        fetch(
-            TRACKING_URL,
-            {
-                method: "POST",
-
-                mode: "no-cors",
-
-                headers: {
                     "Content-Type":
                         "text/plain;charset=UTF-8"
                 },
 
-                body:
-                    JSON.stringify(data),
+            body:
+                JSON.stringify(data),
 
-                keepalive: true
-            }
-        ).catch(
-            function() {}
-        );
+            keepalive:
+                true
 
-    }
+        }
+    )
+
+    .catch(
+        function() {}
+    );
 
 }
 
 
-/* =====================================================
+/* =========================================================
    ELEMENTI
-===================================================== */
+========================================================= */
 
 const yes =
-    document.getElementById("yes");
+    document.getElementById(
+        "yes"
+    );
 
 const no =
-    document.getElementById("no");
+    document.getElementById(
+        "no"
+    );
 
 const start =
-    document.getElementById("start");
+    document.getElementById(
+        "start"
+    );
 
 const final =
-    document.getElementById("final");
+    document.getElementById(
+        "final"
+    );
 
 const flash =
-    document.getElementById("flash");
+    document.getElementById(
+        "flash"
+    );
 
 
 let noCount = 0;
 
 
-/* =====================================================
-   FUNZIONE CHE FA SCAPPARE IL NO
-===================================================== */
+/* =========================================================
+   NO SCAPPA
+========================================================= */
 
 function moveNo(event) {
 
     if (event) {
 
         event.preventDefault();
+
         event.stopPropagation();
 
     }
 
 
     /*
-       REGISTRA IL NO
+       AUMENTA IL CONTATORE
     */
 
     noCount++;
 
-    trackEvent("NO");
+
+    /*
+       INVIA IL NO
+    */
+
+    trackEvent(
+        "NO"
+    );
 
 
     /*
-       Da questo momento il pulsante
-       diventa libero nello schermo.
+       DA QUI IN POI
+       IL NO È LIBERO
+       PER TUTTO LO SCHERMO
     */
 
     no.style.position =
         "fixed";
 
-
-    /*
-       Dimensioni reali del pulsante.
-    */
 
     const rect =
         no.getBoundingClientRect();
@@ -1725,16 +2521,9 @@ function moveNo(event) {
         rect.height;
 
 
-    /*
-       Margine dal bordo.
-    */
+    const margin =
+        12;
 
-    const margin = 12;
-
-
-    /*
-       Area disponibile.
-    */
 
     const maxX =
         window.innerWidth -
@@ -1748,13 +2537,11 @@ function moveNo(event) {
         margin;
 
 
-    /*
-       Posizione casuale.
-    */
-
     const x =
-        margin +
-        Math.random() *
+        margin
+        +
+        Math.random()
+        *
         Math.max(
             1,
             maxX - margin
@@ -1762,8 +2549,10 @@ function moveNo(event) {
 
 
     const y =
-        margin +
-        Math.random() *
+        margin
+        +
+        Math.random()
+        *
         Math.max(
             1,
             maxY - margin
@@ -1773,47 +2562,59 @@ function moveNo(event) {
     no.style.left =
         x + "px";
 
+
     no.style.top =
         y + "px";
 
 
-    /*
-       Piccola rotazione casuale.
-    */
-
     const rotation =
-        Math.random() *
-        30 -
+        Math.random()
+        *
+        30
+        -
         15;
 
 
     no.style.transform =
-        "rotate(" +
-        rotation +
+        "rotate("
+        +
+        rotation
+        +
         "deg)";
 
-
-    /*
-       Messaggi casuali.
-    */
 
     const messages = [
 
         "NO 😈",
+
         "Sicura? 🥺",
+
         "Dai Gaia ❤️",
+
         "Riprova 😂",
+
         "Non mi prendi 😈",
+
         "Quasi! 😂",
+
         "Daiii 🥹",
+
         "NOOO ❤️",
+
         "AHAHAHA 😂",
+
         "Ancora?!",
+
         "Mai 😈",
+
         "Prendimi!",
+
         "Ops 👀",
+
         "Ti amo comunque ❤️",
+
         "Sei vicina!",
+
         "🥹❤️"
 
     ];
@@ -1828,9 +2629,9 @@ function moveNo(event) {
 }
 
 
-/* =====================================================
+/* =========================================================
    MOUSE
-===================================================== */
+========================================================= */
 
 no.addEventListener(
     "mouseenter",
@@ -1838,22 +2639,23 @@ no.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================================================
    TOUCH
-===================================================== */
+========================================================= */
 
 no.addEventListener(
     "touchstart",
     moveNo,
     {
-        passive: false
+        passive:
+            false
     }
 );
 
 
-/* =====================================================
+/* =========================================================
    CLICK
-===================================================== */
+========================================================= */
 
 no.addEventListener(
     "click",
@@ -1861,14 +2663,16 @@ no.addEventListener(
 );
 
 
-/* =====================================================
-   CUORE
-===================================================== */
+/* =========================================================
+   CUORI
+========================================================= */
 
 function createHeart() {
 
     const heart =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
     heart.className =
@@ -1876,20 +2680,29 @@ function createHeart() {
 
 
     const hearts = [
+
         "❤️",
+
         "💕",
+
         "💗",
+
         "💖",
+
         "💘",
+
         "💞",
+
         "✨"
+
     ];
 
 
     heart.textContent =
         hearts[
             Math.floor(
-                Math.random() *
+                Math.random()
+                *
                 hearts.length
             )
         ];
@@ -1897,31 +2710,46 @@ function createHeart() {
 
     heart.style.setProperty(
         "--x",
+
         (
-            Math.random() *
-            600 -
+            Math.random()
+            *
+            600
+            -
             300
-        ) + "px"
+        )
+        +
+        "px"
     );
 
 
     heart.style.setProperty(
         "--y",
+
         (
-            -Math.random() *
-            700 -
+            -Math.random()
+            *
+            700
+            -
             100
-        ) + "px"
+        )
+        +
+        "px"
     );
 
 
     heart.style.setProperty(
         "--r",
+
         (
-            Math.random() *
-            120 -
+            Math.random()
+            *
+            120
+            -
             60
-        ) + "deg"
+        )
+        +
+        "deg"
     );
 
 
@@ -1932,7 +2760,9 @@ function createHeart() {
 
     setTimeout(
         function() {
+
             heart.remove();
+
         },
         1900
     );
@@ -1940,26 +2770,30 @@ function createHeart() {
 }
 
 
-/* =====================================================
+/* =========================================================
    SI
-===================================================== */
+========================================================= */
 
 yes.addEventListener(
     "click",
     function() {
 
+
         /*
            REGISTRA IL SI
         */
 
-        trackEvent("SI");
+        trackEvent(
+            "SI"
+        );
 
 
-        yes.disabled = true;
+        yes.disabled =
+            true;
 
 
         /*
-           Esplosione di cuori.
+           CUORI
         */
 
         for (
@@ -1977,7 +2811,7 @@ yes.addEventListener(
 
 
         /*
-           Flash.
+           FLASH
         */
 
         flash.classList.add(
@@ -1998,7 +2832,7 @@ yes.addEventListener(
 
 
         /*
-           Cambio schermata.
+           CAMBIO SCHERMATA
         */
 
         start.classList.remove(
@@ -2021,9 +2855,9 @@ yes.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================================================
    CUORI AUTOMATICI
-===================================================== */
+========================================================= */
 
 setInterval(
     function() {
@@ -2043,20 +2877,23 @@ setInterval(
 );
 
 
-/* =====================================================
-   SISTEMAZIONE DEL NO QUANDO
-   CAMBIA LA DIMENSIONE DELLO SCHERMO
-===================================================== */
+/* =========================================================
+   RESIZE
+========================================================= */
 
 window.addEventListener(
     "resize",
     function() {
 
+
         if (
-            no.style.position !==
+            no.style.position
+            !==
             "fixed"
         ) {
+
             return;
+
         }
 
 
@@ -2064,7 +2901,8 @@ window.addEventListener(
             no.getBoundingClientRect();
 
 
-        const margin = 12;
+        const margin =
+            12;
 
 
         let x =
@@ -2075,45 +2913,64 @@ window.addEventListener(
 
 
         if (
-            x + rect.width >
-            window.innerWidth -
+            x + rect.width
+            >
+            window.innerWidth
+            -
             margin
         ) {
 
             x =
-                window.innerWidth -
-                rect.width -
+                window.innerWidth
+                -
+                rect.width
+                -
                 margin;
 
         }
 
 
         if (
-            y + rect.height >
-            window.innerHeight -
+            y + rect.height
+            >
+            window.innerHeight
+            -
             margin
         ) {
 
             y =
-                window.innerHeight -
-                rect.height -
+                window.innerHeight
+                -
+                rect.height
+                -
                 margin;
 
         }
 
 
-        if (x < margin) {
-            x = margin;
+        if (
+            x < margin
+        ) {
+
+            x =
+                margin;
+
         }
 
 
-        if (y < margin) {
-            y = margin;
+        if (
+            y < margin
+        ) {
+
+            y =
+                margin;
+
         }
 
 
         no.style.left =
             x + "px";
+
 
         no.style.top =
             y + "px";
@@ -2125,4 +2982,4 @@ window.addEventListener(
 
 </body>
 </html>
-
+```
