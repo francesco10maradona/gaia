@@ -3,151 +3,229 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<meta name="theme-color" content="#170d32">
 
 <title>Per Gaia ❤️</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html,
-body{
-    margin:0;
-    width:100%;
-    height:100%;
-    overflow:hidden;
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-body{
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    background:#100b25;
-    color:white;
+body {
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background: #160c2d;
+    color: white;
 }
 
-button{
-    font:inherit;
+button {
+    font: inherit;
 }
 
-.app{
-    position:relative;
-    width:100%;
-    height:100dvh;
-    overflow:hidden;
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app {
+    position: relative;
+
+    width: 100%;
+    height: 100dvh;
+
+    overflow: hidden;
 }
 
-/* =========================
-   SFONDO
-========================= */
 
-.sky{
-    position:absolute;
-    inset:0;
-    background:
-        radial-gradient(
-            circle at 50% 15%,
-            rgba(255,154,205,.45),
-            transparent 35%
-        ),
-        linear-gradient(
-            180deg,
-            #170e35 0%,
-            #29153f 40%,
-            #5b2858 68%,
-            #e4779d 100%
-        );
-}
-
-.stars{
-    position:absolute;
-    inset:0;
-    opacity:.8;
-    background-image:
-        radial-gradient(circle,white 1px,transparent 1.5px),
-        radial-gradient(circle,rgba(255,255,255,.7) 1px,transparent 1.5px);
-    background-size:73px 73px,127px 127px;
-    background-position:10px 15px,45px 60px;
-    animation:starsMove 25s linear infinite;
-}
-
-@keyframes starsMove{
-    from{
-        transform:translateY(0);
-    }
-    to{
-        transform:translateY(80px);
-    }
-}
-
-.moon{
-    position:absolute;
-    top:7%;
-    right:9%;
-    width:65px;
-    height:65px;
-    border-radius:50%;
-    background:#fff4d6;
-    box-shadow:
-        0 0 25px rgba(255,239,190,.7),
-        0 0 70px rgba(255,205,220,.25);
-}
-
-.moon:after{
-    content:"";
-    position:absolute;
-    width:60px;
-    height:60px;
-    border-radius:50%;
-    background:#1c1038;
-    left:18px;
-    top:-5px;
-}
-
-/* =========================
+/* =========================================================
    SCHERMATE
-========================= */
+========================================================= */
 
-.screen{
-    position:absolute;
-    inset:0;
+.screen {
+    position: absolute;
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    inset: 0;
 
-    padding:24px;
+    display: flex;
 
-    opacity:0;
-    visibility:hidden;
+    align-items: center;
+    justify-content: center;
 
-    transform:scale(1.06);
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.04);
 
     transition:
         opacity .8s ease,
         transform .8s cubic-bezier(.22,1,.36,1);
 }
 
-.screen.active{
-    opacity:1;
-    visibility:visible;
-    transform:scale(1);
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: scale(1);
 }
 
-/* =========================
+
+/* =========================================================
+   SFONDO INIZIALE
+========================================================= */
+
+.sky {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(255,145,201,.38),
+            transparent 34%
+        ),
+
+        radial-gradient(
+            circle at 15% 70%,
+            rgba(116,70,180,.22),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            180deg,
+            #130a2b 0%,
+            #24113d 38%,
+            #552657 70%,
+            #d96e99 100%
+        );
+}
+
+.stars {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: .85;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.95) 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.6) 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        75px 75px,
+        125px 125px;
+
+    background-position:
+        10px 20px,
+        45px 60px;
+
+    animation:
+        starsMove 30s linear infinite;
+}
+
+@keyframes starsMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(90px);
+    }
+}
+
+
+/* =========================================================
+   LUNA
+========================================================= */
+
+.moon {
+    position: absolute;
+
+    top: 7%;
+    right: 8%;
+
+    width: 68px;
+    height: 68px;
+
+    border-radius: 50%;
+
+    background: #fff2d0;
+
+    box-shadow:
+        0 0 25px rgba(255,238,188,.75),
+        0 0 75px rgba(255,200,220,.22);
+}
+
+.moon::after {
+    content: "";
+
+    position: absolute;
+
+    width: 63px;
+    height: 63px;
+
+    left: 18px;
+    top: -5px;
+
+    border-radius: 50%;
+
+    background: #1b0d35;
+}
+
+
+/* =========================================================
    INTRO
-========================= */
+========================================================= */
 
-.intro{
-    width:min(100%,430px);
-    text-align:center;
-    position:relative;
-    z-index:20;
+.intro {
+    position: relative;
+
+    z-index: 30;
+
+    width: min(100%, 430px);
+
+    text-align: center;
 }
 
-.crown{
-    font-size:48px;
+.crown-intro {
+    font-size: 48px;
 
     animation:
         crownFloat 3s ease-in-out infinite;
@@ -158,369 +236,435 @@ button{
         );
 }
 
-@keyframes crownFloat{
-    0%,100%{
+@keyframes crownFloat {
+
+    0%,
+    100% {
         transform:
             translateY(0)
             rotate(-3deg);
     }
 
-    50%{
+    50% {
         transform:
             translateY(-10px)
             rotate(3deg);
     }
 }
 
-.intro h1{
-    margin:10px 0 0;
+.intro h1 {
+    margin: 10px 0 0;
 
-    font-family:Georgia,serif;
+    font-family: Georgia, serif;
 
     font-size:
         clamp(
-            54px,
-            16vw,
-            78px
+            58px,
+            17vw,
+            82px
         );
 
-    line-height:.95;
-    letter-spacing:-3px;
+    line-height: .9;
+
+    letter-spacing: -4px;
 
     text-shadow:
         0 5px 25px rgba(0,0,0,.25);
 }
 
-.intro h1 span{
-    color:#ff8fb8;
+.intro h1 span {
+    color: #ff83b5;
 }
 
-.question-card{
-    margin:28px auto 0;
 
-    padding:25px 20px;
+/* =========================================================
+   CARD
+========================================================= */
 
-    width:min(100%,370px);
+.question-card {
+    width: min(100%, 370px);
 
-    border-radius:32px;
+    margin: 30px auto 0;
 
-    background:
-        rgba(255,255,255,.09);
+    padding: 27px 20px;
 
-    border:
-        1px solid rgba(255,255,255,.17);
+    border-radius: 32px;
 
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.2),
-        inset 0 1px rgba(255,255,255,.15);
-}
-
-.question{
-    font-family:Georgia,serif;
-    font-size:31px;
-}
-
-.question-sub{
-    margin-top:9px;
-
-    color:
-        rgba(255,255,255,.68);
-
-    font-size:14px;
-}
-
-.buttons{
-    display:flex;
-    gap:14px;
-    justify-content:center;
-
-    margin-top:25px;
-}
-
-.btn{
-    border:0;
-
-    min-width:125px;
-    min-height:58px;
-
-    padding:14px 23px;
-
-    border-radius:999px;
-
-    color:white;
-
-    font-weight:800;
-    font-size:17px;
-
-    cursor:pointer;
-
-    user-select:none;
-    -webkit-user-select:none;
-
-    transition:
-        transform .18s ease,
-        left .18s ease,
-        top .18s ease;
-}
-
-.btn:active{
-    transform:scale(.92);
-}
-
-.yes{
-    background:
-        linear-gradient(
-            135deg,
-            #ff3d7d,
-            #ff78ad
-        );
-
-    box-shadow:
-        0 8px 25px
-        rgba(255,45,115,.35),
-
-        0 0 35px
-        rgba(255,91,151,.2);
-
-    animation:
-        yesPulse 2s ease-in-out infinite;
-}
-
-@keyframes yesPulse{
-
-    0%,100%{
-        box-shadow:
-            0 8px 25px
-            rgba(255,45,115,.35);
-    }
-
-    50%{
-        box-shadow:
-            0 8px 35px
-            rgba(255,45,115,.65),
-
-            0 0 45px
-            rgba(255,100,170,.3);
-    }
-}
-
-.no{
     background:
         rgba(255,255,255,.09);
 
     border:
         1px solid rgba(255,255,255,.18);
 
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.25),
+
+        inset
+        0 1px
+        rgba(255,255,255,.15);
+}
+
+.question {
+    font-family: Georgia, serif;
+
+    font-size: 31px;
+}
+
+.question-sub {
+    margin-top: 9px;
+
     color:
-        rgba(255,255,255,.8);
+        rgba(255,255,255,.68);
 
-    touch-action:none;
+    font-size: 14px;
 
-    position:relative;
-
-    z-index:50;
+    line-height: 1.4;
 }
 
-/* =========================
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.buttons {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-top: 25px;
+}
+
+.btn {
+    min-width: 125px;
+    min-height: 58px;
+
+    padding:
+        14px 22px;
+
+    border: 0;
+
+    border-radius: 999px;
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    transition:
+        transform .18s ease;
+}
+
+.btn:active {
+    transform: scale(.92);
+}
+
+
+/* =========================================================
+   SI
+========================================================= */
+
+.yes {
+    background:
+        linear-gradient(
+            135deg,
+            #ff397d,
+            #ff79ad
+        );
+
+    box-shadow:
+        0 8px 28px
+        rgba(255,45,115,.4);
+
+    animation:
+        yesPulse 2s ease-in-out infinite;
+}
+
+@keyframes yesPulse {
+
+    0%,
+    100% {
+        box-shadow:
+            0 8px 28px
+            rgba(255,45,115,.35);
+    }
+
+    50% {
+        box-shadow:
+            0 8px 38px
+            rgba(255,45,115,.7);
+    }
+}
+
+
+/* =========================================================
+   NO
+========================================================= */
+
+.no {
+    position: relative;
+
+    z-index: 100;
+
+    background:
+        rgba(255,255,255,.09);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    color:
+        rgba(255,255,255,.88);
+
+    touch-action: none;
+
+    white-space: nowrap;
+
+    transition:
+        left .16s ease,
+        top .16s ease,
+        transform .16s ease;
+}
+
+
+/* =========================================================
    GATTINI
-========================= */
+========================================================= */
 
-.cat-layer{
-    position:absolute;
-    inset:0;
+.cat-layer {
+    position: absolute;
 
-    z-index:8;
+    inset: 0;
 
-    pointer-events:none;
+    z-index: 12;
 
-    overflow:hidden;
+    pointer-events: none;
+
+    overflow: hidden;
 }
 
-.cat{
-    position:absolute;
+.cat {
+    position: absolute;
 
-    font-size:38px;
+    font-size: 38px;
 
     filter:
         drop-shadow(
-            0 5px 5px rgba(0,0,0,.25)
+            0 5px 5px
+            rgba(0,0,0,.25)
         );
 
-    opacity:.95;
+    opacity: .96;
 }
 
-.cat:nth-child(1){
-    left:-50px;
-    top:18%;
+.cat1 {
+    left: -60px;
+    top: 18%;
 
     animation:
-        catWalk1 13s linear infinite;
+        catWalkRight
+        14s
+        linear
+        infinite;
 }
 
-.cat:nth-child(2){
-    left:75%;
-    top:13%;
+.cat2 {
+    right: -60px;
+    top: 33%;
 
     animation:
-        catFloat 4s ease-in-out infinite;
+        catWalkLeft
+        17s
+        linear
+        infinite;
 }
 
-.cat:nth-child(3){
-    left:5%;
-    top:65%;
+.cat3 {
+    left: 7%;
+    top: 67%;
 
     animation:
-        catFloat 5s ease-in-out infinite;
+        catFloat
+        4s
+        ease-in-out
+        infinite;
 }
 
-.cat:nth-child(4){
-    right:-50px;
-    top:48%;
+.cat4 {
+    right: 8%;
+    top: 12%;
 
     animation:
-        catWalk2 15s linear infinite;
+        catFloat
+        5s
+        ease-in-out
+        infinite;
 }
 
-.cat:nth-child(5){
-    left:68%;
-    bottom:10%;
+.cat5 {
+    left: 18%;
+    bottom: 10%;
 
     animation:
-        catFloat 5.5s ease-in-out infinite;
+        catFloat
+        4.5s
+        ease-in-out
+        infinite;
 }
 
-.cat:nth-child(6){
-    left:18%;
-    bottom:16%;
+.cat6 {
+    right: 18%;
+    bottom: 17%;
 
     animation:
-        catFloat 4.5s ease-in-out infinite;
+        catFloat
+        5.5s
+        ease-in-out
+        infinite;
 }
 
-.cat:nth-child(7){
-    left:45%;
-    top:7%;
+.cat7 {
+    left: 44%;
+    top: 8%;
 
     animation:
-        catFloat 6s ease-in-out infinite;
+        catFloat
+        6s
+        ease-in-out
+        infinite;
 }
 
-.cat:nth-child(8){
-    right:10%;
-    bottom:25%;
+@keyframes catWalkRight {
 
-    animation:
-        catFloat 5s ease-in-out infinite;
-}
-
-@keyframes catFloat{
-
-    0%,100%{
-        transform:
-            translateY(0)
-            rotate(-4deg);
-    }
-
-    50%{
-        transform:
-            translateY(-15px)
-            rotate(4deg);
-    }
-}
-
-@keyframes catWalk1{
-
-    from{
+    from {
         transform:
             translateX(0);
     }
 
-    to{
+    to {
         transform:
             translateX(
-                calc(100vw + 100px)
+                calc(100vw + 140px)
             );
     }
 }
 
-@keyframes catWalk2{
+@keyframes catWalkLeft {
 
-    from{
+    from {
         transform:
             translateX(0)
             scaleX(-1);
     }
 
-    to{
+    to {
         transform:
             translateX(
-                calc(-100vw - 100px)
+                calc(-100vw - 140px)
             )
             scaleX(-1);
     }
 }
 
-/* =========================
+@keyframes catFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0)
+            rotate(-4deg);
+    }
+
+    50% {
+        transform:
+            translateY(-13px)
+            rotate(4deg);
+    }
+}
+
+
+/* =========================================================
    FINALE
-========================= */
+========================================================= */
 
-.final{
-    position:absolute;
-    inset:0;
+.final {
+    position: absolute;
 
-    overflow:hidden;
+    inset: 0;
+
+    overflow: hidden;
 
     background:
         linear-gradient(
             180deg,
-            #211044 0%,
-            #713d69 47%,
-            #ee9a9d 73%,
-            #f3c69d 100%
+            #1c0d3d 0%,
+            #633565 42%,
+            #e9899b 67%,
+            #f6c696 100%
         );
 }
 
-.sun{
-    position:absolute;
 
-    top:14%;
-    left:50%;
+/* =========================================================
+   SOLE
+========================================================= */
+
+.sun {
+    position: absolute;
+
+    top: 13%;
+    left: 50%;
 
     transform:
         translateX(-50%);
 
-    width:150px;
-    height:150px;
+    width: 155px;
+    height: 155px;
 
-    border-radius:50%;
+    border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            #fff8cf 0%,
-            #ffd28e 45%,
-            rgba(255,172,130,.15) 70%,
+            #fffbd9 0%,
+            #ffd18c 45%,
+            rgba(255,180,130,.15) 70%,
             transparent 72%
         );
 }
 
-.ocean{
-    position:absolute;
 
-    bottom:0;
-    left:0;
+/* =========================================================
+   MARE
+========================================================= */
 
-    width:100%;
-    height:38%;
+.ocean {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 39%;
 
     background:
         linear-gradient(
             180deg,
-            rgba(50,161,171,.75),
-            #126f84
+            rgba(48,163,174,.8),
+            #126e83
         );
 
     clip-path:
@@ -538,46 +682,47 @@ button{
         );
 }
 
-/* =========================
+
+/* =========================================================
    PALME
-========================= */
+========================================================= */
 
-.palm{
-    position:absolute;
+.palm {
+    position: absolute;
 
-    bottom:19%;
+    bottom: 18%;
 
-    width:150px;
-    height:270px;
+    width: 150px;
+    height: 270px;
 
-    z-index:2;
+    z-index: 4;
 }
 
-.palm.left{
-    left:-30px;
+.palm.left {
+    left: -30px;
 
     transform:
         rotate(-7deg);
 }
 
-.palm.right{
-    right:-30px;
+.palm.right {
+    right: -30px;
 
     transform:
         scaleX(-1)
         rotate(-7deg);
 }
 
-.trunk{
-    position:absolute;
+.trunk {
+    position: absolute;
 
-    bottom:0;
-    left:70px;
+    bottom: 0;
+    left: 70px;
 
-    width:22px;
-    height:220px;
+    width: 22px;
+    height: 220px;
 
-    border-radius:50%;
+    border-radius: 50%;
 
     background:
         linear-gradient(
@@ -591,37 +736,40 @@ button{
         rotate(7deg);
 }
 
-.leaves{
-    position:absolute;
+.leaves {
+    position: absolute;
 
-    top:0;
-    left:40px;
+    top: 0;
+    left: 40px;
 
-    font-size:75px;
+    font-size: 75px;
 
-    line-height:.55;
+    line-height: .55;
 }
 
-/* =========================
+
+/* =========================================================
    TITOLO FINALE
-========================= */
+========================================================= */
 
-.final-title{
-    position:absolute;
+.final-title {
+    position: absolute;
 
-    top:5%;
+    top: 5%;
 
-    width:100%;
+    width: 100%;
 
-    text-align:center;
+    z-index: 30;
 
-    z-index:30;
+    text-align: center;
 }
 
-.final-title h2{
-    margin:0;
+.final-title h2 {
+    margin: 0;
 
-    font-family:Georgia,serif;
+    padding: 0 15px;
+
+    font-family: Georgia, serif;
 
     font-size:
         clamp(
@@ -630,469 +778,791 @@ button{
             44px
         );
 
+    line-height: 1.05;
+
     text-shadow:
-        0 3px 15px rgba(0,0,0,.2);
+        0 3px 15px
+        rgba(0,0,0,.25);
 }
 
-.final-title p{
-    margin:8px 0 0;
+.final-title p {
+    margin: 9px 0 0;
 
-    color:#ffe3e9;
+    color: #ffe1ea;
 
-    font-size:14px;
+    font-size: 14px;
 }
 
-/* =========================
+
+/* =========================================================
    COPPIA
-========================= */
+========================================================= */
 
-.couple{
-    position:absolute;
+.couple {
+    position: absolute;
 
-    left:50%;
-    top:27%;
+    left: 50%;
+    top: 27%;
+
+    width: 280px;
+    height: 310px;
 
     transform:
         translateX(-50%);
 
-    width:260px;
-    height:300px;
-
-    z-index:20;
+    z-index: 25;
 }
 
-.person{
-    position:absolute;
 
-    bottom:0;
+/* =========================================================
+   PERSONE
+========================================================= */
 
-    width:115px;
-    height:275px;
+.person {
+    position: absolute;
+
+    bottom: 0;
+
+    width: 120px;
+    height: 280px;
 }
 
-.prince{
-    left:4px;
+.prince {
+    left: 3px;
 }
 
-.princess{
-    right:4px;
+.princess {
+    right: 3px;
 }
 
-/* teste */
 
-.person-head{
-    position:absolute;
+/* =========================================================
+   PRINCIPE - TESTA
+========================================================= */
 
-    top:0;
-    left:27px;
+.prince .person-head {
+    position: absolute;
 
-    width:65px;
-    height:70px;
+    top: 0;
+    left: 27px;
 
-    border-radius:50%;
-
-    background:#e8a27f;
-
-    z-index:5;
-}
-
-/* capelli principe */
-
-.prince .person-head:before{
-    content:"";
-
-    position:absolute;
-
-    top:-9px;
-    left:-4px;
-
-    width:73px;
-    height:39px;
+    width: 67px;
+    height: 75px;
 
     border-radius:
-        50%
-        50%
-        35%
-        35%;
-
-    background:#3a211b;
-}
-
-/* capelli principessa */
-
-.princess .person-head:before{
-    content:"";
-
-    position:absolute;
-
-    top:-15px;
-    left:-14px;
-
-    width:93px;
-    height:110px;
-
-    border-radius:50%;
+        48%
+        48%
+        44%
+        44%;
 
     background:
         linear-gradient(
-            90deg,
-            #6f472a,
-            #8b5c32,
-            #5d391f
+            135deg,
+            #f0b18d,
+            #df916e
         );
 
-    z-index:-1;
+    z-index: 5;
 }
 
-/* occhi */
 
-.eye{
-    position:absolute;
+/* capelli */
 
-    top:32px;
+.prince .person-head::before {
+    content: "";
 
-    width:7px;
-    height:7px;
+    position: absolute;
 
-    border-radius:50%;
+    top: -10px;
+    left: -4px;
 
-    background:#37202b;
+    width: 76px;
+    height: 42px;
+
+    border-radius:
+        55%
+        55%
+        30%
+        30%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2d1a18,
+            #55301f,
+            #241513
+        );
+
+    z-index: -1;
 }
 
-.eye.one{
-    left:18px;
+
+/* =========================================================
+   VOLTO PRINCIPE
+========================================================= */
+
+.prince .eye {
+    position: absolute;
+
+    top: 35px;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #30202a;
 }
 
-.eye.two{
-    right:18px;
+.prince .eye.one {
+    left: 17px;
 }
 
-/* sorriso */
+.prince .eye.two {
+    right: 17px;
+}
 
-.smile{
-    position:absolute;
+.prince .smile {
+    position: absolute;
 
-    top:46px;
-    left:27px;
+    top: 52px;
+    left: 27px;
 
-    width:13px;
-    height:6px;
+    width: 14px;
+    height: 6px;
 
     border-bottom:
-        2px solid #743744;
+        2px solid #773b45;
 
-    border-radius:50%;
+    border-radius: 50%;
 }
 
-/* corpo */
 
-.person-body{
-    position:absolute;
+/* =========================================================
+   PRINCIPE - CORPO
+========================================================= */
 
-    top:68px;
-    left:14px;
+.prince .person-body {
+    position: absolute;
 
-    width:86px;
-    height:115px;
+    top: 72px;
+    left: 16px;
+
+    width: 88px;
+    height: 118px;
 
     border-radius:
-        35px
-        35px
-        15px
-        15px;
-}
-
-/* principe */
-
-.prince .person-body{
+        34px
+        34px
+        13px
+        13px;
 
     background:
         linear-gradient(
             90deg,
-            #173c87,
-            #4f83d6,
-            #19356f
+            #183878,
+            #4f83d5,
+            #18336e
         );
 }
 
-.prince .person-body:before{
+.prince .person-body::before {
+    content: "";
 
-    content:"";
+    position: absolute;
 
-    position:absolute;
+    top: 0;
+    left: 36px;
 
-    top:0;
-    left:35px;
-
-    width:15px;
-    height:110px;
-
-    background:#f5d07a;
-}
-
-/* principessa */
-
-.princess .person-body{
-
-    top:70px;
-
-    height:130px;
-
-    border-radius:
-        45px
-        45px
-        15px
-        15px;
+    width: 16px;
+    height: 113px;
 
     background:
-        linear-gradient(
-            90deg,
-            #b46b96,
-            #f1a8c6,
-            #a95e8f
-        );
-
-    clip-path:
-        polygon(
-            35% 0,
-            65% 0,
-            100% 100%,
-            0 100%
-        );
+        #f2cf79;
 }
 
-/* braccia */
 
-.arm{
-    position:absolute;
+/* =========================================================
+   PRINCIPE - BRACCIO
+========================================================= */
 
-    top:82px;
+.prince .arm {
+    position: absolute;
 
-    width:16px;
-    height:100px;
+    top: 88px;
 
-    border-radius:20px;
+    width: 17px;
+    height: 99px;
 
-    background:#e6a07d;
+    border-radius: 20px;
 
-    z-index:3;
+    background: #e4a07c;
+
+    z-index: 6;
 }
 
-.prince .arm.left{
-
-    left:3px;
+.prince .arm.left {
+    left: 3px;
 
     transform:
         rotate(22deg);
 }
 
-.princess .arm.right{
 
-    right:3px;
+/* =========================================================
+   PRINCIPE - MANO
+========================================================= */
 
-    transform:
-        rotate(-22deg);
+.prince .hand {
+    position: absolute;
+
+    right: 0;
+    top: 164px;
+
+    width: 23px;
+    height: 23px;
+
+    border-radius: 50%;
+
+    background: #e4a07c;
+
+    z-index: 15;
 }
 
-/* mani */
 
-.hand{
-    position:absolute;
+/* =========================================================
+   PRINCIPE - GAMBE
+========================================================= */
 
-    top:160px;
+.prince .leg {
+    position: absolute;
 
-    width:22px;
-    height:22px;
+    top: 184px;
 
-    border-radius:50%;
+    width: 24px;
+    height: 96px;
 
-    background:#e7a07d;
+    border-radius: 20px;
 
-    z-index:10;
+    background: #25315b;
 }
 
-.prince .hand{
-    right:0;
+.prince .leg.one {
+    left: 30px;
 }
 
-.princess .hand{
-    left:0;
+.prince .leg.two {
+    right: 30px;
 }
 
-/* collegamento mani */
 
-.holding{
-    position:absolute;
+/* =========================================================
+   PRINCIPESSA - TESTA
+========================================================= */
 
-    top:168px;
-    left:113px;
+.princess .person-head {
+    position: absolute;
 
-    width:35px;
-    height:6px;
+    top: 0;
+    left: 25px;
 
-    border-radius:10px;
+    width: 70px;
+    height: 79px;
 
-    background:#e7a07d;
+    border-radius:
+        48%
+        48%
+        45%
+        45%;
 
-    z-index:9;
+    background:
+        linear-gradient(
+            135deg,
+            #f7c1a1,
+            #e8a07e
+        );
+
+    z-index: 8;
+
+    box-shadow:
+        inset
+        -5px -4px 8px
+        rgba(160,70,60,.1);
 }
 
-/* gambe */
 
-.leg{
-    position:absolute;
+/* =========================================================
+   CAPELLI GAIA
+========================================================= */
 
-    top:178px;
+.princess .person-head::before {
+    content: "";
 
-    width:23px;
-    height:96px;
+    position: absolute;
 
-    border-radius:20px;
+    top: -19px;
+    left: -18px;
+
+    width: 106px;
+    height: 115px;
+
+    border-radius:
+        52%
+        52%
+        42%
+        42%;
+
+    background:
+        linear-gradient(
+            100deg,
+            #5b351f,
+            #80502d 45%,
+            #663c21
+        );
+
+    z-index: -1;
 }
 
-.prince .leg{
-    background:#24325d;
+
+/* ciocche */
+
+.princess .person-head::after {
+    content: "";
+
+    position: absolute;
+
+    left: -21px;
+    top: 32px;
+
+    width: 112px;
+    height: 88px;
+
+    border-radius: 45%;
+
+    border-left:
+        14px solid #704522;
+
+    border-right:
+        14px solid #704522;
+
+    z-index: -1;
 }
 
-.princess .leg{
-    background:#8d4f79;
+
+/* =========================================================
+   OCCHI GAIA
+========================================================= */
+
+.princess .eye {
+    position: absolute;
+
+    top: 34px;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #38202a;
+
+    box-shadow:
+        0 1px 0 rgba(255,255,255,.8);
 }
 
-.leg.one{
-    left:30px;
+.princess .eye.one {
+    left: 17px;
 }
 
-.leg.two{
-    right:30px;
+.princess .eye.two {
+    right: 17px;
 }
 
-/* fiore */
 
-.flower{
-    position:absolute;
+/* ciglia */
 
-    top:72px;
-    right:19px;
+.princess .eye::after {
+    content: "";
 
-    font-size:23px;
+    position: absolute;
+
+    top: -4px;
+
+    width: 10px;
+    height: 4px;
+
+    border-top:
+        2px solid #3a2023;
+}
+
+.princess .eye.one::after {
+    left: -2px;
 
     transform:
         rotate(-15deg);
 }
 
-/* =========================
-   PRINCIPESSE
-========================= */
+.princess .eye.two::after {
+    right: -2px;
 
-.fairies{
-    position:absolute;
-
-    inset:20% 0 15%;
-
-    z-index:12;
-
-    pointer-events:none;
+    transform:
+        rotate(15deg);
 }
 
-.fairy{
-    position:absolute;
 
-    font-size:38px;
+/* =========================================================
+   BOCCA GAIA
+========================================================= */
 
-    animation:
-        fairyFloat
-        3s
-        ease-in-out
-        infinite;
+.princess .smile {
+    position: absolute;
+
+    top: 52px;
+    left: 27px;
+
+    width: 16px;
+    height: 7px;
+
+    border-bottom:
+        2px solid #a94f68;
+
+    border-radius:
+        0 0 50% 50%;
+}
+
+
+/* =========================================================
+   CORONA GAIA
+========================================================= */
+
+.princess .mini-crown {
+    position: absolute;
+
+    top: -31px;
+    left: 13px;
+
+    font-size: 27px;
+
+    z-index: 30;
+}
+
+
+/* =========================================================
+   COLLO
+========================================================= */
+
+.princess .person-body::before {
+    content: "";
+
+    position: absolute;
+
+    top: -5px;
+    left: 38px;
+
+    width: 18px;
+    height: 16px;
+
+    background: #e8a07d;
+
+    border-radius: 5px;
+}
+
+
+/* =========================================================
+   VESTITO GAIA
+========================================================= */
+
+.princess .person-body {
+    position: absolute;
+
+    top: 74px;
+    left: 9px;
+
+    width: 100px;
+    height: 142px;
+
+    border-radius:
+        43px
+        43px
+        12px
+        12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #a45b87,
+            #e8a5c4 48%,
+            #9b527d
+        );
+
+    clip-path:
+        polygon(
+            34% 0,
+            66% 0,
+            100% 100%,
+            0 100%
+        );
+
+    box-shadow:
+        0 8px 15px
+        rgba(80,25,70,.18);
+}
+
+
+/* dettaglio vestito */
+
+.princess .person-body::after {
+    content: "";
+
+    position: absolute;
+
+    left: 45px;
+    top: 0;
+
+    width: 8px;
+    height: 134px;
+
+    background:
+        rgba(255,255,255,.27);
+
+    transform:
+        skewX(-5deg);
+}
+
+
+/* =========================================================
+   BRACCIO PRINCIPESSA
+========================================================= */
+
+.princess .arm {
+    position: absolute;
+
+    top: 88px;
+    right: 0;
+
+    width: 17px;
+    height: 101px;
+
+    border-radius: 20px;
+
+    background: #e6a07d;
+
+    z-index: 8;
+
+    transform:
+        rotate(-24deg);
+}
+
+
+/* =========================================================
+   MANO PRINCIPESSA
+========================================================= */
+
+.princess .hand {
+    position: absolute;
+
+    left: -1px;
+    top: 164px;
+
+    width: 23px;
+    height: 23px;
+
+    border-radius: 50%;
+
+    background: #e7a07d;
+
+    z-index: 18;
+}
+
+
+/* =========================================================
+   FIORE
+========================================================= */
+
+.princess .flower {
+    position: absolute;
+
+    top: 1px;
+    left: 79px;
+
+    font-size: 22px;
+
+    z-index: 35;
+
+    transform:
+        rotate(-15deg);
+}
+
+
+/* =========================================================
+   GAMBE PRINCIPESSA
+========================================================= */
+
+.princess .leg {
+    position: absolute;
+
+    top: 189px;
+
+    width: 24px;
+    height: 91px;
+
+    border-radius: 20px;
+
+    background: #8d4f79;
+}
+
+.princess .leg.one {
+    left: 31px;
+}
+
+.princess .leg.two {
+    right: 31px;
+}
+
+
+/* =========================================================
+   MANI CHE SI TENGONO
+========================================================= */
+
+.holding {
+    position: absolute;
+
+    top: 171px;
+    left: 120px;
+
+    width: 36px;
+    height: 7px;
+
+    border-radius: 10px;
+
+    background: #e7a07d;
+
+    z-index: 16;
+}
+
+
+/* =========================================================
+   PRINCIPESSE INTORNO
+========================================================= */
+
+.fairies {
+    position: absolute;
+
+    inset: 20% 0 14%;
+
+    z-index: 13;
+
+    pointer-events: none;
+}
+
+.fairy {
+    position: absolute;
+
+    font-size: 38px;
 
     filter:
         drop-shadow(
-            0 5px 7px rgba(0,0,0,.2)
+            0 5px 7px
+            rgba(0,0,0,.22)
         );
+
+    animation:
+        fairyFloat
+        3.5s
+        ease-in-out
+        infinite;
 }
 
-.fairy:nth-child(1){
-    left:4%;
-    top:15%;
-    animation-delay:.2s;
+.fairy:nth-child(1) {
+    left: 4%;
+    top: 15%;
 }
 
-.fairy:nth-child(2){
-    left:25%;
-    top:4%;
-    animation-delay:.7s;
+.fairy:nth-child(2) {
+    left: 25%;
+    top: 4%;
+
+    animation-delay: .6s;
 }
 
-.fairy:nth-child(3){
-    right:25%;
-    top:4%;
-    animation-delay:1.1s;
+.fairy:nth-child(3) {
+    right: 25%;
+    top: 4%;
+
+    animation-delay: 1s;
 }
 
-.fairy:nth-child(4){
-    right:4%;
-    top:15%;
-    animation-delay:1.6s;
+.fairy:nth-child(4) {
+    right: 4%;
+    top: 15%;
+
+    animation-delay: 1.5s;
 }
 
-.fairy:nth-child(5){
-    left:2%;
-    top:48%;
-    animation-delay:.9s;
+.fairy:nth-child(5) {
+    left: 2%;
+    top: 48%;
+
+    animation-delay: .8s;
 }
 
-.fairy:nth-child(6){
-    right:2%;
-    top:48%;
-    animation-delay:.4s;
+.fairy:nth-child(6) {
+    right: 2%;
+    top: 48%;
+
+    animation-delay: .3s;
 }
 
-.fairy:nth-child(7){
-    left:12%;
-    bottom:2%;
-    animation-delay:1.3s;
+.fairy:nth-child(7) {
+    left: 12%;
+    bottom: 2%;
+
+    animation-delay: 1.2s;
 }
 
-.fairy:nth-child(8){
-    right:12%;
-    bottom:2%;
-    animation-delay:.6s;
+.fairy:nth-child(8) {
+    right: 12%;
+    bottom: 2%;
+
+    animation-delay: .5s;
 }
 
-@keyframes fairyFloat{
+@keyframes fairyFloat {
 
-    0%,100%{
+    0%,
+    100% {
         transform:
             translateY(0);
     }
 
-    50%{
+    50% {
         transform:
-            translateY(-9px);
+            translateY(-10px);
     }
 }
 
-/* =========================
+
+/* =========================================================
    MESSAGGIO
-========================= */
+========================================================= */
 
-.message{
-    position:absolute;
+.message {
+    position: absolute;
 
-    bottom:4%;
-    left:50%;
+    left: 50%;
+    bottom: 4%;
 
     transform:
         translateX(-50%);
 
-    width:min(88%,390px);
+    width: min(88%, 390px);
 
-    padding:17px 20px;
+    padding:
+        17px 20px;
 
-    border-radius:25px;
+    border-radius: 25px;
 
     background:
-        rgba(35,20,55,.45);
+        rgba(35,20,55,.48);
 
     border:
         1px solid
@@ -1104,51 +1574,49 @@ button{
     -webkit-backdrop-filter:
         blur(15px);
 
-    text-align:center;
+    text-align: center;
 
-    z-index:40;
+    z-index: 40;
 
     box-shadow:
         0 15px 40px
         rgba(0,0,0,.2);
 }
 
-.message strong{
+.message strong {
+    display: block;
 
-    display:block;
+    font-family: Georgia, serif;
 
-    font-family:Georgia,serif;
-
-    font-size:24px;
+    font-size: 24px;
 }
 
-.message span{
+.message span {
+    display: block;
 
-    display:block;
+    margin-top: 6px;
 
-    margin-top:6px;
+    color: #ffd2e1;
 
-    color:#ffd2e1;
-
-    font-size:18px;
+    font-size: 18px;
 }
 
-/* =========================
+
+/* =========================================================
    CUORI
-========================= */
+========================================================= */
 
-.heart{
+.heart {
+    position: fixed;
 
-    position:fixed;
+    left: 50%;
+    top: 50%;
 
-    left:50%;
-    top:50%;
+    z-index: 200;
 
-    z-index:100;
+    pointer-events: none;
 
-    pointer-events:none;
-
-    font-size:25px;
+    font-size: 25px;
 
     animation:
         heartExplosion
@@ -1157,23 +1625,22 @@ button{
         forwards;
 }
 
-@keyframes heartExplosion{
+@keyframes heartExplosion {
 
-    0%{
-        opacity:0;
+    0% {
+        opacity: 0;
 
         transform:
             translate(-50%,-50%)
             scale(.2);
     }
 
-    15%{
-        opacity:1;
+    15% {
+        opacity: 1;
     }
 
-    100%{
-
-        opacity:0;
+    100% {
+        opacity: 0;
 
         transform:
             translate(
@@ -1185,117 +1652,117 @@ button{
     }
 }
 
-/* =========================
+
+/* =========================================================
    FLASH
-========================= */
+========================================================= */
 
-.flash{
+.flash {
+    position: fixed;
 
-    position:fixed;
+    inset: 0;
 
-    inset:0;
+    background: white;
 
-    background:white;
+    opacity: 0;
 
-    opacity:0;
+    pointer-events: none;
 
-    pointer-events:none;
-
-    z-index:200;
+    z-index: 500;
 }
 
-.flash.go{
-
+.flash.go {
     animation:
         flash
         .8s
         ease;
 }
 
-@keyframes flash{
+@keyframes flash {
 
-    0%{
-        opacity:0;
+    0% {
+        opacity: 0;
     }
 
-    25%{
-        opacity:.8;
+    25% {
+        opacity: .8;
     }
 
-    100%{
-        opacity:0;
+    100% {
+        opacity: 0;
     }
 }
 
-/* =========================
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media(max-height:700px){
+@media (max-height: 700px) {
 
-    .intro h1{
-        font-size:55px;
+    .intro h1 {
+        font-size: 56px;
     }
 
-    .question-card{
-        margin-top:18px;
-        padding:20px;
+    .question-card {
+        margin-top: 18px;
+
+        padding: 21px;
     }
 
-    .couple{
-
-        top:25%;
+    .couple {
+        top: 25%;
 
         transform:
             translateX(-50%)
-            scale(.85);
+            scale(.86);
     }
 
-    .fairies{
-        inset:19% 0 13%;
-    }
-
-    .message{
-
-        bottom:2%;
+    .message {
+        bottom: 2%;
 
         padding:
-            13px
-            16px;
+            13px 16px;
     }
 
-    .message strong{
-        font-size:21px;
+    .message strong {
+        font-size: 21px;
     }
 }
 
-@media(max-width:360px){
+@media (max-width: 360px) {
 
-    .btn{
-        min-width:110px;
+    .btn {
+        min-width: 110px;
     }
 
-    .cat{
-        font-size:30px;
+    .cat {
+        font-size: 30px;
     }
 
-    .fairy{
-        font-size:31px;
+    .fairy {
+        font-size: 31px;
     }
 
-    .couple{
-
+    .couple {
         transform:
             translateX(-50%)
             scale(.78);
     }
 }
+
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
+
+
+<!-- =====================================================
+     SFONDO
+===================================================== -->
 
 <div class="sky"></div>
 
@@ -1304,301 +1771,373 @@ button{
 <div class="moon"></div>
 
 
-<!-- =========================
+<!-- =====================================================
      GATTINI
-========================= -->
+===================================================== -->
 
 <div class="cat-layer">
 
-    <div class="cat">🐱</div>
+    <div class="cat cat1">
+        🐱
+    </div>
 
-    <div class="cat">🐈</div>
+    <div class="cat cat2">
+        🐈
+    </div>
 
-    <div class="cat">😺</div>
+    <div class="cat cat3">
+        😺
+    </div>
 
-    <div class="cat">🐈‍⬛</div>
+    <div class="cat cat4">
+        🐈‍⬛
+    </div>
 
-    <div class="cat">😸</div>
+    <div class="cat cat5">
+        😻
+    </div>
 
-    <div class="cat">🐱</div>
+    <div class="cat cat6">
+        🐱
+    </div>
 
-    <div class="cat">😻</div>
-
-    <div class="cat">🐈</div>
+    <div class="cat cat7">
+        🐈
+    </div>
 
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      SCHERMATA INIZIALE
-========================= -->
+===================================================== -->
 
 <section
     class="screen active"
     id="start"
 >
 
-<div class="intro">
+    <div class="intro">
 
-    <div class="crown">
-        👑
+        <div class="crown-intro">
+            👑
+        </div>
+
+        <h1>
+            Gaia <span>❤️</span>
+        </h1>
+
+
+        <div class="question-card">
+
+            <div class="question">
+                Facciamo pace?
+            </div>
+
+            <div class="question-sub">
+                Ho preparato una piccola sorpresa
+                solo per te...
+            </div>
+
+
+            <div class="buttons">
+
+                <button
+                    class="btn yes"
+                    id="yes"
+                    type="button"
+                >
+                    SÌ ❤️
+                </button>
+
+
+                <button
+                    class="btn no"
+                    id="no"
+                    type="button"
+                >
+                    NO 😈
+                </button>
+
+            </div>
+
+        </div>
+
     </div>
-
-    <h1>
-        Gaia <span>❤️</span>
-    </h1>
-
-    <div class="question-card">
-
-        <div class="question">
-            Facciamo pace?
-        </div>
-
-        <div class="question-sub">
-            Ho preparato una piccola sorpresa per te...
-        </div>
-
-        <div class="buttons">
-
-            <button
-                class="btn yes"
-                id="yes"
-                type="button"
-            >
-                SÌ ❤️
-            </button>
-
-            <button
-                class="btn no"
-                id="no"
-                type="button"
-            >
-                NO 😈
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
 
 </section>
 
 
-<!-- =========================
-     FINALE
-========================= -->
+<!-- =====================================================
+     SCHERMATA FINALE
+===================================================== -->
 
 <section
     class="screen"
     id="final"
 >
 
-<div class="final">
-
-<div class="sun"></div>
-
-<div class="ocean"></div>
+    <div class="final">
 
 
-<!-- PALME -->
+        <div class="sun"></div>
 
-<div class="palm left">
+        <div class="ocean"></div>
 
-    <div class="trunk"></div>
 
-    <div class="leaves">
-        🌴
+        <!-- PALME -->
+
+        <div class="palm left">
+
+            <div class="trunk"></div>
+
+            <div class="leaves">
+                🌴
+            </div>
+
+        </div>
+
+
+        <div class="palm right">
+
+            <div class="trunk"></div>
+
+            <div class="leaves">
+                🌴
+            </div>
+
+        </div>
+
+
+        <!-- TITOLO -->
+
+        <div class="final-title">
+
+            <h2>
+                La nostra piccola fiaba ❤️
+            </h2>
+
+            <p>
+                anche dall'altra parte del mondo
+            </p>
+
+        </div>
+
+
+        <!-- PRINCIPESSE -->
+
+        <div class="fairies">
+
+            <div class="fairy">
+                👸🏻
+            </div>
+
+            <div class="fairy">
+                👸🏼
+            </div>
+
+            <div class="fairy">
+                👸🏻
+            </div>
+
+            <div class="fairy">
+                👸🏽
+            </div>
+
+            <div class="fairy">
+                👸🏼
+            </div>
+
+            <div class="fairy">
+                👸🏻
+            </div>
+
+            <div class="fairy">
+                👸🏽
+            </div>
+
+            <div class="fairy">
+                👸🏼
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             COPPIA
+        ================================================= -->
+
+        <div class="couple">
+
+
+            <!-- PRINCIPE -->
+
+            <div class="person prince">
+
+                <div class="person-head">
+
+                    <div class="eye one"></div>
+
+                    <div class="eye two"></div>
+
+                    <div class="smile"></div>
+
+                </div>
+
+
+                <div class="person-body"></div>
+
+
+                <div class="arm left"></div>
+
+
+                <div class="hand"></div>
+
+
+                <div class="leg one"></div>
+
+                <div class="leg two"></div>
+
+            </div>
+
+
+            <!-- PRINCIPESSA / GAIA -->
+
+            <div class="person princess">
+
+                <div class="person-head">
+
+                    <div class="mini-crown">
+                        👑
+                    </div>
+
+                    <div class="eye one"></div>
+
+                    <div class="eye two"></div>
+
+                    <div class="smile"></div>
+
+                </div>
+
+
+                <div class="person-body"></div>
+
+
+                <div class="arm"></div>
+
+
+                <div class="hand"></div>
+
+
+                <div class="flower">
+                    🌺
+                </div>
+
+
+                <div class="leg one"></div>
+
+                <div class="leg two"></div>
+
+            </div>
+
+
+            <!-- MANI -->
+
+            <div class="holding"></div>
+
+        </div>
+
+
+        <!-- GATTINI SCENA FINALE -->
+
+        <div class="cat-layer">
+
+            <div
+                class="cat"
+                style="
+                    left:8%;
+                    bottom:27%;
+                    animation:
+                        catFloat
+                        5s
+                        ease-in-out
+                        infinite;
+                "
+            >
+                🐱
+            </div>
+
+
+            <div
+                class="cat"
+                style="
+                    right:8%;
+                    bottom:31%;
+                    animation:
+                        catFloat
+                        6s
+                        ease-in-out
+                        infinite;
+                "
+            >
+                🐈
+            </div>
+
+
+            <div
+                class="cat"
+                style="
+                    left:32%;
+                    bottom:20%;
+                    font-size:30px;
+                    animation:
+                        catFloat
+                        4s
+                        ease-in-out
+                        infinite;
+                "
+            >
+                😺
+            </div>
+
+
+            <div
+                class="cat"
+                style="
+                    right:30%;
+                    bottom:19%;
+                    font-size:31px;
+                    animation:
+                        catFloat
+                        5s
+                        ease-in-out
+                        infinite;
+                "
+            >
+                🐈‍⬛
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             MESSAGGIO
+        ================================================= -->
+
+        <div class="message">
+
+            <strong>
+                Gaia, sei la mia vita.
+            </strong>
+
+            <span>
+                Ti amo ❤️
+            </span>
+
+        </div>
+
+
     </div>
-
-</div>
-
-
-<div class="palm right">
-
-    <div class="trunk"></div>
-
-    <div class="leaves">
-        🌴
-    </div>
-
-</div>
-
-
-<!-- TITOLO -->
-
-<div class="final-title">
-
-    <h2>
-        La nostra piccola fiaba ❤️
-    </h2>
-
-    <p>
-        anche dall'altra parte del mondo
-    </p>
-
-</div>
-
-
-<!-- PRINCIPESSE -->
-
-<div class="fairies">
-
-    <div class="fairy">👸🏻</div>
-
-    <div class="fairy">👸🏼</div>
-
-    <div class="fairy">👸🏻</div>
-
-    <div class="fairy">👸🏽</div>
-
-    <div class="fairy">👸🏼</div>
-
-    <div class="fairy">👸🏻</div>
-
-    <div class="fairy">👸🏽</div>
-
-    <div class="fairy">👸🏼</div>
-
-</div>
-
-
-<!-- COPPIA -->
-
-<div class="couple">
-
-
-<!-- PRINCIPE -->
-
-<div class="person prince">
-
-    <div class="person-head">
-
-        <div class="eye one"></div>
-
-        <div class="eye two"></div>
-
-        <div class="smile"></div>
-
-    </div>
-
-    <div class="person-body"></div>
-
-    <div class="arm left"></div>
-
-    <div class="hand"></div>
-
-    <div class="leg one"></div>
-
-    <div class="leg two"></div>
-
-</div>
-
-
-<!-- PRINCIPESSA -->
-
-<div class="person princess">
-
-    <div class="person-head">
-
-        <div class="eye one"></div>
-
-        <div class="eye two"></div>
-
-        <div class="smile"></div>
-
-    </div>
-
-    <div class="person-body"></div>
-
-    <div class="arm right"></div>
-
-    <div class="hand"></div>
-
-    <div class="flower">
-        🌺
-    </div>
-
-    <div class="leg one"></div>
-
-    <div class="leg two"></div>
-
-</div>
-
-
-<!-- MANI -->
-
-<div class="holding"></div>
-
-</div>
-
-
-<!-- GATTINI FINALI -->
-
-<div class="cat-layer">
-
-    <div
-        class="cat"
-        style="
-            left:8%;
-            bottom:27%;
-            animation-duration:5s;
-        "
-    >
-        🐱
-    </div>
-
-    <div
-        class="cat"
-        style="
-            right:8%;
-            bottom:31%;
-            animation-duration:6s;
-        "
-    >
-        🐈
-    </div>
-
-    <div
-        class="cat"
-        style="
-            left:32%;
-            bottom:20%;
-            font-size:30px;
-        "
-    >
-        😺
-    </div>
-
-    <div
-        class="cat"
-        style="
-            right:30%;
-            bottom:19%;
-            font-size:31px;
-        "
-    >
-        🐈‍⬛
-    </div>
-
-</div>
-
-
-<!-- MESSAGGIO -->
-
-<div class="message">
-
-    <strong>
-        Gaia, sei la mia vita.
-    </strong>
-
-    <span>
-        Ti amo ❤️
-    </span>
-
-</div>
-
-</div>
 
 </section>
 
@@ -1608,14 +2147,15 @@ button{
     id="flash"
 ></div>
 
+
 </div>
 
 
 <script>
 
-/* =========================
+/* =========================================================
    ELEMENTI
-========================= */
+========================================================= */
 
 const yes =
     document.getElementById("yes");
@@ -1636,13 +2176,13 @@ const flash =
 let noAttempts = 0;
 
 
-/* =========================
+/* =========================================================
    PULSANTE NO
-========================= */
+========================================================= */
 
-function escapeNo(event){
+function escapeNo(event) {
 
-    if(event){
+    if (event) {
 
         event.preventDefault();
 
@@ -1650,12 +2190,12 @@ function escapeNo(event){
 
     }
 
+
     noAttempts++;
 
 
     /*
-       Calcoliamo una posizione
-       sicura dentro lo schermo.
+       Dimensioni del pulsante.
     */
 
     const buttonWidth =
@@ -1665,46 +2205,57 @@ function escapeNo(event){
         no.offsetHeight || 58;
 
 
+    /*
+       Margine per non farlo
+       finire fuori dallo schermo.
+    */
+
+    const margin = 12;
+
+
     const maxX =
         Math.max(
-            10,
+            margin,
             window.innerWidth -
             buttonWidth -
-            10
+            margin
         );
 
 
     const maxY =
         Math.max(
-            10,
+            margin,
             window.innerHeight -
             buttonHeight -
-            10
-        );
-
-
-    const x =
-        10 +
-        Math.random() *
-        Math.max(
-            1,
-            maxX - 10
-        );
-
-
-    const y =
-        10 +
-        Math.random() *
-        Math.max(
-            1,
-            maxY - 10
+            margin
         );
 
 
     /*
-       Passiamo a fixed così
-       il pulsante può muoversi
-       liberamente sullo schermo.
+       Posizione casuale.
+    */
+
+    const x =
+        margin +
+        Math.random() *
+        Math.max(
+            1,
+            maxX - margin
+        );
+
+
+    const y =
+        margin +
+        Math.random() *
+        Math.max(
+            1,
+            maxY - margin
+        );
+
+
+    /*
+       Fixed = può muoversi
+       liberamente per lo schermo.
     */
 
     no.style.position =
@@ -1718,11 +2269,11 @@ function escapeNo(event){
 
 
     /*
-       Piccolo effetto di rotazione.
+       Rotazione casuale.
     */
 
     const rotation =
-        Math.random() * 20 - 10;
+        Math.random() * 24 - 12;
 
     no.style.transform =
         "rotate(" +
@@ -1731,7 +2282,7 @@ function escapeNo(event){
 
 
     /*
-       Cambiamo la frase.
+       Messaggi.
     */
 
     const messages = [
@@ -1740,38 +2291,57 @@ function escapeNo(event){
 
         "Sicura? 🥺",
 
-        "Daiii ❤️",
-
-        "Riprova 😂",
-
-        "Non vale 😭",
-
-        "Gaiaaa ❤️",
-
-        "Ti prego 🥹",
-
-        "NOOO 😂",
+        "Dai Gaia ❤️",
 
         "Quasi! 😂",
 
-        "Non scappare da me ❤️"
+        "Riprova 😈",
+
+        "Non mi prendi 😂",
+
+        "AHAHAHA ❤️",
+
+        "Daiii 🥹",
+
+        "No no 😈",
+
+        "Continua a provare 😂",
+
+        "Non scappo... forse 👀",
+
+        "Ti amo comunque ❤️",
+
+        "Ancora?! 😂",
+
+        "Mai! 😈",
+
+        "Prendimi se ci riesci 🏃‍♂️",
+
+        "Gaiaaaa ❤️",
+
+        "🥹❤️",
+
+        "NOOO 😂",
+
+        "Sei vicina!",
+
+        "Ops... 😈"
 
     ];
 
 
     no.textContent =
         messages[
-            Math.min(
-                noAttempts,
-                messages.length - 1
-            )
+            noAttempts %
+            messages.length
         ];
+
 }
 
 
-/* =========================
-   PC
-========================= */
+/* =========================================================
+   MOUSE
+========================================================= */
 
 no.addEventListener(
     "mouseenter",
@@ -1779,32 +2349,33 @@ no.addEventListener(
 );
 
 
-/* =========================
-   TELEFONO
-========================= */
+/* =========================================================
+   TOUCH
+========================================================= */
 
 no.addEventListener(
     "touchstart",
-    function(event){
+    function(event) {
 
         escapeNo(event);
 
     },
     {
-        passive:false
+        passive: false
     }
 );
 
 
-/*
-   Se per qualche motivo
-   il browser genera comunque
-   un click, lo blocchiamo.
-*/
+/* =========================================================
+   CLICK
+   Se per qualche motivo il browser
+   genera comunque il click,
+   lo blocchiamo.
+========================================================= */
 
 no.addEventListener(
     "click",
-    function(event){
+    function(event) {
 
         event.preventDefault();
 
@@ -1818,11 +2389,11 @@ no.addEventListener(
 );
 
 
-/* =========================
+/* =========================================================
    CUORI
-========================= */
+========================================================= */
 
-function createHeart(){
+function createHeart() {
 
     const heart =
         document.createElement("div");
@@ -1887,36 +2458,38 @@ function createHeart(){
 
 
     setTimeout(
-        function(){
+        function() {
 
             heart.remove();
 
         },
         1900
     );
+
 }
 
 
-/* =========================
-   BOTTONe SÌ
-========================= */
+/* =========================================================
+   SÌ
+========================================================= */
 
 yes.addEventListener(
     "click",
-    function(){
+    function() {
 
         yes.disabled = true;
 
 
         /*
-           Esplosione di cuori.
+           Esplosione iniziale
+           di cuori.
         */
 
-        for(
+        for (
             let i = 0;
             i < 75;
             i++
-        ){
+        ) {
 
             setTimeout(
                 createHeart,
@@ -1936,7 +2509,7 @@ yes.addEventListener(
 
 
         setTimeout(
-            function(){
+            function() {
 
                 flash.classList.remove(
                     "go"
@@ -1948,12 +2521,11 @@ yes.addEventListener(
 
 
         /*
-           Chiudiamo
-           la prima schermata.
+           Chiudiamo intro.
         */
 
         setTimeout(
-            function(){
+            function() {
 
                 start.classList.remove(
                     "active"
@@ -1965,12 +2537,11 @@ yes.addEventListener(
 
 
         /*
-           Apriamo
-           la scena romantica.
+           Mostriamo finale.
         */
 
         setTimeout(
-            function(){
+            function() {
 
                 final.classList.add(
                     "active"
@@ -1984,22 +2555,22 @@ yes.addEventListener(
 );
 
 
-/* =========================
-   CUORI AUTOMATICI
-========================= */
+/* =========================================================
+   CUORI AUTOMATICI NEL FINALE
+========================================================= */
 
 setInterval(
-    function(){
+    function() {
 
-        if(
+        if (
             final.classList.contains(
                 "active"
             )
-        ){
+        ) {
 
-            if(
+            if (
                 Math.random() > .35
-            ){
+            ) {
 
                 createHeart();
 
@@ -2011,8 +2582,87 @@ setInterval(
     1300
 );
 
+
+/* =========================================================
+   AGGIUSTAMENTO DEL NO AL RESIZE
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    function() {
+
+        if (
+            no.style.position === "fixed"
+        ) {
+
+            const rect =
+                no.getBoundingClientRect();
+
+
+            const margin = 12;
+
+
+            let x = rect.left;
+
+            let y = rect.top;
+
+
+            if (
+                x + rect.width >
+                window.innerWidth -
+                margin
+            ) {
+
+                x =
+                    window.innerWidth -
+                    rect.width -
+                    margin;
+
+            }
+
+
+            if (
+                y + rect.height >
+                window.innerHeight -
+                margin
+            ) {
+
+                y =
+                    window.innerHeight -
+                    rect.height -
+                    margin;
+
+            }
+
+
+            if (x < margin) {
+
+                x = margin;
+
+            }
+
+
+            if (y < margin) {
+
+                y = margin;
+
+            }
+
+
+            no.style.left =
+                x + "px";
+
+            no.style.top =
+                y + "px";
+
+        }
+
+    }
+);
+
 </script>
 
 </body>
 </html>
 ```
+
