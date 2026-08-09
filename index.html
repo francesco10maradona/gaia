@@ -1,31 +1,19 @@
-```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#170d32">
 
 <title>Per Gaia ❤️</title>
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
 * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
 }
 
-html,
-body {
+html, body {
     margin: 0;
     width: 100%;
     height: 100%;
@@ -33,12 +21,7 @@ body {
 }
 
 body {
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background: #160c2d;
     color: white;
 }
@@ -47,32 +30,18 @@ button {
     font: inherit;
 }
 
-
-/* =========================================================
-   APP
-========================================================= */
-
 .app {
     position: relative;
-
     width: 100%;
     height: 100dvh;
-
     overflow: hidden;
 }
 
-
-/* =========================================================
-   SCHERMATE
-========================================================= */
-
 .screen {
     position: absolute;
-
     inset: 0;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
@@ -80,7 +49,6 @@ button {
 
     opacity: 0;
     visibility: hidden;
-
     transform: scale(1.04);
 
     transition:
@@ -91,18 +59,15 @@ button {
 .screen.active {
     opacity: 1;
     visibility: visible;
-
     transform: scale(1);
 }
 
-
-/* =========================================================
-   SFONDO INIZIALE
-========================================================= */
+/* =========================
+   SFONDO
+========================= */
 
 .sky {
     position: absolute;
-
     inset: 0;
 
     background:
@@ -111,13 +76,11 @@ button {
             rgba(255,145,201,.38),
             transparent 34%
         ),
-
         radial-gradient(
             circle at 15% 70%,
             rgba(116,70,180,.22),
             transparent 35%
         ),
-
         linear-gradient(
             180deg,
             #130a2b 0%,
@@ -129,7 +92,6 @@ button {
 
 .stars {
     position: absolute;
-
     inset: 0;
 
     opacity: .85;
@@ -140,7 +102,6 @@ button {
             rgba(255,255,255,.95) 1px,
             transparent 1.5px
         ),
-
         radial-gradient(
             circle,
             rgba(255,255,255,.6) 1px,
@@ -155,12 +116,10 @@ button {
         10px 20px,
         45px 60px;
 
-    animation:
-        starsMove 30s linear infinite;
+    animation: starsMove 30s linear infinite;
 }
 
 @keyframes starsMove {
-
     from {
         transform: translateY(0);
     }
@@ -169,11 +128,6 @@ button {
         transform: translateY(90px);
     }
 }
-
-
-/* =========================================================
-   LUNA
-========================================================= */
 
 .moon {
     position: absolute;
@@ -209,250 +163,17 @@ button {
     background: #1b0d35;
 }
 
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-.intro {
-    position: relative;
-
-    z-index: 30;
-
-    width: min(100%, 430px);
-
-    text-align: center;
-}
-
-.crown-intro {
-    font-size: 48px;
-
-    animation:
-        crownFloat 3s ease-in-out infinite;
-
-    filter:
-        drop-shadow(
-            0 5px 15px rgba(255,180,220,.4)
-        );
-}
-
-@keyframes crownFloat {
-
-    0%,
-    100% {
-        transform:
-            translateY(0)
-            rotate(-3deg);
-    }
-
-    50% {
-        transform:
-            translateY(-10px)
-            rotate(3deg);
-    }
-}
-
-.intro h1 {
-    margin: 10px 0 0;
-
-    font-family: Georgia, serif;
-
-    font-size:
-        clamp(
-            58px,
-            17vw,
-            82px
-        );
-
-    line-height: .9;
-
-    letter-spacing: -4px;
-
-    text-shadow:
-        0 5px 25px rgba(0,0,0,.25);
-}
-
-.intro h1 span {
-    color: #ff83b5;
-}
-
-
-/* =========================================================
-   CARD
-========================================================= */
-
-.question-card {
-    width: min(100%, 370px);
-
-    margin: 30px auto 0;
-
-    padding: 27px 20px;
-
-    border-radius: 32px;
-
-    background:
-        rgba(255,255,255,.09);
-
-    border:
-        1px solid rgba(255,255,255,.18);
-
-    backdrop-filter:
-        blur(20px);
-
-    -webkit-backdrop-filter:
-        blur(20px);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.25),
-
-        inset
-        0 1px
-        rgba(255,255,255,.15);
-}
-
-.question {
-    font-family: Georgia, serif;
-
-    font-size: 31px;
-}
-
-.question-sub {
-    margin-top: 9px;
-
-    color:
-        rgba(255,255,255,.68);
-
-    font-size: 14px;
-
-    line-height: 1.4;
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.buttons {
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 14px;
-
-    margin-top: 25px;
-}
-
-.btn {
-    min-width: 125px;
-    min-height: 58px;
-
-    padding:
-        14px 22px;
-
-    border: 0;
-
-    border-radius: 999px;
-
-    color: white;
-
-    font-size: 17px;
-    font-weight: 800;
-
-    cursor: pointer;
-
-    user-select: none;
-    -webkit-user-select: none;
-
-    transition:
-        transform .18s ease;
-}
-
-.btn:active {
-    transform: scale(.92);
-}
-
-
-/* =========================================================
-   SI
-========================================================= */
-
-.yes {
-    background:
-        linear-gradient(
-            135deg,
-            #ff397d,
-            #ff79ad
-        );
-
-    box-shadow:
-        0 8px 28px
-        rgba(255,45,115,.4);
-
-    animation:
-        yesPulse 2s ease-in-out infinite;
-}
-
-@keyframes yesPulse {
-
-    0%,
-    100% {
-        box-shadow:
-            0 8px 28px
-            rgba(255,45,115,.35);
-    }
-
-    50% {
-        box-shadow:
-            0 8px 38px
-            rgba(255,45,115,.7);
-    }
-}
-
-
-/* =========================================================
-   NO
-========================================================= */
-
-.no {
-    position: relative;
-
-    z-index: 100;
-
-    background:
-        rgba(255,255,255,.09);
-
-    border:
-        1px solid
-        rgba(255,255,255,.2);
-
-    color:
-        rgba(255,255,255,.88);
-
-    touch-action: none;
-
-    white-space: nowrap;
-
-    transition:
-        left .16s ease,
-        top .16s ease,
-        transform .16s ease;
-}
-
-
-/* =========================================================
+/* =========================
    GATTINI
-========================================================= */
+========================= */
 
 .cat-layer {
     position: absolute;
-
     inset: 0;
 
     z-index: 12;
 
     pointer-events: none;
-
     overflow: hidden;
 }
 
@@ -463,8 +184,7 @@ button {
 
     filter:
         drop-shadow(
-            0 5px 5px
-            rgba(0,0,0,.25)
+            0 5px 5px rgba(0,0,0,.25)
         );
 
     opacity: .96;
@@ -548,10 +268,8 @@ button {
 }
 
 @keyframes catWalkRight {
-
     from {
-        transform:
-            translateX(0);
+        transform: translateX(0);
     }
 
     to {
@@ -563,7 +281,6 @@ button {
 }
 
 @keyframes catWalkLeft {
-
     from {
         transform:
             translateX(0)
@@ -580,9 +297,7 @@ button {
 }
 
 @keyframes catFloat {
-
-    0%,
-    100% {
+    0%, 100% {
         transform:
             translateY(0)
             rotate(-4deg);
@@ -595,14 +310,226 @@ button {
     }
 }
 
+/* =========================
+   INTRO
+========================= */
 
-/* =========================================================
+.intro {
+    position: relative;
+    z-index: 30;
+
+    width: min(100%, 430px);
+
+    text-align: center;
+}
+
+.crown-intro {
+    font-size: 48px;
+
+    animation:
+        crownFloat
+        3s
+        ease-in-out
+        infinite;
+
+    filter:
+        drop-shadow(
+            0 5px 15px
+            rgba(255,180,220,.4)
+        );
+}
+
+@keyframes crownFloat {
+    0%, 100% {
+        transform:
+            translateY(0)
+            rotate(-3deg);
+    }
+
+    50% {
+        transform:
+            translateY(-10px)
+            rotate(3deg);
+    }
+}
+
+.intro h1 {
+    margin: 10px 0 0;
+
+    font-family: Georgia, serif;
+
+    font-size:
+        clamp(
+            58px,
+            17vw,
+            82px
+        );
+
+    line-height: .9;
+
+    letter-spacing: -4px;
+
+    text-shadow:
+        0 5px 25px
+        rgba(0,0,0,.25);
+}
+
+.intro h1 span {
+    color: #ff83b5;
+}
+
+.question-card {
+    width: min(100%, 370px);
+
+    margin: 30px auto 0;
+
+    padding: 27px 20px;
+
+    border-radius: 32px;
+
+    background:
+        rgba(255,255,255,.09);
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.25),
+
+        inset
+        0 1px
+        rgba(255,255,255,.15);
+}
+
+.question {
+    font-family: Georgia, serif;
+    font-size: 31px;
+}
+
+.question-sub {
+    margin-top: 9px;
+
+    color:
+        rgba(255,255,255,.68);
+
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-top: 25px;
+}
+
+.btn {
+    min-width: 125px;
+    min-height: 58px;
+
+    padding: 14px 22px;
+
+    border: 0;
+    border-radius: 999px;
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    transition:
+        transform .18s ease;
+}
+
+.btn:active {
+    transform: scale(.92);
+}
+
+.yes {
+    background:
+        linear-gradient(
+            135deg,
+            #ff397d,
+            #ff79ad
+        );
+
+    box-shadow:
+        0 8px 28px
+        rgba(255,45,115,.4);
+
+    animation:
+        yesPulse
+        2s
+        ease-in-out
+        infinite;
+}
+
+@keyframes yesPulse {
+    0%, 100% {
+        box-shadow:
+            0 8px 28px
+            rgba(255,45,115,.35);
+    }
+
+    50% {
+        box-shadow:
+            0 8px 38px
+            rgba(255,45,115,.7);
+    }
+}
+
+.no {
+    position: relative;
+
+    z-index: 100;
+
+    background:
+        rgba(255,255,255,.09);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    color:
+        rgba(255,255,255,.88);
+
+    touch-action: none;
+
+    white-space: nowrap;
+
+    transition:
+        left .16s ease,
+        top .16s ease,
+        transform .16s ease;
+}
+
+/* =========================
    FINALE
-========================================================= */
+========================= */
 
 .final {
     position: absolute;
-
     inset: 0;
 
     overflow: hidden;
@@ -616,11 +543,6 @@ button {
             #f6c696 100%
         );
 }
-
-
-/* =========================================================
-   SOLE
-========================================================= */
 
 .sun {
     position: absolute;
@@ -645,11 +567,6 @@ button {
             transparent 72%
         );
 }
-
-
-/* =========================================================
-   MARE
-========================================================= */
 
 .ocean {
     position: absolute;
@@ -681,11 +598,6 @@ button {
             0 100%
         );
 }
-
-
-/* =========================================================
-   PALME
-========================================================= */
 
 .palm {
     position: absolute;
@@ -747,11 +659,6 @@ button {
     line-height: .55;
 }
 
-
-/* =========================================================
-   TITOLO FINALE
-========================================================= */
-
 .final-title {
     position: absolute;
 
@@ -793,10 +700,9 @@ button {
     font-size: 14px;
 }
 
-
-/* =========================================================
+/* =========================
    COPPIA
-========================================================= */
+========================= */
 
 .couple {
     position: absolute;
@@ -812,11 +718,6 @@ button {
 
     z-index: 25;
 }
-
-
-/* =========================================================
-   PERSONE
-========================================================= */
 
 .person {
     position: absolute;
@@ -835,10 +736,9 @@ button {
     right: 3px;
 }
 
-
-/* =========================================================
-   PRINCIPE - TESTA
-========================================================= */
+/* =========================
+   PRINCIPE
+========================= */
 
 .prince .person-head {
     position: absolute;
@@ -864,9 +764,6 @@ button {
 
     z-index: 5;
 }
-
-
-/* capelli */
 
 .prince .person-head::before {
     content: "";
@@ -895,11 +792,6 @@ button {
 
     z-index: -1;
 }
-
-
-/* =========================================================
-   VOLTO PRINCIPE
-========================================================= */
 
 .prince .eye {
     position: absolute;
@@ -937,11 +829,6 @@ button {
     border-radius: 50%;
 }
 
-
-/* =========================================================
-   PRINCIPE - CORPO
-========================================================= */
-
 .prince .person-body {
     position: absolute;
 
@@ -977,14 +864,8 @@ button {
     width: 16px;
     height: 113px;
 
-    background:
-        #f2cf79;
+    background: #f2cf79;
 }
-
-
-/* =========================================================
-   PRINCIPE - BRACCIO
-========================================================= */
 
 .prince .arm {
     position: absolute;
@@ -1008,11 +889,6 @@ button {
         rotate(22deg);
 }
 
-
-/* =========================================================
-   PRINCIPE - MANO
-========================================================= */
-
 .prince .hand {
     position: absolute;
 
@@ -1028,11 +904,6 @@ button {
 
     z-index: 15;
 }
-
-
-/* =========================================================
-   PRINCIPE - GAMBE
-========================================================= */
 
 .prince .leg {
     position: absolute;
@@ -1055,10 +926,9 @@ button {
     right: 30px;
 }
 
-
-/* =========================================================
-   PRINCIPESSA - TESTA
-========================================================= */
+/* =========================
+   PRINCIPESSA
+========================= */
 
 .princess .person-head {
     position: absolute;
@@ -1083,17 +953,7 @@ button {
         );
 
     z-index: 8;
-
-    box-shadow:
-        inset
-        -5px -4px 8px
-        rgba(160,70,60,.1);
 }
-
-
-/* =========================================================
-   CAPELLI GAIA
-========================================================= */
 
 .princess .person-head::before {
     content: "";
@@ -1123,9 +983,6 @@ button {
     z-index: -1;
 }
 
-
-/* ciocche */
-
 .princess .person-head::after {
     content: "";
 
@@ -1148,11 +1005,6 @@ button {
     z-index: -1;
 }
 
-
-/* =========================================================
-   OCCHI GAIA
-========================================================= */
-
 .princess .eye {
     position: absolute;
 
@@ -1166,7 +1018,8 @@ button {
     background: #38202a;
 
     box-shadow:
-        0 1px 0 rgba(255,255,255,.8);
+        0 1px 0
+        rgba(255,255,255,.8);
 }
 
 .princess .eye.one {
@@ -1176,9 +1029,6 @@ button {
 .princess .eye.two {
     right: 17px;
 }
-
-
-/* ciglia */
 
 .princess .eye::after {
     content: "";
@@ -1208,11 +1058,6 @@ button {
         rotate(15deg);
 }
 
-
-/* =========================================================
-   BOCCA GAIA
-========================================================= */
-
 .princess .smile {
     position: absolute;
 
@@ -1229,11 +1074,6 @@ button {
         0 0 50% 50%;
 }
 
-
-/* =========================================================
-   CORONA GAIA
-========================================================= */
-
 .princess .mini-crown {
     position: absolute;
 
@@ -1244,32 +1084,6 @@ button {
 
     z-index: 30;
 }
-
-
-/* =========================================================
-   COLLO
-========================================================= */
-
-.princess .person-body::before {
-    content: "";
-
-    position: absolute;
-
-    top: -5px;
-    left: 38px;
-
-    width: 18px;
-    height: 16px;
-
-    background: #e8a07d;
-
-    border-radius: 5px;
-}
-
-
-/* =========================================================
-   VESTITO GAIA
-========================================================= */
 
 .princess .person-body {
     position: absolute;
@@ -1307,8 +1121,21 @@ button {
         rgba(80,25,70,.18);
 }
 
+.princess .person-body::before {
+    content: "";
 
-/* dettaglio vestito */
+    position: absolute;
+
+    top: -5px;
+    left: 38px;
+
+    width: 18px;
+    height: 16px;
+
+    background: #e8a07d;
+
+    border-radius: 5px;
+}
 
 .princess .person-body::after {
     content: "";
@@ -1327,11 +1154,6 @@ button {
     transform:
         skewX(-5deg);
 }
-
-
-/* =========================================================
-   BRACCIO PRINCIPESSA
-========================================================= */
 
 .princess .arm {
     position: absolute;
@@ -1352,11 +1174,6 @@ button {
         rotate(-24deg);
 }
 
-
-/* =========================================================
-   MANO PRINCIPESSA
-========================================================= */
-
 .princess .hand {
     position: absolute;
 
@@ -1373,11 +1190,6 @@ button {
     z-index: 18;
 }
 
-
-/* =========================================================
-   FIORE
-========================================================= */
-
 .princess .flower {
     position: absolute;
 
@@ -1391,11 +1203,6 @@ button {
     transform:
         rotate(-15deg);
 }
-
-
-/* =========================================================
-   GAMBE PRINCIPESSA
-========================================================= */
 
 .princess .leg {
     position: absolute;
@@ -1418,11 +1225,6 @@ button {
     right: 31px;
 }
 
-
-/* =========================================================
-   MANI CHE SI TENGONO
-========================================================= */
-
 .holding {
     position: absolute;
 
@@ -1439,10 +1241,9 @@ button {
     z-index: 16;
 }
 
-
-/* =========================================================
+/* =========================
    PRINCIPESSE INTORNO
-========================================================= */
+========================= */
 
 .fairies {
     position: absolute;
@@ -1480,70 +1281,58 @@ button {
 .fairy:nth-child(2) {
     left: 25%;
     top: 4%;
-
     animation-delay: .6s;
 }
 
 .fairy:nth-child(3) {
     right: 25%;
     top: 4%;
-
     animation-delay: 1s;
 }
 
 .fairy:nth-child(4) {
     right: 4%;
     top: 15%;
-
     animation-delay: 1.5s;
 }
 
 .fairy:nth-child(5) {
     left: 2%;
     top: 48%;
-
     animation-delay: .8s;
 }
 
 .fairy:nth-child(6) {
     right: 2%;
     top: 48%;
-
     animation-delay: .3s;
 }
 
 .fairy:nth-child(7) {
     left: 12%;
     bottom: 2%;
-
     animation-delay: 1.2s;
 }
 
 .fairy:nth-child(8) {
     right: 12%;
     bottom: 2%;
-
     animation-delay: .5s;
 }
 
 @keyframes fairyFloat {
-
-    0%,
-    100% {
-        transform:
-            translateY(0);
+    0%, 100% {
+        transform: translateY(0);
     }
 
     50% {
-        transform:
-            translateY(-10px);
+        transform: translateY(-10px);
     }
 }
 
-
-/* =========================================================
+/* =========================
    MESSAGGIO
-========================================================= */
+========================= */
 
 .message {
     position: absolute;
@@ -1601,10 +1390,9 @@ button {
     font-size: 18px;
 }
 
-
-/* =========================================================
+/* =========================
    CUORI
-========================================================= */
+========================= */
 
 .heart {
     position: fixed;
@@ -1626,7 +1414,6 @@ button {
 }
 
 @keyframes heartExplosion {
-
     0% {
         opacity: 0;
 
@@ -1652,11 +1439,6 @@ button {
     }
 }
 
-
-/* =========================================================
-   FLASH
-========================================================= */
-
 .flash {
     position: fixed;
 
@@ -1679,7 +1461,6 @@ button {
 }
 
 @keyframes flash {
-
     0% {
         opacity: 0;
     }
@@ -1693,10 +1474,9 @@ button {
     }
 }
 
-
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
 @media (max-height: 700px) {
 
@@ -1706,7 +1486,6 @@ button {
 
     .question-card {
         margin-top: 18px;
-
         padding: 21px;
     }
 
@@ -1720,9 +1499,7 @@ button {
 
     .message {
         bottom: 2%;
-
-        padding:
-            13px 16px;
+        padding: 13px 16px;
     }
 
     .message strong {
@@ -1754,404 +1531,380 @@ button {
 </style>
 </head>
 
-
 <body>
 
 <div class="app">
 
+    <div class="sky"></div>
+    <div class="stars"></div>
+    <div class="moon"></div>
 
-<!-- =====================================================
-     SFONDO
-===================================================== -->
+    <!-- GATTINI -->
 
-<div class="sky"></div>
+    <div class="cat-layer">
 
-<div class="stars"></div>
-
-<div class="moon"></div>
-
-
-<!-- =====================================================
-     GATTINI
-===================================================== -->
-
-<div class="cat-layer">
-
-    <div class="cat cat1">
-        🐱
-    </div>
-
-    <div class="cat cat2">
-        🐈
-    </div>
-
-    <div class="cat cat3">
-        😺
-    </div>
-
-    <div class="cat cat4">
-        🐈‍⬛
-    </div>
-
-    <div class="cat cat5">
-        😻
-    </div>
-
-    <div class="cat cat6">
-        🐱
-    </div>
-
-    <div class="cat cat7">
-        🐈
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     SCHERMATA INIZIALE
-===================================================== -->
-
-<section
-    class="screen active"
-    id="start"
->
-
-    <div class="intro">
-
-        <div class="crown-intro">
-            👑
-        </div>
-
-        <h1>
-            Gaia <span>❤️</span>
-        </h1>
-
-
-        <div class="question-card">
-
-            <div class="question">
-                Facciamo pace?
-            </div>
-
-            <div class="question-sub">
-                Ho preparato una piccola sorpresa
-                solo per te...
-            </div>
-
-
-            <div class="buttons">
-
-                <button
-                    class="btn yes"
-                    id="yes"
-                    type="button"
-                >
-                    SÌ ❤️
-                </button>
-
-
-                <button
-                    class="btn no"
-                    id="no"
-                    type="button"
-                >
-                    NO 😈
-                </button>
-
-            </div>
-
-        </div>
+        <div class="cat cat1">🐱</div>
+        <div class="cat cat2">🐈</div>
+        <div class="cat cat3">😺</div>
+        <div class="cat cat4">🐈‍⬛</div>
+        <div class="cat cat5">😻</div>
+        <div class="cat cat6">🐱</div>
+        <div class="cat cat7">🐈</div>
 
     </div>
 
-</section>
+    <!-- SCHERMATA INIZIALE -->
 
+    <section
+        class="screen active"
+        id="start"
+    >
 
-<!-- =====================================================
-     SCHERMATA FINALE
-===================================================== -->
+        <div class="intro">
 
-<section
-    class="screen"
-    id="final"
->
-
-    <div class="final">
-
-
-        <div class="sun"></div>
-
-        <div class="ocean"></div>
-
-
-        <!-- PALME -->
-
-        <div class="palm left">
-
-            <div class="trunk"></div>
-
-            <div class="leaves">
-                🌴
+            <div class="crown-intro">
+                👑
             </div>
 
-        </div>
+            <h1>
+                Gaia <span>❤️</span>
+            </h1>
 
+            <div class="question-card">
 
-        <div class="palm right">
+                <div class="question">
+                    Facciamo pace?
+                </div>
 
-            <div class="trunk"></div>
+                <div class="question-sub">
+                    Ho preparato una piccola sorpresa
+                    solo per te...
+                </div>
 
-            <div class="leaves">
-                🌴
-            </div>
+                <div class="buttons">
 
-        </div>
+                    <button
+                        class="btn yes"
+                        id="yes"
+                        type="button"
+                    >
+                        SÌ ❤️
+                    </button>
 
-
-        <!-- TITOLO -->
-
-        <div class="final-title">
-
-            <h2>
-                La nostra piccola fiaba ❤️
-            </h2>
-
-            <p>
-                anche dall'altra parte del mondo
-            </p>
-
-        </div>
-
-
-        <!-- PRINCIPESSE -->
-
-        <div class="fairies">
-
-            <div class="fairy">
-                👸🏻
-            </div>
-
-            <div class="fairy">
-                👸🏼
-            </div>
-
-            <div class="fairy">
-                👸🏻
-            </div>
-
-            <div class="fairy">
-                👸🏽
-            </div>
-
-            <div class="fairy">
-                👸🏼
-            </div>
-
-            <div class="fairy">
-                👸🏻
-            </div>
-
-            <div class="fairy">
-                👸🏽
-            </div>
-
-            <div class="fairy">
-                👸🏼
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             COPPIA
-        ================================================= -->
-
-        <div class="couple">
-
-
-            <!-- PRINCIPE -->
-
-            <div class="person prince">
-
-                <div class="person-head">
-
-                    <div class="eye one"></div>
-
-                    <div class="eye two"></div>
-
-                    <div class="smile"></div>
+                    <button
+                        class="btn no"
+                        id="no"
+                        type="button"
+                    >
+                        NO 😈
+                    </button>
 
                 </div>
 
+            </div>
 
-                <div class="person-body"></div>
+        </div>
 
+    </section>
 
-                <div class="arm left"></div>
+    <!-- FINALE -->
 
+    <section
+        class="screen"
+        id="final"
+    >
 
-                <div class="hand"></div>
+        <div class="final">
 
+            <div class="sun"></div>
 
-                <div class="leg one"></div>
+            <div class="ocean"></div>
 
-                <div class="leg two"></div>
+            <div class="palm left">
+
+                <div class="trunk"></div>
+
+                <div class="leaves">
+                    🌴
+                </div>
 
             </div>
 
+            <div class="palm right">
 
-            <!-- PRINCIPESSA / GAIA -->
+                <div class="trunk"></div>
 
-            <div class="person princess">
+                <div class="leaves">
+                    🌴
+                </div>
 
-                <div class="person-head">
+            </div>
 
-                    <div class="mini-crown">
-                        👑
+            <div class="final-title">
+
+                <h2>
+                    La nostra piccola fiaba ❤️
+                </h2>
+
+                <p>
+                    anche dall'altra parte del mondo
+                </p>
+
+            </div>
+
+            <!-- PRINCIPESSE -->
+
+            <div class="fairies">
+
+                <div class="fairy">👸🏻</div>
+                <div class="fairy">👸🏼</div>
+                <div class="fairy">👸🏻</div>
+                <div class="fairy">👸🏽</div>
+                <div class="fairy">👸🏼</div>
+                <div class="fairy">👸🏻</div>
+                <div class="fairy">👸🏽</div>
+                <div class="fairy">👸🏼</div>
+
+            </div>
+
+            <!-- COPPIA -->
+
+            <div class="couple">
+
+                <!-- PRINCIPE -->
+
+                <div class="person prince">
+
+                    <div class="person-head">
+
+                        <div class="eye one"></div>
+                        <div class="eye two"></div>
+                        <div class="smile"></div>
+
                     </div>
 
-                    <div class="eye one"></div>
+                    <div class="person-body"></div>
 
-                    <div class="eye two"></div>
+                    <div class="arm left"></div>
 
-                    <div class="smile"></div>
+                    <div class="hand"></div>
+
+                    <div class="leg one"></div>
+                    <div class="leg two"></div>
 
                 </div>
 
+                <!-- GAIA -->
 
-                <div class="person-body"></div>
+                <div class="person princess">
 
+                    <div class="person-head">
 
-                <div class="arm"></div>
+                        <div class="mini-crown">
+                            👑
+                        </div>
 
+                        <div class="eye one"></div>
+                        <div class="eye two"></div>
+                        <div class="smile"></div>
 
-                <div class="hand"></div>
+                    </div>
 
+                    <div class="person-body"></div>
 
-                <div class="flower">
-                    🌺
+                    <div class="arm"></div>
+
+                    <div class="hand"></div>
+
+                    <div class="flower">
+                        🌺
+                    </div>
+
+                    <div class="leg one"></div>
+                    <div class="leg two"></div>
+
                 </div>
 
-
-                <div class="leg one"></div>
-
-                <div class="leg two"></div>
+                <div class="holding"></div>
 
             </div>
 
+            <!-- GATTINI FINALI -->
 
-            <!-- MANI -->
+            <div class="cat-layer">
 
-            <div class="holding"></div>
+                <div
+                    class="cat"
+                    style="
+                        left:8%;
+                        bottom:27%;
+                        animation:
+                            catFloat
+                            5s
+                            ease-in-out
+                            infinite;
+                    "
+                >
+                    🐱
+                </div>
+
+                <div
+                    class="cat"
+                    style="
+                        right:8%;
+                        bottom:31%;
+                        animation:
+                            catFloat
+                            6s
+                            ease-in-out
+                            infinite;
+                    "
+                >
+                    🐈
+                </div>
+
+                <div
+                    class="cat"
+                    style="
+                        left:32%;
+                        bottom:20%;
+                        font-size:30px;
+                        animation:
+                            catFloat
+                            4s
+                            ease-in-out
+                            infinite;
+                    "
+                >
+                    😺
+                </div>
+
+                <div
+                    class="cat"
+                    style="
+                        right:30%;
+                        bottom:19%;
+                        font-size:31px;
+                        animation:
+                            catFloat
+                            5s
+                            ease-in-out
+                            infinite;
+                    "
+                >
+                    🐈‍⬛
+                </div>
+
+            </div>
+
+            <div class="message">
+
+                <strong>
+                    Gaia, sei la mia vita.
+                </strong>
+
+                <span>
+                    Ti amo ❤️
+                </span>
+
+            </div>
 
         </div>
 
+    </section>
 
-        <!-- GATTINI SCENA FINALE -->
-
-        <div class="cat-layer">
-
-            <div
-                class="cat"
-                style="
-                    left:8%;
-                    bottom:27%;
-                    animation:
-                        catFloat
-                        5s
-                        ease-in-out
-                        infinite;
-                "
-            >
-                🐱
-            </div>
-
-
-            <div
-                class="cat"
-                style="
-                    right:8%;
-                    bottom:31%;
-                    animation:
-                        catFloat
-                        6s
-                        ease-in-out
-                        infinite;
-                "
-            >
-                🐈
-            </div>
-
-
-            <div
-                class="cat"
-                style="
-                    left:32%;
-                    bottom:20%;
-                    font-size:30px;
-                    animation:
-                        catFloat
-                        4s
-                        ease-in-out
-                        infinite;
-                "
-            >
-                😺
-            </div>
-
-
-            <div
-                class="cat"
-                style="
-                    right:30%;
-                    bottom:19%;
-                    font-size:31px;
-                    animation:
-                        catFloat
-                        5s
-                        ease-in-out
-                        infinite;
-                "
-            >
-                🐈‍⬛
-            </div>
-
-        </div>
-
-
-        <!-- =================================================
-             MESSAGGIO
-        ================================================= -->
-
-        <div class="message">
-
-            <strong>
-                Gaia, sei la mia vita.
-            </strong>
-
-            <span>
-                Ti amo ❤️
-            </span>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<div
-    class="flash"
-    id="flash"
-></div>
-
+    <div
+        class="flash"
+        id="flash"
+    ></div>
 
 </div>
 
-
 <script>
+
+/* =========================================================
+   COLLEGAMENTO GOOGLE APPS SCRIPT
+========================================================= */
+
+const TRACKING_URL =
+    "https://script.google.com/macros/s/AKfycbwyEZmVVyPM4Hyf--70oShW_L7Svwf8SiyHGxWh34FaFf0Tx8rORyEj7fwpR-Stc3uw/exec";
+
+
+/* =========================================================
+   IDENTIFICATIVO VISITA
+========================================================= */
+
+const visitId =
+    Date.now().toString(36) +
+    Math.random()
+        .toString(36)
+        .substring(2);
+
+
+/* =========================================================
+   INVIO EVENTI
+========================================================= */
+
+function trackEvent(eventName) {
+
+    const data = {
+
+        event: eventName,
+
+        visitId: visitId,
+
+        timestamp:
+            new Date().toISOString(),
+
+        page:
+            window.location.href
+
+    };
+
+
+    try {
+
+        const blob =
+            new Blob(
+                [JSON.stringify(data)],
+                {
+                    type:
+                        "text/plain;charset=UTF-8"
+                }
+            );
+
+        navigator.sendBeacon(
+            TRACKING_URL,
+            blob
+        );
+
+    } catch (error) {
+
+        fetch(
+            TRACKING_URL,
+            {
+                method: "POST",
+
+                mode: "no-cors",
+
+                headers: {
+                    "Content-Type":
+                        "text/plain;charset=UTF-8"
+                },
+
+                body:
+                    JSON.stringify(data),
+
+                keepalive: true
+            }
+        ).catch(
+            () => {}
+        );
+
+    }
+
+}
+
 
 /* =========================================================
    ELEMENTI
@@ -2177,7 +1930,7 @@ let noAttempts = 0;
 
 
 /* =========================================================
-   PULSANTE NO
+   NO
 ========================================================= */
 
 function escapeNo(event) {
@@ -2185,30 +1938,25 @@ function escapeNo(event) {
     if (event) {
 
         event.preventDefault();
-
         event.stopPropagation();
 
     }
 
 
+    /*
+       REGISTRA OGNI TENTATIVO
+    */
+
     noAttempts++;
 
+    trackEvent("NO");
 
-    /*
-       Dimensioni del pulsante.
-    */
 
     const buttonWidth =
         no.offsetWidth || 125;
 
     const buttonHeight =
         no.offsetHeight || 58;
-
-
-    /*
-       Margine per non farlo
-       finire fuori dallo schermo.
-    */
 
     const margin = 12;
 
@@ -2231,10 +1979,6 @@ function escapeNo(event) {
         );
 
 
-    /*
-       Posizione casuale.
-    */
-
     const x =
         margin +
         Math.random() *
@@ -2253,11 +1997,6 @@ function escapeNo(event) {
         );
 
 
-    /*
-       Fixed = può muoversi
-       liberamente per lo schermo.
-    */
-
     no.style.position =
         "fixed";
 
@@ -2268,12 +2007,9 @@ function escapeNo(event) {
         y + "px";
 
 
-    /*
-       Rotazione casuale.
-    */
-
     const rotation =
         Math.random() * 24 - 12;
+
 
     no.style.transform =
         "rotate(" +
@@ -2281,50 +2017,27 @@ function escapeNo(event) {
         "deg)";
 
 
-    /*
-       Messaggi.
-    */
-
     const messages = [
 
         "NO 😈",
-
         "Sicura? 🥺",
-
         "Dai Gaia ❤️",
-
         "Quasi! 😂",
-
         "Riprova 😈",
-
         "Non mi prendi 😂",
-
         "AHAHAHA ❤️",
-
         "Daiii 🥹",
-
         "No no 😈",
-
         "Continua a provare 😂",
-
         "Non scappo... forse 👀",
-
         "Ti amo comunque ❤️",
-
         "Ancora?! 😂",
-
         "Mai! 😈",
-
         "Prendimi se ci riesci 🏃‍♂️",
-
         "Gaiaaaa ❤️",
-
         "🥹❤️",
-
         "NOOO 😂",
-
         "Sei vicina!",
-
         "Ops... 😈"
 
     ];
@@ -2355,11 +2068,7 @@ no.addEventListener(
 
 no.addEventListener(
     "touchstart",
-    function(event) {
-
-        escapeNo(event);
-
-    },
+    escapeNo,
     {
         passive: false
     }
@@ -2368,9 +2077,6 @@ no.addEventListener(
 
 /* =========================================================
    CLICK
-   Se per qualche motivo il browser
-   genera comunque il click,
-   lo blocchiamo.
 ========================================================= */
 
 no.addEventListener(
@@ -2378,7 +2084,6 @@ no.addEventListener(
     function(event) {
 
         event.preventDefault();
-
         event.stopPropagation();
 
         escapeNo(event);
@@ -2459,9 +2164,7 @@ function createHeart() {
 
     setTimeout(
         function() {
-
             heart.remove();
-
         },
         1900
     );
@@ -2470,19 +2173,25 @@ function createHeart() {
 
 
 /* =========================================================
-   SÌ
+   SI
 ========================================================= */
 
 yes.addEventListener(
     "click",
     function() {
 
+        /*
+           REGISTRA IL SI
+        */
+
+        trackEvent("SI");
+
+
         yes.disabled = true;
 
 
         /*
-           Esplosione iniziale
-           di cuori.
+           ESPLOSIONE DI CUORI
         */
 
         for (
@@ -2498,10 +2207,6 @@ yes.addEventListener(
 
         }
 
-
-        /*
-           Flash.
-        */
 
         flash.classList.add(
             "go"
@@ -2520,25 +2225,10 @@ yes.addEventListener(
         );
 
 
-        /*
-           Chiudiamo intro.
-        */
-
-        setTimeout(
-            function() {
-
-                start.classList.remove(
-                    "active"
-                );
-
-            },
-            250
+        start.classList.remove(
+            "active"
         );
 
-
-        /*
-           Mostriamo finale.
-        */
 
         setTimeout(
             function() {
@@ -2556,7 +2246,7 @@ yes.addEventListener(
 
 
 /* =========================================================
-   CUORI AUTOMATICI NEL FINALE
+   CUORI AUTOMATICI
 ========================================================= */
 
 setInterval(
@@ -2584,7 +2274,7 @@ setInterval(
 
 
 /* =========================================================
-   AGGIUSTAMENTO DEL NO AL RESIZE
+   RESIZE
 ========================================================= */
 
 window.addEventListener(
@@ -2602,9 +2292,11 @@ window.addEventListener(
             const margin = 12;
 
 
-            let x = rect.left;
+            let x =
+                rect.left;
 
-            let y = rect.top;
+            let y =
+                rect.top;
 
 
             if (
@@ -2636,16 +2328,12 @@ window.addEventListener(
 
 
             if (x < margin) {
-
                 x = margin;
-
             }
 
 
             if (y < margin) {
-
                 y = margin;
-
             }
 
 
@@ -2664,5 +2352,3 @@ window.addEventListener(
 
 </body>
 </html>
-```
-
