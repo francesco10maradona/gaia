@@ -1,0 +1,896 @@
+```html
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Per Gaia ❤️</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:#090719;
+    color:white;
+}
+
+.app{
+    position:relative;
+    width:100%;
+    height:100dvh;
+    overflow:hidden;
+}
+
+/* =========================
+   SFONDO
+========================= */
+
+.background{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 50% 25%,#44264f 0%,#171129 38%,#080712 100%);
+}
+
+.background::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1px),
+        radial-gradient(circle,rgba(255,180,220,.55) 1px,transparent 1px);
+    background-size:75px 75px,130px 130px;
+    background-position:20px 20px,60px 80px;
+    animation:stars 18s linear infinite;
+}
+
+@keyframes stars{
+    from{transform:translateY(0)}
+    to{transform:translateY(70px)}
+}
+
+/* =========================
+   SCHERMATE
+========================= */
+
+.screen{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    opacity:0;
+    visibility:hidden;
+    transform:scale(1.05);
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.screen.active{
+    opacity:1;
+    visibility:visible;
+    transform:scale(1);
+}
+
+/* =========================
+   PRIMA PAGINA
+========================= */
+
+.start{
+    width:min(100%,430px);
+    text-align:center;
+}
+
+.crown{
+    font-size:42px;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-10px)}
+}
+
+.start h1{
+    margin:15px 0 0;
+    font-size:clamp(48px,14vw,75px);
+    line-height:.9;
+    letter-spacing:-4px;
+}
+
+.start h1 span{
+    color:#ff75a8;
+}
+
+.question{
+    margin:22px 0 8px;
+    font-family:Georgia,serif;
+    font-size:clamp(27px,7vw,38px);
+}
+
+.subtitle{
+    color:rgba(255,255,255,.55);
+    font-size:15px;
+    line-height:1.5;
+    max-width:300px;
+    margin:0 auto;
+}
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    justify-content:center;
+    gap:14px;
+}
+
+.btn{
+    min-width:125px;
+    min-height:58px;
+    padding:14px 22px;
+    border-radius:999px;
+    font-size:17px;
+    font-weight:800;
+    color:white;
+}
+
+.yes{
+    background:linear-gradient(135deg,#ff3976,#ff82ad);
+    box-shadow:0 12px 35px rgba(255,50,110,.3);
+}
+
+.no{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.14);
+    color:rgba(255,255,255,.75);
+}
+
+/* =========================
+   SCENA FINALE
+========================= */
+
+.final{
+    width:100%;
+    height:100%;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.final-title{
+    position:absolute;
+    top:7%;
+    text-align:center;
+    z-index:20;
+}
+
+.final-title h2{
+    margin:0;
+    font-family:Georgia,serif;
+    font-size:clamp(31px,8vw,48px);
+}
+
+.final-title p{
+    margin:8px 0 0;
+    color:#ff8fb7;
+}
+
+/* =========================
+   CASTELLO
+========================= */
+
+.castle{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:110%;
+    height:37%;
+    opacity:.17;
+}
+
+.castle-body{
+    position:absolute;
+    bottom:0;
+    left:25%;
+    width:50%;
+    height:65%;
+    background:#dca9ce;
+    border-radius:8px 8px 0 0;
+}
+
+.tower{
+    position:absolute;
+    bottom:0;
+    width:18%;
+    height:90%;
+    background:#e6b7da;
+}
+
+.tower.left{left:7%}
+.tower.right{right:7%}
+
+.roof{
+    position:absolute;
+    top:-32px;
+    left:-10%;
+    width:120%;
+    height:60px;
+    background:#a969a7;
+    clip-path:polygon(50% 0,100% 100%,0 100%);
+}
+
+/* =========================
+   PERSONAGGI CENTRALI
+========================= */
+
+.couple{
+    position:absolute;
+    top:24%;
+    width:210px;
+    height:300px;
+    z-index:10;
+}
+
+.character{
+    position:absolute;
+    bottom:0;
+    width:105px;
+    height:270px;
+}
+
+.character.male{
+    left:0;
+}
+
+.character.female{
+    right:0;
+    transform:scaleX(-1);
+}
+
+/* capelli */
+
+.head{
+    position:absolute;
+    top:0;
+    left:25px;
+    width:65px;
+    height:70px;
+    border-radius:50%;
+    background:#e7a07e;
+    z-index:4;
+}
+
+.male .head::before{
+    content:"";
+    position:absolute;
+    top:-7px;
+    left:-4px;
+    width:73px;
+    height:35px;
+    background:#3c2119;
+    border-radius:50% 50% 30% 30%;
+}
+
+.female .head::before{
+    content:"";
+    position:absolute;
+    top:-12px;
+    left:-10px;
+    width:85px;
+    height:95px;
+    background:#6d351d;
+    border-radius:50%;
+    z-index:-1;
+}
+
+/* occhi */
+
+.eye{
+    position:absolute;
+    top:31px;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#351e24;
+}
+
+.eye.left{left:18px}
+.eye.right{right:18px}
+
+/* corpo */
+
+.body{
+    position:absolute;
+    top:65px;
+    left:15px;
+    width:78px;
+    height:115px;
+    border-radius:35px 35px 18px 18px;
+    background:linear-gradient(#4d1c30,#251321);
+}
+
+/* braccia */
+
+.arm{
+    position:absolute;
+    top:82px;
+    width:16px;
+    height:105px;
+    border-radius:20px;
+    background:#e3a07f;
+}
+
+.arm.left{
+    left:5px;
+    transform:rotate(25deg);
+}
+
+.arm.right{
+    right:5px;
+    transform:rotate(-30deg);
+}
+
+/* gambe */
+
+.leg{
+    position:absolute;
+    top:170px;
+    width:22px;
+    height:100px;
+    background:#3c1c2c;
+    border-radius:20px;
+}
+
+.leg.left{
+    left:28px;
+    transform:rotate(8deg);
+}
+
+.leg.right{
+    right:28px;
+    transform:rotate(-8deg);
+}
+
+/* mantello stilizzato */
+
+.male::after{
+    content:"";
+    position:absolute;
+    top:70px;
+    left:3px;
+    width:90px;
+    height:145px;
+    background:linear-gradient(160deg,#62335d,#27152e);
+    clip-path:polygon(30% 0,100% 10%,85% 100%,0 80%);
+    z-index:-1;
+}
+
+/* =========================
+   PRINCIPESSE INTORNO
+========================= */
+
+.princesses{
+    position:absolute;
+    inset:15% 0 12%;
+    z-index:5;
+}
+
+.princess{
+    position:absolute;
+    width:62px;
+    height:105px;
+    text-align:center;
+    animation:princessFloat 3s ease-in-out infinite;
+}
+
+.princess span{
+    display:block;
+    font-size:38px;
+    filter:drop-shadow(0 4px 8px rgba(0,0,0,.3));
+}
+
+.princess small{
+    font-size:9px;
+    color:rgba(255,255,255,.75);
+}
+
+@keyframes princessFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+}
+
+/* posizioni */
+
+.p1{left:4%;top:5%;animation-delay:.1s}
+.p2{left:25%;top:0;animation-delay:.4s}
+.p3{right:25%;top:0;animation-delay:.8s}
+.p4{right:4%;top:5%;animation-delay:1.2s}
+
+.p5{left:1%;top:40%;animation-delay:.5s}
+.p6{right:1%;top:40%;animation-delay:1s}
+
+.p7{left:10%;bottom:2%;animation-delay:1.3s}
+.p8{left:32%;bottom:0;animation-delay:.7s}
+.p9{right:32%;bottom:0;animation-delay:1.5s}
+.p10{right:10%;bottom:2%;animation-delay:.3s}
+
+/* =========================
+   CUORE CENTRALE
+========================= */
+
+.big-heart{
+    position:absolute;
+    top:43%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:40px;
+    z-index:15;
+    animation:heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:translate(-50%,-50%) scale(1)}
+    50%{transform:translate(-50%,-50%) scale(1.3)}
+}
+
+/* =========================
+   MESSAGGIO
+========================= */
+
+.message{
+    position:absolute;
+    bottom:5%;
+    width:min(90%,390px);
+    padding:20px;
+    text-align:center;
+    border-radius:25px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.13);
+    backdrop-filter:blur(15px);
+    z-index:30;
+}
+
+.message strong{
+    display:block;
+    font-family:Georgia,serif;
+    font-size:26px;
+}
+
+.message span{
+    display:block;
+    margin-top:7px;
+    color:#ff86ae;
+    font-size:19px;
+}
+
+/* =========================
+   PARTICELLE
+========================= */
+
+.heart{
+    position:fixed;
+    z-index:100;
+    pointer-events:none;
+    font-size:24px;
+    left:50%;
+    top:50%;
+    animation:heartFly 1.8s forwards;
+}
+
+@keyframes heartFly{
+    0%{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(.3);
+    }
+    15%{opacity:1}
+    100%{
+        opacity:0;
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(var(--r))
+            scale(1.3);
+    }
+}
+
+/* =========================
+   MOBILE PICCOLO
+========================= */
+
+@media(max-height:700px){
+
+    .final-title{
+        top:4%;
+    }
+
+    .couple{
+        top:20%;
+        transform:scale(.82);
+    }
+
+    .princess{
+        transform:scale(.82);
+    }
+
+    .message{
+        bottom:3%;
+        padding:15px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="background"></div>
+
+<!-- =========================
+     SCHERMATA INIZIALE
+========================= -->
+
+<section class="screen active" id="start">
+
+<div class="start">
+
+<div class="crown">👑</div>
+
+<h1>
+Gaia
+<span>❤️</span>
+</h1>
+
+<div class="question">
+Facciamo pace?
+</div>
+
+<p class="subtitle">
+Prima di rispondere...
+sappi che c'è una piccola sorpresa per te.
+</p>
+
+<div class="buttons">
+
+<button class="btn yes" id="yes">
+SÌ ❤️
+</button>
+
+<button class="btn no" id="no">
+NO 😈
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SCHERMATA FINALE
+========================= -->
+
+<section class="screen" id="final">
+
+<div class="final">
+
+<div class="final-title">
+<h2>Per la mia principessa ❤️</h2>
+<p>una coppia contro il mondo</p>
+</div>
+
+
+<!-- CASTELLO -->
+
+<div class="castle">
+
+<div class="castle-body"></div>
+
+<div class="tower left">
+<div class="roof"></div>
+</div>
+
+<div class="tower right">
+<div class="roof"></div>
+</div>
+
+</div>
+
+
+<!-- PRINCIPESSE -->
+
+<div class="princesses">
+
+<div class="princess p1">
+<span>👸🏻</span>
+<small>Biancaneve</small>
+</div>
+
+<div class="princess p2">
+<span>👸🏼</span>
+<small>Cenerentola</small>
+</div>
+
+<div class="princess p3">
+<span>👸🏻</span>
+<small>Aurora</small>
+</div>
+
+<div class="princess p4">
+<span>👸🏽</span>
+<small>Jasmine</small>
+</div>
+
+<div class="princess p5">
+<span>👸🏻</span>
+<small>Ariel</small>
+</div>
+
+<div class="princess p6">
+<span>👸🏼</span>
+<small>Belle</small>
+</div>
+
+<div class="princess p7">
+<span>👸🏻</span>
+<small>Rapunzel</small>
+</div>
+
+<div class="princess p8">
+<span>👸🏽</span>
+<small>Tiana</small>
+</div>
+
+<div class="princess p9">
+<span>👸🏼</span>
+<small>Anna</small>
+</div>
+
+<div class="princess p10">
+<span>👸🏼</span>
+<small>Elsa</small>
+</div>
+
+</div>
+
+
+<!-- COPPIA CENTRALE -->
+
+<div class="couple">
+
+<div class="character male">
+
+<div class="head">
+<div class="eye left"></div>
+<div class="eye right"></div>
+</div>
+
+<div class="body"></div>
+
+<div class="arm left"></div>
+<div class="arm right"></div>
+
+<div class="leg left"></div>
+<div class="leg right"></div>
+
+</div>
+
+
+<div class="character female">
+
+<div class="head">
+<div class="eye left"></div>
+<div class="eye right"></div>
+</div>
+
+<div class="body"></div>
+
+<div class="arm left"></div>
+<div class="arm right"></div>
+
+<div class="leg left"></div>
+<div class="leg right"></div>
+
+</div>
+
+</div>
+
+
+<div class="big-heart">
+❤️
+</div>
+
+
+<!-- MESSAGGIO -->
+
+<div class="message">
+
+<strong>Gaia, sei la mia vita.</strong>
+
+<span>Ti amo ❤️</span>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+
+const start = document.getElementById("start");
+const final = document.getElementById("final");
+
+let attempts = 0;
+
+
+/* =========================
+   NO SCAPPA
+========================= */
+
+function moveNo(e){
+
+if(e) e.preventDefault();
+
+attempts++;
+
+const width=no.offsetWidth;
+const height=no.offsetHeight;
+
+const margin=20;
+
+const x=
+Math.random()*
+(window.innerWidth-width-margin*2)
++margin;
+
+const y=
+Math.random()*
+(window.innerHeight-height-margin*2)
++margin;
+
+no.style.position="fixed";
+no.style.left=x+"px";
+no.style.top=y+"px";
+
+const texts=[
+"NO 😈",
+"Sicura? 🥺",
+"Daiii ❤️",
+"Riprova 😂",
+"Non vale 😭",
+"Gaiaaa ❤️",
+"NOOO 😂"
+];
+
+no.textContent=
+texts[Math.min(attempts,texts.length-1)];
+
+}
+
+
+/* desktop */
+
+no.addEventListener("mouseenter",moveNo);
+
+
+/* telefono */
+
+no.addEventListener(
+"touchstart",
+moveNo,
+{passive:false}
+);
+
+
+/* click */
+
+no.addEventListener("click",moveNo);
+
+
+/* =========================
+   CUORI
+========================= */
+
+function heart(){
+
+const h=document.createElement("div");
+
+h.className="heart";
+
+const emojis=[
+"❤️","💕","💗","💖","💘","✨","🩷"
+];
+
+h.textContent=
+emojis[
+Math.floor(Math.random()*emojis.length)
+];
+
+h.style.setProperty(
+"--x",
+(Math.random()*500-250)+"px"
+);
+
+h.style.setProperty(
+"--y",
+(-Math.random()*700-100)+"px"
+);
+
+h.style.setProperty(
+"--r",
+(Math.random()*90-45)+"deg"
+);
+
+document.body.appendChild(h);
+
+setTimeout(
+()=>h.remove(),
+1900
+);
+
+}
+
+
+/* =========================
+   SÌ
+========================= */
+
+yes.addEventListener("click",()=>{
+
+/* esplosione */
+
+for(let i=0;i<65;i++){
+
+setTimeout(
+heart,
+i*25
+);
+
+}
+
+
+/* uscita */
+
+start.classList.remove("active");
+
+
+/* entrata */
+
+setTimeout(()=>{
+
+final.classList.add("active");
+
+},300);
+
+});
+
+</script>
+
+</body>
+</html>
+```
