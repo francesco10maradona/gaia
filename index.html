@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -8,6 +9,7 @@
 <title>Per Gaia ❤️</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
@@ -37,6 +39,7 @@ button {
     height: 100dvh;
     overflow: hidden;
 }
+
 
 /* =========================================================
    SFONDO
@@ -402,11 +405,6 @@ button {
 
     touch-action: none;
 
-    /*
-       Movimento più morbido.
-       Niente transizione su left/top:
-       evita l'effetto "ballerino".
-    */
     transition:
         transform .12s ease-out;
 }
@@ -819,14 +817,9 @@ button {
 
 
 /* =========================================================
-   NUOVO VOLTO DI GAIA
+   VOLTO DI GAIA
+   STESSA PELLE DEL PRINCIPE
 ========================================================= */
-
-/*
-   Il volto ora è più stretto e ovale.
-   I capelli sono separati dal viso e cadono
-   ai lati come una vera acconciatura.
-*/
 
 .gaia .head {
     position: absolute;
@@ -838,146 +831,181 @@ button {
     height: 84px;
 
     border-radius:
-        47% 47% 50% 50%;
+        48% 48% 50% 50%;
 
     background:
         linear-gradient(
             135deg,
-            #f8c9a9 0%,
-            #f3b795 45%,
-            #e5a17f 100%
+            #f0b18d,
+            #db8f6c
         );
 
-    z-index: 10;
+    z-index: 20;
 
-    /*
-       Leggera ombra sotto il mento
-    */
     box-shadow:
         inset
         -4px -5px 8px
-        rgba(140,65,45,.10);
+        rgba(120,55,40,.12);
 }
 
 
-/*
+/* =========================================================
    CAPELLI PRINCIPALI
-*/
+========================================================= */
 
 .gaia .head::before {
     content: "";
 
     position: absolute;
 
-    top: -19px;
-    left: -25px;
+    top: -22px;
+    left: -27px;
 
-    width: 122px;
-    height: 132px;
+    width: 126px;
+    height: 145px;
 
     border-radius:
-        52% 48% 45% 50%;
+        55% 55% 42% 42%;
 
     background:
         linear-gradient(
             100deg,
-            #3d2118 0%,
-            #684024 27%,
-            #8a6235 48%,
-            #70451f 67%,
-            #3e2118 100%
+            #2b1712 0%,
+            #4a2719 18%,
+            #754421 38%,
+            #9a6a35 50%,
+            #754421 64%,
+            #4a2719 82%,
+            #2b1712 100%
         );
 
     z-index: -2;
 
     box-shadow:
-        3px 8px 10px
-        rgba(35,15,10,.22);
+        0 8px 15px
+        rgba(25,10,5,.35);
 }
 
 
-/*
-   APERTURA DEI CAPELLI:
-   lascia il viso scoperto al centro
-*/
+/* =========================================================
+   FRANGIA
+========================================================= */
 
 .gaia .head::after {
     content: "";
 
     position: absolute;
 
-    top: -8px;
-    left: -17px;
+    top: -18px;
+    left: -2px;
 
-    width: 106px;
-    height: 110px;
-
-    border-left:
-        17px solid
-        #633b21;
-
-    border-right:
-        17px solid
-        #633b21;
-
-    border-bottom:
-        13px solid
-        #5a351e;
+    width: 76px;
+    height: 34px;
 
     border-radius:
-        48% 48% 45% 45%;
+        55% 55% 40% 40%;
 
-    z-index: -1;
+    background:
+        linear-gradient(
+            90deg,
+            #422217,
+            #815128,
+            #4b2818
+        );
 
-    /*
-       I capelli rimangono dietro il viso
-    */
+    z-index: 25;
+
+    transform:
+        rotate(-2deg);
 }
 
 
-/*
-   Ciocche frontali leggere
-*/
+/* =========================================================
+   CIOCCHE LATERALI
+========================================================= */
 
 .gaia .hair-lock-left,
 .gaia .hair-lock-right {
     position: absolute;
 
-    top: 12px;
+    top: 7px;
 
-    width: 17px;
-    height: 75px;
+    width: 21px;
+    height: 105px;
 
-    border-radius: 50%;
+    border-radius:
+        50% 50% 45% 45%;
 
     background:
         linear-gradient(
             90deg,
-            #422319,
-            #79502c
+            #2d1812,
+            #6d4021,
+            #9a6937,
+            #4a2718
         );
 
-    z-index: 15;
+    z-index: 30;
+
+    box-shadow:
+        2px 4px 5px
+        rgba(30,12,5,.25);
 }
 
 .gaia .hair-lock-left {
-    left: -14px;
+    left: -18px;
 
     transform:
-        rotate(10deg);
+        rotate(8deg);
 }
 
 .gaia .hair-lock-right {
-    right: -14px;
+    right: -18px;
 
     transform:
-        rotate(-10deg);
+        rotate(-8deg);
 }
 
 
-/*
+/* =========================================================
+   CIOCCHE FRONTALI
+========================================================= */
+
+.gaia .hair-lock-left::after,
+.gaia .hair-lock-right::after {
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 60px;
+
+    top: 10px;
+
+    border-radius: 50%;
+
+    background:
+        #815128;
+}
+
+.gaia .hair-lock-left::after {
+    left: 6px;
+
+    transform:
+        rotate(-8deg);
+}
+
+.gaia .hair-lock-right::after {
+    right: 6px;
+
+    transform:
+        rotate(8deg);
+}
+
+
+/* =========================================================
    OCCHI GAIA
-*/
+========================================================= */
 
 .gaia .eye {
     position: absolute;
@@ -987,13 +1015,12 @@ button {
     width: 10px;
     height: 8px;
 
-    border-radius:
-        50%;
+    border-radius: 50%;
 
     background:
         #493039;
 
-    z-index: 20;
+    z-index: 40;
 }
 
 .gaia .eye::after {
@@ -1021,9 +1048,9 @@ button {
 }
 
 
-/*
+/* =========================================================
    SOPRACCIGLIA
-*/
+========================================================= */
 
 .gaia .eye.left::before,
 .gaia .eye.right::before {
@@ -1057,9 +1084,9 @@ button {
 }
 
 
-/*
+/* =========================================================
    NASO
-*/
+========================================================= */
 
 .gaia .nose {
     position: absolute;
@@ -1078,15 +1105,16 @@ button {
         1px solid
         rgba(150,70,55,.35);
 
-    border-radius: 0 0 5px 0;
+    border-radius:
+        0 0 5px 0;
 
-    z-index: 20;
+    z-index: 40;
 }
 
 
-/*
+/* =========================================================
    SORRISO
-*/
+========================================================= */
 
 .gaia .smile {
     position: absolute;
@@ -1104,13 +1132,13 @@ button {
     border-radius:
         0 0 50% 50%;
 
-    z-index: 20;
+    z-index: 40;
 }
 
 
-/*
-   PICCOLO ROSSETTO
-*/
+/* =========================================================
+   LABBRA
+========================================================= */
 
 .gaia .lips {
     position: absolute;
@@ -1126,7 +1154,7 @@ button {
     background:
         rgba(190,80,105,.30);
 
-    z-index: 19;
+    z-index: 39;
 }
 
 
@@ -1137,8 +1165,8 @@ button {
 .crown-small {
     position: absolute;
 
-    top: -30px;
-    left: 17px;
+    top: -31px;
+    left: 18px;
 
     z-index: 60;
 
@@ -1190,9 +1218,11 @@ button {
 
     border-radius: 20px;
 
-    background: #e9a27f;
+    background:
+        #e5a07c;
 
-    transform: rotate(22deg);
+    transform:
+        rotate(22deg);
 
     z-index: 10;
 }
@@ -1208,7 +1238,8 @@ button {
 
     border-radius: 50%;
 
-    background: #e9a27f;
+    background:
+        #e5a07c;
 
     z-index: 20;
 }
@@ -1229,7 +1260,8 @@ button {
 
     border-radius: 10px;
 
-    background: #e5a07c;
+    background:
+        #e5a07c;
 
     z-index: 25;
 }
@@ -1251,11 +1283,13 @@ button {
 }
 
 .prince .leg {
-    background: #26325b;
+    background:
+        #26325b;
 }
 
 .gaia .leg {
-    background: #824d73;
+    background:
+        #824d73;
 }
 
 .prince .leg.left,
@@ -1877,6 +1911,7 @@ button {
 
 <script>
 
+
 /* =========================================================
    GOOGLE APPS SCRIPT
 ========================================================= */
@@ -1935,6 +1970,7 @@ function trackEvent(eventName) {
         }
     )
     .catch(function() {});
+
 }
 
 
@@ -1962,14 +1998,17 @@ let noCount = 0;
 
 
 /* =========================================================
-   NO - MOVIMENTO FLUIDO
+   NO - SCAPPA PER TUTTO LO SCHERMO
 ========================================================= */
 
 function moveNo(event) {
 
     if (event) {
+
         event.preventDefault();
+
         event.stopPropagation();
+
     }
 
 
@@ -1978,11 +2017,6 @@ function moveNo(event) {
 
     trackEvent("NO");
 
-
-    /*
-       Passiamo a fixed solo quando
-       comincia a scappare.
-    */
 
     no.style.position = "fixed";
 
@@ -1997,12 +2031,6 @@ function moveNo(event) {
     const height =
         rect.height;
 
-
-    /*
-       Area sicura.
-       Evitiamo che il pulsante finisca
-       sotto i bordi dello schermo.
-    */
 
     const margin = 18;
 
@@ -2046,12 +2074,6 @@ function moveNo(event) {
             maxY - margin
         );
 
-
-    /*
-       Usiamo transform per il piccolo
-       movimento finale invece di animare
-       left/top.
-    */
 
     no.style.left =
         x + "px";
@@ -2116,6 +2138,7 @@ function moveNo(event) {
             noCount %
             messages.length
         ];
+
 }
 
 
@@ -2167,6 +2190,7 @@ function createHeart() {
 
 
     const hearts = [
+
         "❤️",
         "💕",
         "💗",
@@ -2174,6 +2198,7 @@ function createHeart() {
         "💘",
         "💞",
         "✨"
+
     ];
 
 
@@ -2227,10 +2252,13 @@ function createHeart() {
 
     setTimeout(
         function() {
+
             heart.remove();
+
         },
         1900
     );
+
 }
 
 
@@ -2241,6 +2269,7 @@ function createHeart() {
 yes.addEventListener(
     "click",
     function() {
+
 
         trackEvent("SI");
 
@@ -2334,7 +2363,9 @@ window.addEventListener(
             !==
             "fixed"
         ) {
+
             return;
+
         }
 
 
@@ -2387,12 +2418,16 @@ window.addEventListener(
 
 
         if (x < margin) {
+
             x = margin;
+
         }
 
 
         if (y < margin) {
+
             y = margin;
+
         }
 
 
@@ -2409,4 +2444,4 @@ window.addEventListener(
 
 </body>
 </html>
-
+```
