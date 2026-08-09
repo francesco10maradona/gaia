@@ -1,9 +1,9 @@
-```html
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
 <title>Per Gaia ❤️</title>
 
 <style>
@@ -21,8 +21,12 @@ html,body{
 
 body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    background:#090719;
+    background:#100b25;
     color:white;
+}
+
+button{
+    font:inherit;
 }
 
 .app{
@@ -32,37 +36,54 @@ body{
     overflow:hidden;
 }
 
-/* =========================
-   SFONDO
-========================= */
-
-.background{
+.sky{
     position:absolute;
     inset:0;
     background:
-        radial-gradient(circle at 50% 25%,#44264f 0%,#171129 38%,#080712 100%);
+        radial-gradient(circle at 50% 15%,rgba(255,154,205,.45),transparent 35%),
+        linear-gradient(180deg,#170e35 0%,#29153f 40%,#5b2858 68%,#e4779d 100%);
 }
 
-.background::before{
-    content:"";
+.stars{
     position:absolute;
     inset:0;
+    opacity:.8;
     background-image:
-        radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1px),
-        radial-gradient(circle,rgba(255,180,220,.55) 1px,transparent 1px);
-    background-size:75px 75px,130px 130px;
-    background-position:20px 20px,60px 80px;
-    animation:stars 18s linear infinite;
+        radial-gradient(circle,white 1px,transparent 1.5px),
+        radial-gradient(circle,rgba(255,255,255,.7) 1px,transparent 1.5px);
+    background-size:73px 73px,127px 127px;
+    background-position:10px 15px,45px 60px;
+    animation:starsMove 25s linear infinite;
 }
 
-@keyframes stars{
+@keyframes starsMove{
     from{transform:translateY(0)}
-    to{transform:translateY(70px)}
+    to{transform:translateY(80px)}
 }
 
-/* =========================
-   SCHERMATE
-========================= */
+.moon{
+    position:absolute;
+    top:7%;
+    right:9%;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    background:#fff4d6;
+    box-shadow:
+        0 0 25px rgba(255,239,190,.7),
+        0 0 70px rgba(255,205,220,.25);
+}
+
+.moon:after{
+    content:"";
+    position:absolute;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#1c1038;
+    left:18px;
+    top:-5px;
+}
 
 .screen{
     position:absolute;
@@ -70,10 +91,10 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:25px;
+    padding:24px;
     opacity:0;
     visibility:hidden;
-    transform:scale(1.05);
+    transform:scale(1.06);
     transition:
         opacity .8s ease,
         transform .8s cubic-bezier(.22,1,.36,1);
@@ -85,419 +106,660 @@ body{
     transform:scale(1);
 }
 
-/* =========================
-   PRIMA PAGINA
-========================= */
-
-.start{
+.intro{
     width:min(100%,430px);
     text-align:center;
+    position:relative;
+    z-index:20;
 }
 
 .crown{
-    font-size:42px;
-    animation:float 3s ease-in-out infinite;
+    font-size:48px;
+    animation:crownFloat 3s ease-in-out infinite;
+    filter:drop-shadow(0 5px 15px rgba(255,180,220,.4));
 }
 
-@keyframes float{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-10px)}
+@keyframes crownFloat{
+    0%,100%{transform:translateY(0) rotate(-3deg)}
+    50%{transform:translateY(-10px) rotate(3deg)}
 }
 
-.start h1{
-    margin:15px 0 0;
-    font-size:clamp(48px,14vw,75px);
-    line-height:.9;
-    letter-spacing:-4px;
+.intro h1{
+    margin:10px 0 0;
+    font-family:Georgia,serif;
+    font-size:clamp(54px,16vw,78px);
+    line-height:.95;
+    letter-spacing:-3px;
+    text-shadow:0 5px 25px rgba(0,0,0,.25);
 }
 
-.start h1 span{
-    color:#ff75a8;
+.intro h1 span{
+    color:#ff8fb8;
+}
+
+.question-card{
+    margin:28px auto 0;
+    padding:25px 20px;
+    width:min(100%,370px);
+    border-radius:32px;
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.17);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.2),
+        inset 0 1px rgba(255,255,255,.15);
 }
 
 .question{
-    margin:22px 0 8px;
     font-family:Georgia,serif;
-    font-size:clamp(27px,7vw,38px);
+    font-size:31px;
 }
 
-.subtitle{
-    color:rgba(255,255,255,.55);
-    font-size:15px;
-    line-height:1.5;
-    max-width:300px;
-    margin:0 auto;
+.question-sub{
+    margin-top:9px;
+    color:rgba(255,255,255,.68);
+    font-size:14px;
 }
 
 .buttons{
-    margin-top:35px;
     display:flex;
-    justify-content:center;
     gap:14px;
+    justify-content:center;
+    margin-top:25px;
 }
 
 .btn{
+    border:0;
     min-width:125px;
     min-height:58px;
-    padding:14px 22px;
+    padding:14px 23px;
     border-radius:999px;
-    font-size:17px;
-    font-weight:800;
     color:white;
+    font-weight:800;
+    font-size:17px;
+    cursor:pointer;
+    transition:transform .15s ease;
+}
+
+.btn:active{
+    transform:scale(.92);
 }
 
 .yes{
-    background:linear-gradient(135deg,#ff3976,#ff82ad);
-    box-shadow:0 12px 35px rgba(255,50,110,.3);
+    background:linear-gradient(135deg,#ff3d7d,#ff78ad);
+    box-shadow:
+        0 8px 25px rgba(255,45,115,.35),
+        0 0 35px rgba(255,91,151,.2);
+    animation:yesPulse 2s ease-in-out infinite;
+}
+
+@keyframes yesPulse{
+    0%,100%{
+        box-shadow:0 8px 25px rgba(255,45,115,.35);
+    }
+    50%{
+        box-shadow:
+            0 8px 35px rgba(255,45,115,.65),
+            0 0 45px rgba(255,100,170,.3);
+    }
 }
 
 .no{
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.14);
-    color:rgba(255,255,255,.75);
+    background:rgba(255,255,255,.09);
+    border:1px solid rgba(255,255,255,.18);
+    color:rgba(255,255,255,.8);
 }
 
-/* =========================
-   SCENA FINALE
-========================= */
+.cat-layer{
+    position:absolute;
+    inset:0;
+    z-index:8;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.cat{
+    position:absolute;
+    font-size:38px;
+    filter:drop-shadow(0 5px 5px rgba(0,0,0,.25));
+    opacity:.95;
+}
+
+.cat:nth-child(1){
+    left:-50px;
+    top:18%;
+    animation:catWalk1 13s linear infinite;
+}
+
+.cat:nth-child(2){
+    left:75%;
+    top:13%;
+    animation:catFloat 4s ease-in-out infinite;
+}
+
+.cat:nth-child(3){
+    left:5%;
+    top:65%;
+    animation:catFloat 5s ease-in-out infinite;
+}
+
+.cat:nth-child(4){
+    right:-50px;
+    top:48%;
+    animation:catWalk2 15s linear infinite;
+}
+
+.cat:nth-child(5){
+    left:68%;
+    bottom:10%;
+    animation:catFloat 5.5s ease-in-out infinite;
+}
+
+.cat:nth-child(6){
+    left:18%;
+    bottom:16%;
+    animation:catFloat 4.5s ease-in-out infinite;
+}
+
+.cat:nth-child(7){
+    left:45%;
+    top:7%;
+    animation:catFloat 6s ease-in-out infinite;
+}
+
+.cat:nth-child(8){
+    right:10%;
+    bottom:25%;
+    animation:catFloat 5s ease-in-out infinite;
+}
+
+@keyframes catFloat{
+    0%,100%{
+        transform:translateY(0) rotate(-4deg);
+    }
+    50%{
+        transform:translateY(-15px) rotate(4deg);
+    }
+}
+
+@keyframes catWalk1{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(calc(100vw + 100px));
+    }
+}
+
+@keyframes catWalk2{
+    from{
+        transform:translateX(0) scaleX(-1);
+    }
+    to{
+        transform:translateX(calc(-100vw - 100px)) scaleX(-1);
+    }
+}
 
 .final{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            180deg,
+            #211044 0%,
+            #713d69 47%,
+            #ee9a9d 73%,
+            #f3c69d 100%
+        );
+}
+
+.sun{
+    position:absolute;
+    top:14%;
+    left:50%;
+    transform:translateX(-50%);
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle,
+            #fff8cf 0%,
+            #ffd28e 45%,
+            rgba(255,172,130,.15) 70%,
+            transparent 72%
+        );
+}
+
+.ocean{
+    position:absolute;
+    bottom:0;
+    left:0;
     width:100%;
-    height:100%;
-    position:relative;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    height:38%;
+    background:linear-gradient(
+        180deg,
+        rgba(50,161,171,.75),
+        #126f84
+    );
+    clip-path:polygon(
+        0 20%,
+        12% 14%,
+        25% 19%,
+        40% 11%,
+        55% 18%,
+        70% 10%,
+        84% 17%,
+        100% 12%,
+        100% 100%,
+        0 100%
+    );
+}
+
+.palm{
+    position:absolute;
+    bottom:19%;
+    width:150px;
+    height:270px;
+    z-index:2;
+}
+
+.palm.left{
+    left:-30px;
+    transform:rotate(-7deg);
+}
+
+.palm.right{
+    right:-30px;
+    transform:scaleX(-1) rotate(-7deg);
+}
+
+.trunk{
+    position:absolute;
+    bottom:0;
+    left:70px;
+    width:22px;
+    height:220px;
+    border-radius:50%;
+    background:linear-gradient(
+        90deg,
+        #704228,
+        #a66b38,
+        #61341f
+    );
+    transform:rotate(7deg);
+}
+
+.leaves{
+    position:absolute;
+    top:0;
+    left:40px;
+    font-size:75px;
+    line-height:.55;
 }
 
 .final-title{
     position:absolute;
-    top:7%;
+    top:5%;
+    width:100%;
     text-align:center;
-    z-index:20;
+    z-index:30;
 }
 
 .final-title h2{
     margin:0;
     font-family:Georgia,serif;
-    font-size:clamp(31px,8vw,48px);
+    font-size:clamp(28px,8vw,44px);
+    text-shadow:0 3px 15px rgba(0,0,0,.2);
 }
 
 .final-title p{
     margin:8px 0 0;
-    color:#ff8fb7;
+    color:#ffe3e9;
+    font-size:14px;
 }
-
-/* =========================
-   CASTELLO
-========================= */
-
-.castle{
-    position:absolute;
-    bottom:0;
-    left:50%;
-    transform:translateX(-50%);
-    width:110%;
-    height:37%;
-    opacity:.17;
-}
-
-.castle-body{
-    position:absolute;
-    bottom:0;
-    left:25%;
-    width:50%;
-    height:65%;
-    background:#dca9ce;
-    border-radius:8px 8px 0 0;
-}
-
-.tower{
-    position:absolute;
-    bottom:0;
-    width:18%;
-    height:90%;
-    background:#e6b7da;
-}
-
-.tower.left{left:7%}
-.tower.right{right:7%}
-
-.roof{
-    position:absolute;
-    top:-32px;
-    left:-10%;
-    width:120%;
-    height:60px;
-    background:#a969a7;
-    clip-path:polygon(50% 0,100% 100%,0 100%);
-}
-
-/* =========================
-   PERSONAGGI CENTRALI
-========================= */
 
 .couple{
     position:absolute;
-    top:24%;
-    width:210px;
+    left:50%;
+    top:27%;
+    transform:translateX(-50%);
+    width:260px;
     height:300px;
-    z-index:10;
+    z-index:20;
 }
 
-.character{
+.person{
     position:absolute;
     bottom:0;
-    width:105px;
-    height:270px;
+    width:115px;
+    height:275px;
 }
 
-.character.male{
-    left:0;
+.prince{
+    left:4px;
 }
 
-.character.female{
-    right:0;
-    transform:scaleX(-1);
+.princess{
+    right:4px;
 }
 
-/* capelli */
-
-.head{
+.person-head{
     position:absolute;
     top:0;
-    left:25px;
+    left:27px;
     width:65px;
     height:70px;
     border-radius:50%;
-    background:#e7a07e;
-    z-index:4;
+    background:#e8a27f;
+    z-index:5;
 }
 
-.male .head::before{
+.prince .person-head:before{
     content:"";
     position:absolute;
-    top:-7px;
+    top:-9px;
     left:-4px;
     width:73px;
-    height:35px;
-    background:#3c2119;
-    border-radius:50% 50% 30% 30%;
+    height:39px;
+    border-radius:50% 50% 35% 35%;
+    background:#3a211b;
 }
 
-.female .head::before{
+.princess .person-head:before{
     content:"";
     position:absolute;
-    top:-12px;
-    left:-10px;
-    width:85px;
-    height:95px;
-    background:#6d351d;
+    top:-15px;
+    left:-14px;
+    width:93px;
+    height:110px;
     border-radius:50%;
+    background:linear-gradient(
+        90deg,
+        #6f472a,
+        #8b5c32,
+        #5d391f
+    );
     z-index:-1;
 }
 
-/* occhi */
-
 .eye{
     position:absolute;
-    top:31px;
+    top:32px;
     width:7px;
     height:7px;
     border-radius:50%;
-    background:#351e24;
+    background:#37202b;
 }
 
-.eye.left{left:18px}
-.eye.right{right:18px}
+.eye.one{
+    left:18px;
+}
 
-/* corpo */
+.eye.two{
+    right:18px;
+}
 
-.body{
+.smile{
     position:absolute;
-    top:65px;
-    left:15px;
-    width:78px;
-    height:115px;
-    border-radius:35px 35px 18px 18px;
-    background:linear-gradient(#4d1c30,#251321);
+    top:46px;
+    left:27px;
+    width:13px;
+    height:6px;
+    border-bottom:2px solid #743744;
+    border-radius:50%;
 }
 
-/* braccia */
+.person-body{
+    position:absolute;
+    top:68px;
+    left:14px;
+    width:86px;
+    height:115px;
+    border-radius:35px 35px 15px 15px;
+}
+
+.prince .person-body{
+    background:linear-gradient(
+        90deg,
+        #173c87,
+        #4f83d6,
+        #19356f
+    );
+}
+
+.prince .person-body:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:35px;
+    width:15px;
+    height:110px;
+    background:#f5d07a;
+}
+
+.princess .person-body{
+    top:70px;
+    height:130px;
+    border-radius:45px 45px 15px 15px;
+    background:linear-gradient(
+        90deg,
+        #b46b96,
+        #f1a8c6,
+        #a95e8f
+    );
+    clip-path:polygon(
+        35% 0,
+        65% 0,
+        100% 100%,
+        0 100%
+    );
+}
 
 .arm{
     position:absolute;
     top:82px;
     width:16px;
-    height:105px;
+    height:100px;
     border-radius:20px;
-    background:#e3a07f;
+    background:#e6a07d;
+    z-index:3;
 }
 
-.arm.left{
-    left:5px;
-    transform:rotate(25deg);
+.prince .arm.left{
+    left:3px;
+    transform:rotate(22deg);
 }
 
-.arm.right{
-    right:5px;
-    transform:rotate(-30deg);
+.princess .arm.right{
+    right:3px;
+    transform:rotate(-22deg);
 }
 
-/* gambe */
+.hand{
+    position:absolute;
+    top:160px;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:#e7a07d;
+    z-index:10;
+}
+
+.prince .hand{
+    right:0;
+}
+
+.princess .hand{
+    left:0;
+}
+
+.holding{
+    position:absolute;
+    top:168px;
+    left:113px;
+    width:35px;
+    height:6px;
+    border-radius:10px;
+    background:#e7a07d;
+    z-index:9;
+}
 
 .leg{
     position:absolute;
-    top:170px;
-    width:22px;
-    height:100px;
-    background:#3c1c2c;
+    top:178px;
+    width:23px;
+    height:96px;
     border-radius:20px;
 }
 
-.leg.left{
-    left:28px;
-    transform:rotate(8deg);
+.prince .leg{
+    background:#24325d;
 }
 
-.leg.right{
-    right:28px;
-    transform:rotate(-8deg);
+.princess .leg{
+    background:#8d4f79;
 }
 
-/* mantello stilizzato */
+.leg.one{
+    left:30px;
+}
 
-.male::after{
-    content:"";
+.leg.two{
+    right:30px;
+}
+
+.flower{
     position:absolute;
-    top:70px;
-    left:3px;
-    width:90px;
-    height:145px;
-    background:linear-gradient(160deg,#62335d,#27152e);
-    clip-path:polygon(30% 0,100% 10%,85% 100%,0 80%);
-    z-index:-1;
+    top:72px;
+    right:19px;
+    font-size:23px;
+    transform:rotate(-15deg);
 }
 
-/* =========================
-   PRINCIPESSE INTORNO
-========================= */
-
-.princesses{
+.fairies{
     position:absolute;
-    inset:15% 0 12%;
-    z-index:5;
+    inset:20% 0 15%;
+    z-index:12;
+    pointer-events:none;
 }
 
-.princess{
+.fairy{
     position:absolute;
-    width:62px;
-    height:105px;
-    text-align:center;
-    animation:princessFloat 3s ease-in-out infinite;
-}
-
-.princess span{
-    display:block;
     font-size:38px;
-    filter:drop-shadow(0 4px 8px rgba(0,0,0,.3));
+    animation:fairyFloat 3s ease-in-out infinite;
+    filter:drop-shadow(0 5px 7px rgba(0,0,0,.2));
 }
 
-.princess small{
-    font-size:9px;
-    color:rgba(255,255,255,.75);
+.fairy:nth-child(1){
+    left:4%;
+    top:15%;
+    animation-delay:.2s;
 }
 
-@keyframes princessFloat{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-8px)}
+.fairy:nth-child(2){
+    left:25%;
+    top:4%;
+    animation-delay:.7s;
 }
 
-/* posizioni */
-
-.p1{left:4%;top:5%;animation-delay:.1s}
-.p2{left:25%;top:0;animation-delay:.4s}
-.p3{right:25%;top:0;animation-delay:.8s}
-.p4{right:4%;top:5%;animation-delay:1.2s}
-
-.p5{left:1%;top:40%;animation-delay:.5s}
-.p6{right:1%;top:40%;animation-delay:1s}
-
-.p7{left:10%;bottom:2%;animation-delay:1.3s}
-.p8{left:32%;bottom:0;animation-delay:.7s}
-.p9{right:32%;bottom:0;animation-delay:1.5s}
-.p10{right:10%;bottom:2%;animation-delay:.3s}
-
-/* =========================
-   CUORE CENTRALE
-========================= */
-
-.big-heart{
-    position:absolute;
-    top:43%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    font-size:40px;
-    z-index:15;
-    animation:heartbeat 1.3s infinite;
+.fairy:nth-child(3){
+    right:25%;
+    top:4%;
+    animation-delay:1.1s;
 }
 
-@keyframes heartbeat{
-    0%,100%{transform:translate(-50%,-50%) scale(1)}
-    50%{transform:translate(-50%,-50%) scale(1.3)}
+.fairy:nth-child(4){
+    right:4%;
+    top:15%;
+    animation-delay:1.6s;
 }
 
-/* =========================
-   MESSAGGIO
-========================= */
+.fairy:nth-child(5){
+    left:2%;
+    top:48%;
+    animation-delay:.9s;
+}
+
+.fairy:nth-child(6){
+    right:2%;
+    top:48%;
+    animation-delay:.4s;
+}
+
+.fairy:nth-child(7){
+    left:12%;
+    bottom:2%;
+    animation-delay:1.3s;
+}
+
+.fairy:nth-child(8){
+    right:12%;
+    bottom:2%;
+    animation-delay:.6s;
+}
+
+@keyframes fairyFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-9px);
+    }
+}
 
 .message{
     position:absolute;
-    bottom:5%;
-    width:min(90%,390px);
-    padding:20px;
-    text-align:center;
+    bottom:4%;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(88%,390px);
+    padding:17px 20px;
     border-radius:25px;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.13);
+    background:rgba(35,20,55,.45);
+    border:1px solid rgba(255,255,255,.2);
     backdrop-filter:blur(15px);
-    z-index:30;
+    -webkit-backdrop-filter:blur(15px);
+    text-align:center;
+    z-index:40;
+    box-shadow:0 15px 40px rgba(0,0,0,.2);
 }
 
 .message strong{
     display:block;
     font-family:Georgia,serif;
-    font-size:26px;
+    font-size:24px;
 }
 
 .message span{
     display:block;
-    margin-top:7px;
-    color:#ff86ae;
-    font-size:19px;
+    margin-top:6px;
+    color:#ffd2e1;
+    font-size:18px;
 }
-
-/* =========================
-   PARTICELLE
-========================= */
 
 .heart{
     position:fixed;
-    z-index:100;
-    pointer-events:none;
-    font-size:24px;
     left:50%;
     top:50%;
-    animation:heartFly 1.8s forwards;
+    z-index:100;
+    pointer-events:none;
+    font-size:25px;
+    animation:heartExplosion 1.8s ease-out forwards;
 }
 
-@keyframes heartFly{
+@keyframes heartExplosion{
     0%{
         opacity:0;
-        transform:translate(-50%,-50%) scale(.3);
+        transform:translate(-50%,-50%) scale(.2);
     }
-    15%{opacity:1}
+
+    15%{
+        opacity:1;
+    }
+
     100%{
         opacity:0;
         transform:
@@ -506,34 +768,76 @@ body{
                 calc(-50% + var(--y))
             )
             rotate(var(--r))
-            scale(1.3);
+            scale(1.5);
     }
 }
 
-/* =========================
-   MOBILE PICCOLO
-========================= */
+.flash{
+    position:fixed;
+    inset:0;
+    background:white;
+    opacity:0;
+    pointer-events:none;
+    z-index:200;
+}
+
+.flash.go{
+    animation:flash .8s ease;
+}
+
+@keyframes flash{
+    0%{opacity:0}
+    25%{opacity:.8}
+    100%{opacity:0}
+}
 
 @media(max-height:700px){
 
-    .final-title{
-        top:4%;
+    .intro h1{
+        font-size:55px;
+    }
+
+    .question-card{
+        margin-top:18px;
+        padding:20px;
     }
 
     .couple{
-        top:20%;
-        transform:scale(.82);
+        top:25%;
+        transform:translateX(-50%) scale(.85);
     }
 
-    .princess{
-        transform:scale(.82);
+    .fairies{
+        inset:19% 0 13%;
     }
 
     .message{
-        bottom:3%;
-        padding:15px;
+        bottom:2%;
+        padding:13px 16px;
     }
 
+    .message strong{
+        font-size:21px;
+    }
+}
+
+@media(max-width:360px){
+
+    .btn{
+        min-width:110px;
+    }
+
+    .cat{
+        font-size:30px;
+    }
+
+    .fairy{
+        font-size:31px;
+    }
+
+    .couple{
+        transform:translateX(-50%) scale(.78);
+    }
 }
 </style>
 </head>
@@ -542,355 +846,468 @@ body{
 
 <div class="app">
 
-<div class="background"></div>
+<div class="sky"></div>
+<div class="stars"></div>
+<div class="moon"></div>
 
-<!-- =========================
-     SCHERMATA INIZIALE
-========================= -->
+<!-- GATTINI DELLA PRIMA SCHERMATA -->
+
+<div class="cat-layer">
+
+    <div class="cat">🐱</div>
+    <div class="cat">🐈</div>
+    <div class="cat">😺</div>
+    <div class="cat">🐈‍⬛</div>
+    <div class="cat">😸</div>
+    <div class="cat">🐱</div>
+    <div class="cat">😻</div>
+    <div class="cat">🐈</div>
+
+</div>
+
+<!-- PRIMA SCHERMATA -->
 
 <section class="screen active" id="start">
 
-<div class="start">
+    <div class="intro">
 
-<div class="crown">👑</div>
+        <div class="crown">👑</div>
 
-<h1>
-Gaia
-<span>❤️</span>
-</h1>
+        <h1>
+            Gaia <span>❤️</span>
+        </h1>
 
-<div class="question">
-Facciamo pace?
-</div>
+        <div class="question-card">
 
-<p class="subtitle">
-Prima di rispondere...
-sappi che c'è una piccola sorpresa per te.
-</p>
+            <div class="question">
+                Facciamo pace?
+            </div>
 
-<div class="buttons">
+            <div class="question-sub">
+                Ho preparato una piccola sorpresa per te...
+            </div>
 
-<button class="btn yes" id="yes">
-SÌ ❤️
-</button>
+            <div class="buttons">
 
-<button class="btn no" id="no">
-NO 😈
-</button>
+                <button class="btn yes" id="yes">
+                    SÌ ❤️
+                </button>
 
-</div>
+                <button class="btn no" id="no">
+                    NO 😈
+                </button>
 
-</div>
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
-
-<!-- =========================
-     SCHERMATA FINALE
-========================= -->
+<!-- SCHERMATA FINALE -->
 
 <section class="screen" id="final">
 
-<div class="final">
+    <div class="final">
 
-<div class="final-title">
-<h2>Per la mia principessa ❤️</h2>
-<p>una coppia contro il mondo</p>
-</div>
+        <div class="sun"></div>
 
+        <div class="ocean"></div>
 
-<!-- CASTELLO -->
+        <!-- PALME -->
 
-<div class="castle">
+        <div class="palm left">
+            <div class="trunk"></div>
+            <div class="leaves">🌴</div>
+        </div>
 
-<div class="castle-body"></div>
+        <div class="palm right">
+            <div class="trunk"></div>
+            <div class="leaves">🌴</div>
+        </div>
 
-<div class="tower left">
-<div class="roof"></div>
-</div>
+        <!-- TITOLO -->
 
-<div class="tower right">
-<div class="roof"></div>
-</div>
+        <div class="final-title">
 
-</div>
+            <h2>
+                La nostra piccola fiaba ❤️
+            </h2>
 
+            <p>
+                anche dall'altra parte del mondo
+            </p>
 
-<!-- PRINCIPESSE -->
+        </div>
 
-<div class="princesses">
+        <!-- PRINCIPESSE -->
 
-<div class="princess p1">
-<span>👸🏻</span>
-<small>Biancaneve</small>
-</div>
+        <div class="fairies">
 
-<div class="princess p2">
-<span>👸🏼</span>
-<small>Cenerentola</small>
-</div>
+            <div class="fairy">👸🏻</div>
+            <div class="fairy">👸🏼</div>
+            <div class="fairy">👸🏻</div>
+            <div class="fairy">👸🏽</div>
+            <div class="fairy">👸🏼</div>
+            <div class="fairy">👸🏻</div>
+            <div class="fairy">👸🏽</div>
+            <div class="fairy">👸🏼</div>
 
-<div class="princess p3">
-<span>👸🏻</span>
-<small>Aurora</small>
-</div>
+        </div>
 
-<div class="princess p4">
-<span>👸🏽</span>
-<small>Jasmine</small>
-</div>
+        <!-- COPPIA CENTRALE -->
 
-<div class="princess p5">
-<span>👸🏻</span>
-<small>Ariel</small>
-</div>
+        <div class="couple">
 
-<div class="princess p6">
-<span>👸🏼</span>
-<small>Belle</small>
-</div>
+            <!-- PRINCIPE -->
 
-<div class="princess p7">
-<span>👸🏻</span>
-<small>Rapunzel</small>
-</div>
+            <div class="person prince">
 
-<div class="princess p8">
-<span>👸🏽</span>
-<small>Tiana</small>
-</div>
+                <div class="person-head">
 
-<div class="princess p9">
-<span>👸🏼</span>
-<small>Anna</small>
-</div>
+                    <div class="eye one"></div>
+                    <div class="eye two"></div>
+                    <div class="smile"></div>
 
-<div class="princess p10">
-<span>👸🏼</span>
-<small>Elsa</small>
-</div>
+                </div>
 
-</div>
+                <div class="person-body"></div>
 
+                <div class="arm left"></div>
 
-<!-- COPPIA CENTRALE -->
+                <div class="hand"></div>
 
-<div class="couple">
+                <div class="leg one"></div>
+                <div class="leg two"></div>
 
-<div class="character male">
+            </div>
 
-<div class="head">
-<div class="eye left"></div>
-<div class="eye right"></div>
-</div>
+            <!-- PRINCIPESSA -->
 
-<div class="body"></div>
+            <div class="person princess">
 
-<div class="arm left"></div>
-<div class="arm right"></div>
+                <div class="person-head">
 
-<div class="leg left"></div>
-<div class="leg right"></div>
+                    <div class="eye one"></div>
+                    <div class="eye two"></div>
+                    <div class="smile"></div>
 
-</div>
+                </div>
 
+                <div class="person-body"></div>
 
-<div class="character female">
+                <div class="arm right"></div>
 
-<div class="head">
-<div class="eye left"></div>
-<div class="eye right"></div>
-</div>
+                <div class="hand"></div>
 
-<div class="body"></div>
+                <div class="flower">🌺</div>
 
-<div class="arm left"></div>
-<div class="arm right"></div>
+                <div class="leg one"></div>
+                <div class="leg two"></div>
 
-<div class="leg left"></div>
-<div class="leg right"></div>
+            </div>
 
-</div>
+            <!-- MANI CHE SI TENGONO -->
 
-</div>
+            <div class="holding"></div>
 
+        </div>
 
-<div class="big-heart">
-❤️
-</div>
+        <!-- GATTINI FINALI -->
 
+        <div class="cat-layer">
 
-<!-- MESSAGGIO -->
+            <div
+                class="cat"
+                style="left:8%;bottom:27%;animation-duration:5s"
+            >
+                🐱
+            </div>
 
-<div class="message">
+            <div
+                class="cat"
+                style="right:8%;bottom:31%;animation-duration:6s"
+            >
+                🐈
+            </div>
 
-<strong>Gaia, sei la mia vita.</strong>
+            <div
+                class="cat"
+                style="left:32%;bottom:20%;font-size:30px"
+            >
+                😺
+            </div>
 
-<span>Ti amo ❤️</span>
+            <div
+                class="cat"
+                style="right:30%;bottom:19%;font-size:31px"
+            >
+                🐈‍⬛
+            </div>
 
-</div>
+        </div>
 
-</div>
+        <!-- MESSAGGIO -->
+
+        <div class="message">
+
+            <strong>
+                Gaia, sei la mia vita.
+            </strong>
+
+            <span>
+                Ti amo ❤️
+            </span>
+
+        </div>
+
+    </div>
 
 </section>
 
-</div>
+<div class="flash" id="flash"></div>
 
+</div>
 
 <script>
 
-const yes = document.getElementById("yes");
-const no = document.getElementById("no");
+const yes =
+document.getElementById("yes");
 
-const start = document.getElementById("start");
-const final = document.getElementById("final");
+const no =
+document.getElementById("no");
 
-let attempts = 0;
+const start =
+document.getElementById("start");
+
+const final =
+document.getElementById("final");
+
+const flash =
+document.getElementById("flash");
+
+let noAttempts = 0;
 
 
-/* =========================
-   NO SCAPPA
-========================= */
+/* =====================================================
+   PULSANTE NO
+===================================================== */
 
-function moveNo(e){
+function escapeNo(event){
 
-if(e) e.preventDefault();
+    if(event){
+        event.preventDefault();
+    }
 
-attempts++;
+    noAttempts++;
 
-const width=no.offsetWidth;
-const height=no.offsetHeight;
+    const maxX =
+        Math.max(
+            20,
+            window.innerWidth -
+            no.offsetWidth -
+            20
+        );
 
-const margin=20;
+    const maxY =
+        Math.max(
+            20,
+            window.innerHeight -
+            no.offsetHeight -
+            20
+        );
 
-const x=
-Math.random()*
-(window.innerWidth-width-margin*2)
-+margin;
+    const x =
+        20 +
+        Math.random() *
+        (maxX - 20);
 
-const y=
-Math.random()*
-(window.innerHeight-height-margin*2)
-+margin;
+    const y =
+        20 +
+        Math.random() *
+        (maxY - 20);
 
-no.style.position="fixed";
-no.style.left=x+"px";
-no.style.top=y+"px";
+    no.style.position = "fixed";
+    no.style.left = x + "px";
+    no.style.top = y + "px";
 
-const texts=[
-"NO 😈",
-"Sicura? 🥺",
-"Daiii ❤️",
-"Riprova 😂",
-"Non vale 😭",
-"Gaiaaa ❤️",
-"NOOO 😂"
-];
+    const messages = [
+        "NO 😈",
+        "Sicura? 🥺",
+        "Daiii ❤️",
+        "Riprova 😂",
+        "Non vale 😭",
+        "Gaiaaa ❤️",
+        "Ti prego 🥹",
+        "NOOO 😂"
+    ];
 
-no.textContent=
-texts[Math.min(attempts,texts.length-1)];
-
+    no.textContent =
+        messages[
+            Math.min(
+                noAttempts,
+                messages.length - 1
+            )
+        ];
 }
 
 
-/* desktop */
-
-no.addEventListener("mouseenter",moveNo);
-
-
-/* telefono */
+/* Mouse */
 
 no.addEventListener(
-"touchstart",
-moveNo,
-{passive:false}
+    "mouseenter",
+    escapeNo
 );
 
 
-/* click */
+/* Touch */
 
-no.addEventListener("click",moveNo);
+no.addEventListener(
+    "touchstart",
+    escapeNo,
+    {passive:false}
+);
 
 
-/* =========================
+/* Click */
+
+no.addEventListener(
+    "click",
+    escapeNo
+);
+
+
+/* =====================================================
    CUORI
-========================= */
+===================================================== */
 
-function heart(){
+function createHeart(){
 
-const h=document.createElement("div");
+    const heart =
+        document.createElement("div");
 
-h.className="heart";
+    heart.className = "heart";
 
-const emojis=[
-"❤️","💕","💗","💖","💘","✨","🩷"
-];
+    const symbols = [
+        "❤️",
+        "💕",
+        "💗",
+        "💖",
+        "💘",
+        "💞",
+        "✨"
+    ];
 
-h.textContent=
-emojis[
-Math.floor(Math.random()*emojis.length)
-];
+    heart.textContent =
+        symbols[
+            Math.floor(
+                Math.random() *
+                symbols.length
+            )
+        ];
 
-h.style.setProperty(
-"--x",
-(Math.random()*500-250)+"px"
-);
+    heart.style.setProperty(
+        "--x",
+        (Math.random() * 600 - 300) + "px"
+    );
 
-h.style.setProperty(
-"--y",
-(-Math.random()*700-100)+"px"
-);
+    heart.style.setProperty(
+        "--y",
+        (-Math.random() * 700 - 100) + "px"
+    );
 
-h.style.setProperty(
-"--r",
-(Math.random()*90-45)+"deg"
-);
+    heart.style.setProperty(
+        "--r",
+        (Math.random() * 120 - 60) + "deg"
+    );
 
-document.body.appendChild(h);
+    document.body.appendChild(heart);
 
-setTimeout(
-()=>h.remove(),
-1900
-);
-
+    setTimeout(
+        () => heart.remove(),
+        1900
+    );
 }
 
 
-/* =========================
+/* =====================================================
    SÌ
-========================= */
+===================================================== */
 
-yes.addEventListener("click",()=>{
+yes.addEventListener(
+    "click",
+    () => {
 
-/* esplosione */
+        yes.disabled = true;
 
-for(let i=0;i<65;i++){
+        for(
+            let i = 0;
+            i < 75;
+            i++
+        ){
 
-setTimeout(
-heart,
-i*25
+            setTimeout(
+                createHeart,
+                i * 18
+            );
+
+        }
+
+        flash.classList.add("go");
+
+        setTimeout(
+            () => {
+                flash.classList.remove("go");
+            },
+            800
+        );
+
+        setTimeout(
+            () => {
+                start.classList.remove("active");
+            },
+            250
+        );
+
+        setTimeout(
+            () => {
+                final.classList.add("active");
+            },
+            650
+        );
+
+    }
 );
 
-}
 
+/* =====================================================
+   CUORI AUTOMATICI NEL FINALE
+===================================================== */
 
-/* uscita */
+setInterval(
+    () => {
 
-start.classList.remove("active");
+        if(
+            final.classList.contains("active")
+        ){
 
+            if(
+                Math.random() > .35
+            ){
 
-/* entrata */
+                createHeart();
 
-setTimeout(()=>{
+            }
 
-final.classList.add("active");
+        }
 
-},300);
-
-});
+    },
+    1300
+);
 
 </script>
 
 </body>
 </html>
-```
+
